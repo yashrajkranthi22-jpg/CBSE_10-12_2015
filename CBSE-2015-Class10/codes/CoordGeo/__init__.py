@@ -1,0 +1,1 @@
+"""Reusable coordinate-geometry helpers kept in the repository layout."""

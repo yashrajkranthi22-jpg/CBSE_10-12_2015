@@ -1,0 +1,57 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper,margin=10mm]{geometry}
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0mm}
+
+% Keep the GVV support packages used by the reference repository in the source tree.
+\usepackage{gvv-book}
+\let\savedvec\vec
+\usepackage{gvv}
+\let\vec\savedvec
+
+% Project-specific typesetting and the existing solution notation.
+\usepackage{graphicx}
+\usepackage[center]{caption}
+\usepackage{booktabs}
+\usepackage{microtype}
+\raggedbottom
+\hypersetup{colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black,hypertexnames=false,pdftitle={CBSE Class 10 Mathematics 2015}}
+\makeindex
+
+% Preserve this project's original matrix brackets and solution label.
+\renewcommand{\myvec}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\renewcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\renewcommand{\solution}{\par\smallskip\noindent\textbf{Solution.}\;}
+\newcounter{qcurrent}
+\newcommand{\qitem}[1]{\setcounter{qcurrent}{#1}\setcounter{equation}{0}\item[\textbf{Q#1.}]}
+
+\begin{document}
+\bibliographystyle{IEEEtran}
+\onecolumn
+
+\title{
+  \begin{center}
+  {\LARGE\bfseries Math for EE}\\
+  \rule{0.4\columnwidth}{0.4pt}
+  \end{center}
+}
+\author{
+  \vspace{11cm}
+  \begin{center}
+  {\fontsize{26}{31}\selectfont\bfseries CBSE Class 10 2015}
+  \end{center}
+}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\newpage
+
+\section{CBSE Class X Mathematics}
+\subsection{Formulae}
+\input{chapters/class10_formulae.tex}
+\newpage
+\subsection{Worked solutions}
+\input{chapters/class10.tex}
+
+\end{document}
