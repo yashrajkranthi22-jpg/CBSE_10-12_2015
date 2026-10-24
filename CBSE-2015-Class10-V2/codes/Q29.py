@@ -1,16 +1,19 @@
 """Plot triangles using the two k values found theoretically in Q29."""
 from pathlib import Path
+import sys
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from CoordGeo.plotting import fill_polygon, plot_curve, plot_label, plot_points
-
-from CoordGeo.triangle.triangle import area
+import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-A = (1.0, -1.0)
-valid_k_values = [3.0, -4.5]  # Values obtained from the area equation in the solution.
+sys.path.insert(0, str(ROOT / "codes" / "CoordGeo"))
+sys.path.insert(0, str(ROOT / "codes"))
+from CoordGeo.line.funcs import line_gen
+
+A = np.array([1.0, -1.0])
+valid_k_values = [3.0, -4.5]  # Values obtained from the area equation in the written solution.
 
 
 def display_number(value):
@@ -20,22 +23,23 @@ def display_number(value):
 
 fig, axes = plt.subplots(1, 2, figsize=(7.25, 3.65))
 for ax, k in zip(axes, valid_k_values):
-    # Substitute a theoretically derived k into the coordinates from the question.
-    B = (-4.0, 2.0 * k)
-    C = (-k, -5.0)
+    # Substitute each theoretically derived k into the coordinates from the question.
+    B = np.array([-4.0, 2.0 * k])
+    C = np.array([-k, -5.0])
 
-    # CoordGeo supplies the coordinate-triangle area used in the panel title.
-    # The code does not solve for k; both k values come from the written algebra.
-    triangle_area = area(A, B, C)
+    # The actual CoordGeo library generates each side from its endpoint coordinates.
+    for start, end in ((A, B), (B, C), (C, A)):
+        side = line_gen(start, end)
+        ax.plot(side[0], side[1], color="black", linewidth=1.7)
+    ax.fill([A[0], B[0], C[0]], [A[1], B[1], C[1]],
+            color="#4c78a8", alpha=0.12)
+    ax.scatter([A[0], B[0], C[0]], [A[1], B[1], C[1]], s=22, color="black", zorder=3)
 
-    # Repeat A at the end so that the three sides form a closed outline.
-    x_values = [A[0], B[0], C[0], A[0]]
-    y_values = [A[1], B[1], C[1], A[1]]
-    plot_curve(ax, x_values, y_values, color="black", linewidth=1.7)
-    fill_polygon(ax, x_values, y_values, color="#4c78a8", alpha=0.12)
-    plot_points(ax, [A, B, C], s=22, color="black", zorder=3)
+    # CoordGeo has no triangle-area function in this upstream version, so use the coordinate formula.
+    triangle_area = abs((B[0] - A[0]) * (C[1] - A[1])
+                        - (B[1] - A[1]) * (C[0] - A[0])) / 2
 
-    # Small offsets stop the labels from sitting directly on top of the points.
+    # Small offsets keep the labels separate from the plotted points.
     point_labels = [
         ("A", A, 0.15, 0.18),
         ("B", B, -0.7 if B[1] < 0 else -0.55,
@@ -43,15 +47,17 @@ for ax, k in zip(axes, valid_k_values):
         ("C", C, 0.13, -0.35 if C[1] < -2 else 0.15),
     ]
     for name, point, dx, dy in point_labels:
-        shown_point = tuple(display_number(value) for value in point)
-        plot_label(ax, point[0] + dx, point[1] + dy,
-                   f"{name}{shown_point}", fontsize=7.2)
+        shown_point = tuple(display_number(float(value)) for value in point)
+        ax.text(point[0] + dx, point[1] + dy,
+                f"{name}{shown_point}", fontsize=7.2)
 
     k_label = r"3" if k == 3 else r"-\frac{9}{2}"
     ax.set_title(rf"$k={k_label}$; area $={triangle_area:g}$", fontsize=9)
     ax.axhline(0, color="0.4", linewidth=0.65)
     ax.axvline(0, color="0.4", linewidth=0.65)
     ax.grid(True, alpha=0.2)
+    x_values = [A[0], B[0], C[0]]
+    y_values = [A[1], B[1], C[1]]
     ax.set_xlim(min(x_values) - 1.3, max(x_values) + 1.45)
     ax.set_ylim(min(y_values) - 1.45, max(y_values) + 1.45)
     ax.set_aspect("equal", adjustable="box")
