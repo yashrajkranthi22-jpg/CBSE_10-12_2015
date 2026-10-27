@@ -1,0 +1,39 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper,margin=10mm]{geometry}
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0mm}
+
+% Use the same GVV layout and mathematical notation as the Class 10 project.
+\usepackage{gvv-book}
+\let\savedvec\vec
+\usepackage{gvv}
+\let\vec\savedvec
+\usepackage[center]{caption}
+\raggedbottom
+\hypersetup{colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black,hypertexnames=false,pdftitle={CBSE Class 12 Mathematics 2015}}
+\makeindex
+
+\renewcommand{\myvec}[1]{\ensuremath{\begin{bmatrix}#1\end{bmatrix}}}
+\renewcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\renewcommand{\solution}{\par\smallskip\noindent\textbf{Solution.}\;}
+\newcounter{qcurrent}
+
+\begin{document}
+\bibliographystyle{IEEEtran}
+\onecolumn
+\title{\begin{center}{\LARGE\bfseries Math for EE}\\\rule{0.4\columnwidth}{0.4pt}\end{center}}
+\author{\vspace{11cm}\begin{center}{\fontsize{26}{31}\selectfont\bfseries CBSE Class 12 2015}\end{center}}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Formulae}
+\input{chapters/class12_formulae.tex}
+\newpage
+\section{Problems}
+\input{chapters/class12.tex}
+
+\newpage
+\end{document}
