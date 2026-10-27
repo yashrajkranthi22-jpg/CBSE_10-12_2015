@@ -248,7 +248,7 @@ r=\frac{1500}{15000}\times100\%=10\%\text{ per month}.
 \[
 I=\int_0^\infty\frac{dt}{(1+t^2)(1+4t^2)}=\int_0^\infty\left[-\frac1{3(1+t^2)}+\frac4{3(1+4t^2)}\right]dt.
 \]
-Evaluating the arctangent limits gives $I=-\pi/6+\pi/3=\pi/6\qquad\eqref{eq:arctan-integral-38}$.
+Evaluating the arctangent limits gives $I=-\pi/6+\pi/3=\pi/6\qquad\eqref{eq:scaled-arctan-integral-38},\ \eqref{eq:arctan-integral-38}$.
 
 \setcounter{enumii}{39}
 \setcounter{equation}{0}
@@ -594,7 +594,10 @@ P(\text{two red})=\frac38\frac29+\frac58\frac1{15}=\frac18\qquad\eqref{eq:total-
 \item[\textbf{1.2.58}] A man speaks truth 3 out of 5 times. He throws a die and reports that it is 4. Find the probability that it actually is 4.
 \solution Let $A$ be the event that the die shows 4, and $R$ the event that he reports 4. Assuming that when he lies each of the five wrong numbers is equally likely, $P(A)=1/6$, $P(R|A)=3/5$, and $P(R|A^c)=(2/5)(1/5)=2/25$. Hence
 \[
-P(A|R)=\frac{(1/6)(3/5)}{(1/6)(3/5)+(5/6)(2/25)}=\frac35\qquad\eqref{eq:bayes-58-2}.
+P(A|R)=\frac{P(A\cap R)}{P(R)}
+=\frac{P(R|A)P(A)}{P(R)}
+=\frac{(1/6)(3/5)}{(1/6)(3/5)+(5/6)(2/25)}
+=\frac35\qquad\eqref{eq:conditional-probability-58},\ \eqref{eq:bayes-58-2}.
 \]
 
 
