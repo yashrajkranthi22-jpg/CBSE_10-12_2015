@@ -1,13 +1,10 @@
 % This document follows the topic-organised question collection in
 % gadepall/cbse-papers/2015/math/12/main.tex. Obvious transcription errors are
 % corrected in the question text where the intended statement is unambiguous.
-% The inner list is the question list, so enumii is the equation parent counter.
-\numberwithin{equation}{enumii}
 
 \begin{enumerate}[label={},leftmargin=0pt]
 \item[]
 \begin{enumerate}[label={},leftmargin=0pt,itemsep=9pt]
-\renewcommand{\theenumii}{\thesubsection.\arabic{enumii}}
 \renewcommand{\theenumi}{\thesubsection}
 
 \paragraph*{Vectors and three-dimensional geometry}
@@ -15,9 +12,9 @@
 \setcounter{equation}{0}
 \item[\textbf{1.2.1}] Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
 \solution A vector perpendicular to both is parallel to their cross product:
-\begin{align}
+\begin{align*}
 \vec a\times\vec b&=\myvec{1\\-7\\5},&\norm{\vec a\times\vec b}&=\sqrt{75}=5\sqrt3\qquad\eqref{eq:cross-product}.
-\end{align}
+\end{align*}
 Scale this direction to the required magnitude:
 \[
 \vec d=\frac{\sqrt{171}}{5\sqrt3}\myvec{1\\-7\\5}
