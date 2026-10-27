@@ -1,180 +1,274 @@
-\paragraph*{Vectors and three-dimensional geometry}
-For vectors $\vec a,\vec b\in\mathbb R^3$,
-\begin{align}\intertext{\textbf{1.1.5}}
-\vec a\cdot\vec b&=a_1b_1+a_2b_2+a_3b_3,\quad \vec a\perp\vec b\iff \vec a\cdot\vec b=0. \tag{1.1.5.1}\\
-\intertext{\textbf{1.1.1}}
-\vec a\times\vec b&=\begin{pmatrix}a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{pmatrix}. \tag{1.1.1.1}\label{eq:cross-product}\\
-\text{unit vector along }\vec v&=\frac{\vec v}{\norm{\vec v}},\qquad \norm{c\vec v}=|c|\norm{\vec v}. \tag{1.1.1.2}
-\end{align}
-The vector product is normal to both vectors in the product:
+\paragraph*{Formulae referenced in the problems}
+
 \noindent\textbf{1.1.1}\quad
 \begin{equation}
-\vec a\times\vec b\perp\vec a,\qquad \vec a\times\vec b\perp\vec b.\tag{1.1.1.3}\label{eq:cross-perpendicular}
+\vec a\times\vec b=
+\begin{pmatrix}
+a_2b_3-a_3b_2\\
+a_3b_1-a_1b_3\\
+a_1b_2-a_2b_1
+\end{pmatrix}.
+\tag{1.1.1.1}\label{eq:cross-product}
 \end{equation}
-Distances and line/plane relations are
-\begin{align}\intertext{\textbf{1.1.6}}
-d(\text{parallel lines})&=\frac{\norm{(\vec b-\vec a)\times\vec v}}{\norm{\vec v}}. \tag{1.1.6.1}\label{eq:parallel-distance}\\
-\intertext{\textbf{1.1.2}}
-d(\text{skew lines})&=\frac{|(\vec b-\vec a)\cdot(\vec v_1\times\vec v_2)|}{\norm{\vec v_1\times\vec v_2}}. \tag{1.1.2.2}\\
-\intertext{\textbf{1.1.10}}
-\text{line parallel to plane}&\iff \vec d\cdot\vec n=0. \tag{1.1.10.1}\label{eq:line-plane-parallel}\\
-\text{plane through }\vec r_0\text{ with normal }\vec n:\quad \vec n\cdot(\vec r-\vec r_0)&=0. \tag{1.1.10.2}\label{eq:plane-normal}\\
-\intertext{\textbf{1.1.15}}
-\text{line with point }\vec A\text{ and direction }\vec d:\quad \vec r&=\vec A+t\vec d. \tag{1.1.15.1}\label{eq:line-point-direction}
+\noindent\textbf{1.1.1}\quad
+\begin{equation}
+\vec a\times\vec b\perp\vec a,\qquad
+\vec a\times\vec b\perp\vec b.
+\tag{1.1.1.3}\label{eq:cross-perpendicular}
+\end{equation}
+
+\noindent\textbf{1.1.5}\quad
+\begin{equation}
+\vec a\cdot\vec b=a_1b_1+a_2b_2+a_3b_3,\qquad
+\vec a\perp\vec b\iff\vec a\cdot\vec b=0.
+\tag{1.1.5.1}\label{eq:dot-product}
+\end{equation}
+
+\noindent\textbf{1.1.6}\quad
+\begin{equation}
+d(\text{parallel lines})=
+\frac{\norm{(\vec b-\vec a)\times\vec v}}{\norm{\vec v}}.
+\tag{1.1.6.1}\label{eq:parallel-distance}
+\end{equation}
+
+\noindent\textbf{1.1.10}\quad
+\begin{align}
+\text{line parallel to plane}&\iff \vec d\cdot\vec n=0.
+\tag{1.1.10.1}\label{eq:line-plane-parallel}\\
+\text{plane through }\vec r_0\text{ with normal }\vec n:\quad
+\vec n\cdot(\vec r-\vec r_0)&=0.
+\tag{1.1.10.2}\label{eq:plane-normal}
 \end{align}
 
-\paragraph*{Matrices and determinants}
-\begin{align}\intertext{\textbf{1.1.28}}
-\det(AB)&=\det(A)\det(B),\qquad \det(A^n)=(\det A)^n. \tag{1.1.28.1}\label{eq:det-power}\\
-\intertext{\textbf{1.1.30}}
-A^{-1}&=\frac{\operatorname{adj}(A)}{\det A},\qquad \det A\ne0. \tag{1.1.30.1}\label{eq:inverse-matrix}\\
-A\vec x=\vec b&\quad\Longrightarrow\quad \vec x=A^{-1}\vec b\quad(A\text{ invertible}). \tag{1.1.30.2}\\
-\intertext{\textbf{1.1.37}}
-[A\mid \vec b]&\xrightarrow{\text{elementary row operations}}[I\mid\vec x]\quad\text{(Gaussian elimination)}. \tag{1.1.37.1}\label{eq:gaussian-elimination}
-\end{align}
-The identity used to factor the determinant in Q36 is
-\noindent\textbf{1.1.36}\quad
-\[
-a^2+b^2+c^2-ab-bc-ca=\frac12\bigl((a-b)^2+(b-c)^2+(c-a)^2\bigr).\tag{1.1.36.1}\label{eq:sum-squares}
-\]
+\noindent\textbf{1.1.15}\quad
+\begin{equation}
+\vec r=\vec A+t\vec d
+\quad\text{for a line through }\vec A\text{ with direction }\vec d.
+\tag{1.1.15.1}\label{eq:line-point-direction}
+\end{equation}
 
-\paragraph*{Differentiation and differential equations}
-For $y' + P(x)y=Q(x)$, the integrating factor is
+\noindent\textbf{1.1.20}\quad
+\begin{equation}
+y'+P(x)y=Q(x),\qquad
+\mu(x)=e^{\int P(x)\,dx},\qquad
+\frac{d}{dx}(\mu y)=\mu Q.
+\tag{1.1.20.1}\label{eq:if-20}
+\end{equation}
+
+\noindent\textbf{1.1.21}\quad
+\begin{equation}
+(1+(y')^2)^3=r^2(y'')^2
+\quad\text{for a circle family of fixed radius }r.
+\tag{1.1.21.1}\label{eq:circle-family}
+\end{equation}
+
+\noindent\textbf{1.1.22}\quad
+\begin{equation}
+y=vx\quad\Longrightarrow\quad y'=v+xv'
+\quad\text{(homogeneous first-order ODE)}.
+\tag{1.1.22.1}\label{eq:homogeneous-substitution}
+\end{equation}
+
 \noindent\textbf{1.1.24}\quad
 \begin{equation}
-\mu(x)=e^{\int P(x)\,dx}.\tag{1.1.24.1}\label{eq:if-24}
+\mu(x)=e^{\int P(x)\,dx}.
+\tag{1.1.24.1}\label{eq:if-24}
 \end{equation}
-The logarithmic derivative is
-\noindent\textbf{1.1.40}\quad
-\begin{equation}
-\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.\tag{1.1.40.1}\label{eq:log-derivative-40}
-\end{equation}
-The same identity gives
-\noindent\textbf{1.1.42}\quad
-\begin{equation}
-\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.\tag{1.1.42.1}\label{eq:log-derivative-42}
-\end{equation}
-\begin{align}\intertext{\textbf{1.1.25}}
-\frac{dy}{dx}&=\frac{dy/dt}{dx/dt},\qquad \frac{d^2y}{dx^2}=\frac{d}{dt}(dy/dx)\bigg/\frac{dx}{dt}. \tag{1.1.25.2}\\
-\intertext{\textbf{1.1.20}}
-y'+P(x)y&=Q(x),\quad \mu(x)=e^{\int P(x)\,dx},\quad \frac{d}{dx}(\mu y)=\mu Q. \tag{1.1.20.1}\label{eq:if-20}\\
-\intertext{\textbf{1.1.22}}
-y=vx&\quad\Longrightarrow\quad y'=v+xv'\quad\text{(homogeneous first-order ODE)}. \tag{1.1.22.1}\label{eq:homogeneous-substitution}\\
-\intertext{\textbf{1.1.21}}
-(1+(y')^2)^3&=r^2(y'')^2\quad\text{for a circle family of fixed radius }r. \tag{1.1.21.1}\label{eq:circle-family}\\
-\intertext{\textbf{1.1.25}}
-\frac{d}{dx}\log|u(x)|&=\frac{u'(x)}{u(x)},\qquad u(x)\ne0. \tag{1.1.25.1}\label{eq:log-derivative-25}
-\end{align}
 
-\paragraph*{Integration and area}
-A useful definite-integral antiderivative is
+\noindent\textbf{1.1.25}\quad
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\tag{1.1.25.1}\label{eq:log-derivative-25}
+\end{equation}
+
+\noindent\textbf{1.1.28}\quad
+\begin{equation}
+\det(AB)=\det(A)\det(B),\qquad
+\det(A^n)=(\det A)^n.
+\tag{1.1.28.1}\label{eq:det-power}
+\end{equation}
+
+\noindent\textbf{1.1.30}\quad
+\begin{equation}
+A^{-1}=\frac{\operatorname{adj}(A)}{\det A},\qquad \det A\ne0.
+\tag{1.1.30.1}\label{eq:inverse-matrix}
+\end{equation}
+
+\noindent\textbf{1.1.36}\quad
+\begin{equation}
+a^2+b^2+c^2-ab-bc-ca
+=\frac12\bigl((a-b)^2+(b-c)^2+(c-a)^2\bigr).
+\tag{1.1.36.1}\label{eq:sum-squares}
+\end{equation}
+
+\noindent\textbf{1.1.37}\quad
+\begin{equation}
+[A\mid\vec b]\xrightarrow{\text{elementary row operations}}[I\mid\vec x]
+\quad\text{(Gaussian elimination)}.
+\tag{1.1.37.1}\label{eq:gaussian-elimination}
+\end{equation}
+
+\noindent\textbf{1.1.38}\quad
+\begin{equation}
+\int\frac{du}{1+u^2}=\tan^{-1}u+C.
+\tag{1.1.38.2}\label{eq:arctan-integral-38}
+\end{equation}
+
 \noindent\textbf{1.1.39}\quad
 \begin{equation}
-\int\frac{du}{a^2-u^2}=\frac1{2a}\log\left|\frac{a+u}{a-u}\right|+C.\tag{1.1.39.1}\label{eq:int-rational-39}
+\int\frac{du}{a^2-u^2}
+=\frac1{2a}\log\left|\frac{a+u}{a-u}\right|+C.
+\tag{1.1.39.1}\label{eq:int-rational-39}
 \end{equation}
-After polynomial division, partial fractions can be written as
+
+\noindent\textbf{1.1.40}\quad
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\tag{1.1.40.1}\label{eq:log-derivative-40}
+\end{equation}
+
+\noindent\textbf{1.1.41}\quad
+\begin{equation}
+\frac{P(x)}{(x-a)(x^2+b^2)}
+=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}.
+\tag{1.1.41.1}\label{eq:partial-fractions-41}
+\end{equation}
+
+\noindent\textbf{1.1.42}\quad
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\tag{1.1.42.1}\label{eq:log-derivative-42}
+\end{equation}
+
 \noindent\textbf{1.1.43}\quad
 \begin{equation}
-\frac{P(x)}{(x-a)(x^2+b^2)}=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}.\tag{1.1.43.1}\label{eq:partial-fractions-43}
+\frac{P(x)}{(x-a)(x^2+b^2)}
+=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}.
+\tag{1.1.43.1}\label{eq:partial-fractions-43}
 \end{equation}
-The trigonometric integrand in Question 44 can be split using
+
 \noindent\textbf{1.1.44}\quad
 \begin{equation}
-\frac{5\sin x+3\cos x}{\sin x+\cos x}=4+\frac{\sin x-\cos x}{\sin x+\cos x}.\tag{1.1.44.1}\label{eq:trig-split-44}
+\frac{5\sin x+3\cos x}{\sin x+\cos x}
+=4+\frac{\sin x-\cos x}{\sin x+\cos x}.
+\tag{1.1.44.1}\label{eq:trig-split-44}
 \end{equation}
-Integration by parts states
-\noindent\textbf{1.1.45}\quad
+
+\noindent\textbf{1.1.46}\quad
 \begin{equation}
-\int u\,dv=uv-\int v\,du.\tag{1.1.45.2}\label{eq:parts-45-2}
+A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.
+\tag{1.1.46.1}\label{eq:area-between-46}
 \end{equation}
-Area between curves is
+
 \noindent\textbf{1.1.47}\quad
 \begin{equation}
-A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.\tag{1.1.47.1}\label{eq:area-between-47}
+A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.
+\tag{1.1.47.1}\label{eq:area-between-47}
 \end{equation}
-\begin{align}\intertext{\textbf{1.1.38}}
-\int\frac{du}{a^2-u^2}&=\frac1{2a}\log\left|\frac{a+u}{a-u}\right|+C. \tag{1.1.38.1}\label{eq:rational-integral-38}\\
-\int\frac{du}{1+u^2}&=\tan^{-1}u+C. \tag{1.1.38.2}\label{eq:arctan-integral-38}\\
-\intertext{\textbf{1.1.46}}
-\int\frac{u\,du}{\sqrt{1+u^2}}&=\sqrt{1+u^2}+C. \tag{1.1.46.2}\\
-A&=\int_a^b |y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx. \tag{1.1.46.1}\label{eq:area-between-46}\\
-\intertext{\textbf{1.1.41}}
-\frac{P(x)}{(x-a)(x^2+b^2)}&=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}\quad\text{(partial fractions after division)}. \tag{1.1.41.1}\label{eq:partial-fractions-41}\\
-\intertext{\textbf{1.1.45}}
-\int u\,dv&=uv-\int v\,du. \tag{1.1.45.1}\label{eq:parts-45-1}
-\end{align}
 
-\paragraph*{Functions, relations and operations}
-Continuity at an interior point requires matching one-sided limits:
-\noindent\textbf{1.1.52}\quad
-\begin{equation}
-\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x).\tag{1.1.52.1}\label{eq:continuity-limits-52}
-\end{equation}
-At an interior point, continuity requires matching one-sided limits; differentiability additionally requires matching one-sided derivatives:
 \noindent\textbf{1.1.48}\quad
-\[\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x),\qquad f'_{-}(a)=f'_{+}(a)=f'(a).\tag{1.1.48.1}\label{eq:continuity-differentiability-48}\]
+\begin{equation}
+\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x),\qquad
+f'_{-}(a)=f'_{+}(a)=f'(a).
+\tag{1.1.48.1}\label{eq:continuity-differentiability-48}
+\end{equation}
+
 \noindent\textbf{1.1.49}\quad
-\[
+\begin{equation}
 \begin{aligned}
 \text{reflexive: }&(a,a)\in R,\\
 \text{symmetric: }&(a,b)\in R\Rightarrow(b,a)\in R,\\
 \text{transitive: }&(a,b),(b,c)\in R\Rightarrow(a,c)\in R.
-\end{aligned}\tag{1.1.49.1}\label{eq:relation-properties-49}
-\]
-\noindent\textbf{1.1.50}\quad
-\[\text{For componentwise addition on }\mathbb R^2:\quad e=(0,0),\quad (a,b)^{-1}=(-a,-b).\tag{1.1.50.1}\label{eq:componentwise-operation-50}\]
-\noindent\textbf{1.1.51}\quad
-\[a*b=(a+b)\bmod n,\quad 0\text{ is the identity},\quad (-a)\bmod n\text{ is the additive inverse}.\tag{1.1.51.1}\label{eq:modular-operation-51}\]
+\end{aligned}
+\tag{1.1.49.1}\label{eq:relation-properties-49}
+\end{equation}
 
-\paragraph*{Probability}
-For a binomial random variable,
-\noindent\textbf{1.1.56}\quad
+\noindent\textbf{1.1.50}\quad
 \begin{equation}
-P(X=k)=\binom nkp^k(1-p)^{n-k}.\tag{1.1.56.1}\label{eq:binomial-56}
+\text{For componentwise addition on }\mathbb R^2:\quad
+e=(0,0),\quad(a,b)^{-1}=(-a,-b).
+\tag{1.1.50.1}\label{eq:componentwise-operation-50}
 \end{equation}
-The law of total probability is
-\noindent\textbf{1.1.57}\quad
+
+\noindent\textbf{1.1.51}\quad
 \begin{equation}
-P(E)=\sum_iP(E\mid A_i)P(A_i).\tag{1.1.57.1}\label{eq:total-probability-57}
+a*b=(a+b)\bmod n,\quad
+0\text{ is the identity},\quad
+(-a)\bmod n\text{ is the additive inverse}.
+\tag{1.1.51.1}\label{eq:modular-operation-51}
 \end{equation}
-Bayes' theorem is
-\noindent\textbf{1.1.58}\quad
+
+\noindent\textbf{1.1.52}\quad
 \begin{equation}
-P(A\mid E)=\frac{P(E\mid A)P(A)}{P(E)}.\tag{1.1.58.2}\label{eq:bayes-58-2}
+\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x).
+\tag{1.1.52.1}\label{eq:continuity-limits-52}
 \end{equation}
-\begin{align}\intertext{\textbf{1.1.58}}
-P(A\mid E)&=\frac{P(A\cap E)}{P(E)}. \tag{1.1.58.1}\\
-\intertext{\textbf{1.1.54}}
-P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}. \tag{1.1.54.1}\label{eq:bayes-54}\\
-\intertext{\textbf{1.1.53}}
-X\sim\operatorname{Bin}(n,p):\quad P(X=k)&=\binom nkp^k(1-p)^{n-k}. \tag{1.1.53.1}\label{eq:binomial-53}\\
-G(z)&=\sum_jP(D=j)z^j. \tag{1.1.53.2}\label{eq:walk-pgf}\\
-G_5(z)&=(0.4z+0.6z^{-1})^5 \text{ for the five-step walk}. \notag\\
-\intertext{\textbf{1.1.55}}
-E[X]&=\sum_x xP(X=x),\quad \operatorname{Var}(X)=E[X^2]-E[X]^2. \tag{1.1.55.1}\label{eq:mean-variance-55}\\
-P(X=k)&=\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom Nn}. \tag{1.1.55.2}\label{eq:hypergeometric-55}\\
-\intertext{\textbf{1.1.54}}
-P(E)&=\sum_iP(E\mid A_i)P(A_i). \tag{1.1.54.2}\label{eq:total-probability-54}
+
+\noindent\textbf{1.1.53}\quad
+\begin{align}
+X\sim\operatorname{Bin}(n,p):\quad
+P(X=k)&=\binom nkp^k(1-p)^{n-k}.
+\tag{1.1.53.1}\label{eq:binomial-53}\\
+G(z)&=\sum_jP(D=j)z^j.
+\tag{1.1.53.2}\label{eq:walk-pgf}
 \end{align}
 
-\paragraph*{Linear programming}
-For a linear programme, compare the objective at every feasible vertex:
+\noindent\textbf{1.1.54}\quad
+\begin{align}
+P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}.
+\tag{1.1.54.1}\label{eq:bayes-54}\\
+P(E)&=\sum_iP(E\mid A_i)P(A_i).
+\tag{1.1.54.2}\label{eq:total-probability-54}
+\end{align}
+
+\noindent\textbf{1.1.55}\quad
+\begin{align}
+E[X]&=\sum_x xP(X=x),\quad
+\operatorname{Var}(X)=E[X^2]-E[X]^2.
+\tag{1.1.55.1}\label{eq:mean-variance-55}\\
+P(X=k)&=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn}.
+\tag{1.1.55.2}\label{eq:hypergeometric-55}
+\end{align}
+
+\noindent\textbf{1.1.56}\quad
+\begin{equation}
+P(X=k)=\binom nkp^k(1-p)^{n-k}.
+\tag{1.1.56.1}\label{eq:binomial-56}
+\end{equation}
+
+\noindent\textbf{1.1.57}\quad
+\begin{equation}
+P(E)=\sum_iP(E\mid A_i)P(A_i).
+\tag{1.1.57.1}\label{eq:total-probability-57}
+\end{equation}
+
+\noindent\textbf{1.1.58}\quad
+\begin{equation}
+P(A\mid E)=\frac{P(E\mid A)P(A)}{P(E)}.
+\tag{1.1.58.2}\label{eq:bayes-58-2}
+\end{equation}
+
+\noindent\textbf{1.1.59}\quad
+\begin{equation}
+\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}
+\tag{1.1.59.1}\label{eq:lpp-59}
+\end{equation}
+
 \noindent\textbf{1.1.60}\quad
 \begin{equation}
-\text{LPP optimum}=\text{best objective value among feasible vertices}.\tag{1.1.60.1}\label{eq:lpp-60}
+\text{LPP optimum}=\text{best objective value among feasible vertices}.
+\tag{1.1.60.1}\label{eq:lpp-60}
 \end{equation}
-\noindent\textbf{1.1.59}\quad
-\[\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}\tag{1.1.59.1}\label{eq:lpp-59}\]
 
-\paragraph*{Coordinate geometry and optimisation}
-The tangent to $x^2+y^2=r^2$ at $(r\cos\theta,r\sin\theta)$ is
 \noindent\textbf{1.1.64}\quad
-\[
-x\cos\theta+y\sin\theta=r.\tag{1.1.64.1}\label{eq:circle-tangent-64}
-\]
-For the ellipse $x^2/a^2+y^2/b^2=1$, a parametrisation is $(a\cos t,b\sin t)$, and triangle area is one half base times perpendicular height:
-\noindent\textbf{1.1.65}\quad
-\[\text{ellipse point }(a\cos t,b\sin t),\quad A_{\triangle}=\frac12 bh.\tag{1.1.65.1}\label{eq:ellipse-area-65}\]
+\begin{equation}
+x\cos\theta+y\sin\theta=r.
+\tag{1.1.64.1}\label{eq:circle-tangent-64}
+\end{equation}
 
-\paragraph*{Engineering methods: choosing the right tool}
-Matrix methods are used for vector and matrix conditions and for Gaussian elimination. The five-step random walk and the small binomial problem use probability-generating polynomial coefficients where it makes the probability structure clearer. Laplace transforms are useful for suitable linear time-domain differential equations with initial conditions; they are not forced into the nonlinear or variable-coefficient differential equations in this set where they would not simplify the solution.
+\noindent\textbf{1.1.65}\quad
+\begin{equation}
+\text{ellipse point }(a\cos t,b\sin t),\qquad
+A_{\triangle}=\frac12 bh.
+\tag{1.1.65.1}\label{eq:ellipse-area-65}
+\end{equation}
