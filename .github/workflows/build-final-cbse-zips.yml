@@ -1,0 +1,100 @@
+name: Build final Class 10 and Class 12 ZIPs
+
+on:
+  push:
+    branches:
+      - fix/final-minimal-corrections
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out corrected branch
+        uses: actions/checkout@v6
+        with:
+          ref: fix/final-minimal-corrections
+
+      - name: Compile Class 10 PDF and LaTeX build files
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: './CBSE-2015-Class10-GVV-final(3)-corrected/CBSE-2015-Class10-GVV-final(3)/CBSE-2015-Class10-V2'
+          args: '-pdf -file-line-error -halt-on-error -interaction=nonstopmode'
+          post_compile: |
+            set -e
+            makeindex main.idx
+            latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
+
+      - name: Compile Class 12 PDF and LaTeX build files
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: './CBSE-2015-Class12-Updated-corrected/CBSE-2015-Class12-Updated'
+          args: '-pdf -file-line-error -halt-on-error -interaction=nonstopmode'
+          post_compile: |
+            set -e
+            makeindex main.idx
+            latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
+
+      - name: Package separate class ZIPs and validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build-output
+          C10='CBSE-2015-Class10-GVV-final(3)-corrected/CBSE-2015-Class10-GVV-final(3)/CBSE-2015-Class10-V2'
+          C12='CBSE-2015-Class12-Updated-corrected/CBSE-2015-Class12-Updated'
+          required=(main.pdf main.aux main.fdb_latexmk main.fls main.idx main.ilg main.ind main.log main.out main.toc)
+
+          for dir in "$C10" "$C12"; do
+            for f in "${required[@]}"; do
+              if [ ! -f "$dir/$f" ]; then
+                echo "::error::Required build output missing: $dir/$f"
+                exit 1
+              fi
+            done
+          done
+
+          (
+            cd "$C10"
+            zip -qr "$GITHUB_WORKSPACE/build-output/CBSE-2015-Class10-GVV-final-corrected.zip" .
+          )
+          (
+            cd "$C12"
+            zip -qr "$GITHUB_WORKSPACE/build-output/CBSE-2015-Class12-Updated-corrected.zip" .
+          )
+
+          unzip -t build-output/CBSE-2015-Class10-GVV-final-corrected.zip
+          unzip -t build-output/CBSE-2015-Class12-Updated-corrected.zip
+
+          cp "$C10/main.pdf" build-output/CBSE-2015-Class10-final.pdf
+          cp "$C12/main.pdf" build-output/CBSE-2015-Class12-final.pdf
+
+          {
+            echo 'Branch: fix/final-minimal-corrections'
+            echo 'Class 10: latexmk compilation + makeindex completed; ZIP tested with unzip -t.'
+            echo 'Class 12: latexmk compilation + makeindex completed; ZIP tested with unzip -t.'
+            echo 'Required files per ZIP: main.pdf, main.aux, main.fdb_latexmk, main.fls, main.idx, main.ilg, main.ind, main.log, main.out, main.toc.'
+            echo
+            echo 'Class 10 SHA-256:'
+            sha256sum build-output/CBSE-2015-Class10-GVV-final-corrected.zip build-output/CBSE-2015-Class10-final.pdf
+            echo
+            echo 'Class 12 SHA-256:'
+            sha256sum build-output/CBSE-2015-Class12-Updated-corrected.zip build-output/CBSE-2015-Class12-final.pdf
+          } > build-output/build-report.txt
+
+      - name: Upload final ZIPs, PDFs, and build report
+        uses: actions/upload-artifact@v7
+        with:
+          name: final-class10-class12-deliverables
+          path: |
+            build-output/CBSE-2015-Class10-GVV-final-corrected.zip
+            build-output/CBSE-2015-Class12-Updated-corrected.zip
+            build-output/CBSE-2015-Class10-final.pdf
+            build-output/CBSE-2015-Class12-final.pdf
+            build-output/build-report.txt
+          if-no-files-found: error
+          compression-level: 0
