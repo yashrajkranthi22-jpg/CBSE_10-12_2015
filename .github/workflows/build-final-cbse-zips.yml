@@ -26,10 +26,11 @@ jobs:
           args: '-pdf -file-line-error -halt-on-error -interaction=nonstopmode'
           post_compile: |
             set -e
+            makeindex main.idx
             latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
 
       - name: Compile Class 12 PDF and LaTeX build files
-        uses: xu-cheng/latex-action@v4
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           working_directory: './CBSE-2015-Class12-Updated-corrected/CBSE-2015-Class12-Updated'
