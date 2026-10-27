@@ -4,7 +4,7 @@
 
 \begin{enumerate}[label={},leftmargin=0pt]
 \item[]
-\begin{enumerate}[label={},leftmargin=0pt,itemsep=9pt]
+\begin{enumerate}[label={},leftmargin=4mm,itemsep=9pt]
 \renewcommand{\theenumi}{\thesubsection}
 
 \paragraph*{Vectors and three-dimensional geometry}
@@ -13,7 +13,7 @@
 \item[\textbf{1.2.1}] Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
 \solution A vector perpendicular to both is parallel to their cross product:
 \begin{align*}
-\vec a\times\vec b&=\myvec{1\\-7\\5},&\norm{\vec a\times\vec b}&=\sqrt{75}=5\sqrt3\qquad\eqref{eq:cross-product}.
+\vec a\times\vec b&=\myvec{1\\-7\\5},&\norm{\vec a\times\vec b}&=\sqrt{75}=5\sqrt3\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
 \end{align*}
 Scale this direction to the required magnitude:
 \[
@@ -31,7 +31,7 @@ Scale this direction to the required magnitude:
 \item[\textbf{1.2.5}] Let $\vec a=\myvec{1\\4\\2}$, $\vec b=\myvec{3\\-2\\7}$ and $\vec c=\myvec{2\\-1\\4}$. Find $\vec d$ perpendicular to both $\vec a,\vec b$ with $\vec c\cdot\vec d=27$.
 \solution The required direction is $\vec a\times\vec b=(32,-1,-14)^T$. Set $\vec d=t(32,-1,-14)^T$. Since $\vec c\cdot(\vec a\times\vec b)=9$, the constraint gives $9t=27$, hence
 \[
-\vec d=\myvec{96\\-3\\-42}\qquad\eqref{eq:cross-product}.
+\vec d=\myvec{96\\-3\\-42}\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
 \]
 \begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{figs/Q05_3D.png}\end{figure}
 \par\smallskip
@@ -83,7 +83,7 @@ so $\lambda=5/42$. Multiplying by 42 and simplifying gives
 \setcounter{enumii}{15}
 \setcounter{equation}{0}
 \item[\textbf{1.2.15}] Find where the line through $A(3,4,1)$ and $B(5,1,6)$ meets the plane through $P(2,1,2)$, $Q(3,1,0)$ and $R(4,-2,1)$.
-\solution A normal to the plane is $(Q-P)\times(R-P)=(1,0,-2)\times(2,-3,-1)\propto(2,1,1)$. Thus the plane is $2x+y+z=7$. The line is $(3,4,1)+t(2,-3,5)$. Substitution into the plane yields $4+6t=0$, so $t=-2/3$. The intersection is
+\solution A normal to the plane is $(Q-P)\times(R-P)=(1,0,-2)\times(2,-3,-1)\propto(2,1,1)$ \qquad\eqref{eq:cross-product}. Thus the plane is $2x+y+z=7$. The line is $(3,4,1)+t(2,-3,5)$. Substitution into the plane yields $4+6t=0$, so $t=-2/3$. The intersection is
 \[
 \left(\frac53,6,-\frac73\right)\qquad\eqref{eq:line-point-direction},\ \eqref{eq:plane-normal}.
 \]
@@ -104,7 +104,7 @@ y'+\frac{1}{x\log x}y=\frac2x.
 \]
 Thus the integrating factor is
 \[
-\exp\!\left(\int\frac{dx}{x\log x}\right)=\exp(\log|\log x|)\qquad\eqref{eq:if-24}.
+\exp\!\left(\int\frac{dx}{x\log x}\right)=\exp(\log|\log x|)\qquad\eqref{eq:if-20}.
 \]
 On a domain where $\log x>0$, this is $\log x$ (more generally the factor can be taken as $|\log x|$ on an interval not crossing $x=1$).
 
@@ -451,7 +451,7 @@ Row and column 0 reproduce every element, hence 0 is the identity. For each $a=1
 \[
 f(x)=\begin{cases}2x-x^2,&-1\le x\le0,\\x^2,&0\le x\le1.\end{cases}
 \]
-Both pieces take value 0 at $x=0$ and meet continuously. The endpoints are also included continuously. Therefore there are \text{no points of discontinuity}.
+Both pieces take value 0 at $x=0$ and meet continuously \eqref{eq:continuity-limits-52}. The endpoints are also included continuously. Therefore there are \text{no points of discontinuity}.
 \begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figs/Q52_Continuity.png}\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
@@ -521,13 +521,13 @@ P(E\mid B)=\frac12.
 \begin{align*}
 P(E)&=P(E\mid A)P(A)+P(E\mid B)P(B)\\
 &=\frac38\cdot\frac13+\frac12\cdot\frac23\\
-&=\frac18+\frac13=\frac{11}{24}\qquad\eqref{eq:total-probability-57}.
+&=\frac18+\frac13=\frac{11}{24}\qquad\eqref{eq:total-probability-54}.
 \end{align*}
 
 \textbf{Step 4: Apply Bayes' theorem.}
 \[
 P(B\mid E)=\frac{P(E\mid B)P(B)}{P(E)}
-=\frac{(1/2)(2/3)}{11/24}=\frac8{11}\qquad\eqref{eq:bayes-58-2}.
+=\frac{(1/2)(2/3)}{11/24}=\frac8{11}\qquad\eqref{eq:bayes-54}.
 \]
 
 \setcounter{enumii}{55}
@@ -604,7 +604,7 @@ P(A|R)=\frac{(1/6)(3/5)}{(1/6)(3/5)+(5/6)(2/25)}=\frac35\qquad\eqref{eq:bayes-58
 \item[\textbf{1.2.59}] Solve graphically: minimise $z=3x+5y$ subject to $x+2y\ge10$, $x+y\ge6$, $3x+y\ge8$, $x,y\ge0$.
 \solution The lower-boundary vertices are $(0,8)$, $(1,5)$, $(2,4)$ and $(10,0)$. Their objective values are respectively $40$, $28$, $26$ and $30$. The smallest value is attained at $(2,4)$:
 \[
-x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-60}.
+x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-59}.
 \]
 \begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figs/Q59_LPPMin.png}\end{figure}
 \par\smallskip
