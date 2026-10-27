@@ -1,0 +1,238 @@
+% Formulae retain the paper's established 1.1.question.formula indices.
+\numberwithin{equation}{enumii}
+\renewcommand{\theenumii}{\thesubsection.\arabic{enumii}}
+\setcounter{enumii}{1}\setcounter{equation}{0}
+
+\paragraph*{Quadratic equations}
+For $ax^2+bx+c=0$, where $a\ne0$, the discriminant and roots are
+
+\par\noindent\textbf{1.1.1}\quad
+\begin{equation}
+\Delta=b^2-4ac,\qquad x=\frac{-b\pm\sqrt{\Delta}}{2a}.
+\label{eq:quad-general}
+\end{equation}
+Equal real roots occur when $\Delta=0$. Always check that the leading coefficient is nonzero before treating an expression as a quadratic equation.
+
+
+\setcounter{enumii}{2}\setcounter{equation}{0}
+\paragraph*{Right-triangle trigonometry and motion}
+For an angle $\theta$ in a right triangle,
+
+\par\noindent\textbf{1.1.2}\quad
+\begin{equation}
+\tan\theta=\frac{\text{opposite}}{\text{adjacent}},\quad
+\sin\theta=\frac{\text{opposite}}{\text{hypotenuse}},\quad
+\cos\theta=\frac{\text{adjacent}}{\text{hypotenuse}}.
+\label{eq:trig-ratios}
+\end{equation}
+Useful values are $\tan30^\circ=1/\sqrt3$, $\tan60^\circ=\sqrt3$, $\cot30^\circ=\sqrt3$, $\cot60^\circ=1/\sqrt3$, $\sin30^\circ=1/2$, and $\cos60^\circ=1/2$. For a right triangle,
+\[c^2=a^2+b^2,\qquad \|(x,y)^T\|=\sqrt{x^2+y^2}.\]
+
+\setcounter{enumii}{3}\setcounter{equation}{0}
+\paragraph*{Probability}
+For equally likely outcomes,
+
+\par\noindent\textbf{1.1.3}\quad
+\begin{equation}
+P(E)=\frac{n(E)}{n(S)}.
+\label{eq:prob-classical}
+\end{equation}
+When two different dice are tossed, there are $6\cdot6=36$ equally likely ordered outcomes; exchanging the dice generally gives a different outcome.
+
+\paragraph*{Circles and tangents}
+A radius is perpendicular to the tangent at the point of contact. Tangents drawn from the same external point have equal lengths. The angle between a tangent and a chord equals the angle in the alternate segment; the angle at the centre is twice the angle at the circumference standing on the same arc.
+\setcounter{enumii}{4}\setcounter{equation}{0}
+The tangent--chord theorem is
+\par\noindent\textbf{1.1.4}\quad
+\begin{equation}
+\theta_{\mathrm{tangent-chord}}=\theta_{\mathrm{alternate\ segment}}.\tag{1.1.4.1}\label{eq:tangent-chord}
+\end{equation}
+\setcounter{enumii}{6}\setcounter{equation}{0}
+For a triangle with inradius $r$ and semiperimeter $s$,
+\par\noindent\textbf{1.1.6}\quad
+\begin{equation}
+[ABC]=rs,\qquad s=\frac{AB+BC+CA}{2}.
+\label{eq:triangle-inradius}
+\end{equation}
+Tangents from the same external point have equal lengths:
+\begin{equation}
+PA=PB.\tag{1.1.6.2}\label{eq:equal-tangents}
+\end{equation}
+
+\setcounter{enumii}{8}\setcounter{equation}{0}
+\paragraph*{Arithmetic progressions}
+For first term $a$ and common difference $d$,
+
+\par\noindent\textbf{1.1.8}\quad
+\begin{equation}
+t_n=a+(n-1)d,\qquad
+S_n=\frac n2\bigl(2a+(n-1)d\bigr)=\frac n2(a+t_n).
+\label{eq:ap}
+\end{equation}
+If the unknown parameters satisfy two linear equations, write them as an augmented matrix and use Gaussian elimination (elementary row operations) to solve the system.
+
+\paragraph*{Coordinate geometry as linear algebra}
+Two nonzero vectors are perpendicular exactly when their inner product is zero.
+For a right angle at $B$,
+\par\noindent\textbf{1.1.9}\quad
+\begin{equation}
+\overrightarrow{BA}\cdot\overrightarrow{BC}=0.\tag{1.1.9.1}\label{eq:right-angle-dot}
+\end{equation}
+
+\setcounter{enumii}{10}\setcounter{equation}{0}
+For $A(x_1,y_1)$, $B(x_2,y_2)$, and $C(x_3,y_3)$, collinearity is equivalent to
+
+\par\noindent\textbf{1.1.10}\quad
+\begin{equation}
+\mydet{x_2-x_1&y_2-y_1\\x_3-x_1&y_3-y_1}=0.
+\label{eq:collinear-det}
+\end{equation}
+
+\paragraph*{Arithmetic progressions}
+\setcounter{enumii}{11}\setcounter{equation}{0}
+For an arithmetic progression,
+\par\noindent\textbf{1.1.11}\quad
+\begin{equation}
+ t_n=a+(n-1)d,\qquad S_n=\frac n2\left(2a+(n-1)d\right).\tag{1.1.11.1}\label{eq:ap-question-11}
+\end{equation}
+
+Uniform motion obeys
+
+\setcounter{enumii}{13}\setcounter{equation}{0}
+\par\noindent\textbf{1.1.13}\quad
+\begin{equation}
+\text{distance}=\text{speed}\times\text{time},\qquad
+\text{average speed}=\frac{\text{total distance}}{\text{total time}}.
+\label{eq:speed-time}
+\end{equation}
+
+\setcounter{enumii}{14}\setcounter{equation}{0}
+\paragraph*{Coordinate geometry as linear algebra}
+Represent $P(x,y)$ by $\vec p=\myvec{x\\y}$. Then
+
+\par\noindent\textbf{1.1.14}\quad
+\begin{equation}
+\overrightarrow{PQ}=\vec q-\vec p,\qquad
+\langle\vec u,\vec v\rangle=u_xv_x+u_yv_y.
+\label{eq:vector-basics}
+\end{equation}
+\setcounter{enumii}{14}\setcounter{equation}{1}
+If $P$ divides $AB$ internally in the ratio $AP:PB=m:n$, then
+
+
+
+\begin{equation}
+\vec p=\frac{n\vec a+m\vec b}{m+n}=\vec a+\frac{m}{m+n}(\vec b-\vec a).
+\label{eq:section-vector}
+\end{equation}
+
+\paragraph*{Probability}
+\setcounter{enumii}{15}\setcounter{equation}{0}
+If $E_1,E_2,E_3$ form an exhaustive set of mutually exclusive events, then
+\par\noindent\textbf{1.1.15}\quad
+\begin{equation}
+P(E_1)+P(E_2)+P(E_3)=1.\tag{1.1.15.1}\label{eq:three-events}
+\end{equation}
+
+
+\setcounter{enumii}{16}\setcounter{equation}{0}
+\paragraph*{Areas and solids}
+For a sector of angle $\theta$ degrees and radius $r$,
+
+\par\noindent\textbf{1.1.16}\quad
+\begin{equation}
+A_{\mathrm{sector}}=\frac{\theta}{360^\circ}\pi r^2,\qquad
+A_{\mathrm{segment}}=A_{\mathrm{sector}}-A_{\mathrm{triangle}}.
+\label{eq:sector-segment}
+\end{equation}
+
+\setcounter{enumii}{17}\setcounter{equation}{0}
+The curved surface areas of a cylinder and a cone are
+
+\par\noindent\textbf{1.1.17}\quad
+\begin{equation}
+A_{\mathrm{cyl}}=2\pi rh,\qquad A_{\mathrm{cone}}=\pi r\ell,\qquad \ell=\sqrt{r^2+h^2}.
+\label{eq:cone-formula}
+\end{equation}
+
+\paragraph*{Arithmetic progressions}
+\setcounter{enumii}{22}\setcounter{equation}{0}
+The sum of terms $m$ through $n$ is
+\par\noindent\textbf{1.1.22}\quad
+\begin{equation}
+S_{m\ldots n}=S_n-S_{m-1}.\tag{1.1.22.1}\label{eq:ap-subsum}
+\end{equation}
+
+\paragraph*{Right-triangle trigonometry and motion}
+\setcounter{enumii}{23}\setcounter{equation}{0}
+For two parts of a journey, total time is
+\par\noindent\textbf{1.1.23}\quad
+\begin{equation}
+t_1+t_2=\frac{d_1}{v_1}+\frac{d_2}{v_2}.\tag{1.1.23.1}\label{eq:two-part-time}
+\end{equation}
+
+\setcounter{enumii}{27}\setcounter{equation}{0}
+For an object at fixed height $h$ observed from level ground, its horizontal range is $x=h\cot\theta$.
+In this situation,
+\par\noindent\textbf{1.1.27}\quad
+\begin{equation}
+x=h\cot\theta.\tag{1.1.27.1}\label{eq:horizontal-range}
+\end{equation}
+
+\paragraph*{Probability}
+\setcounter{enumii}{28}\setcounter{equation}{0}
+For events $A$ and $B$,
+
+\par\noindent\textbf{1.1.28}\quad
+\begin{equation}
+P(A\cup B)=P(A)+P(B)-P(A\cap B),\qquad P(A^c)=1-P(A).
+\label{eq:prob-union}
+\end{equation}
+
+\paragraph*{Coordinate geometry as linear algebra}
+\setcounter{enumii}{29}\setcounter{equation}{0}
+The triangle area is half the absolute determinant:
+
+\par\noindent\textbf{1.1.29}\quad
+\begin{equation}
+[ABC]=\frac12\left|\mydet{x_2-x_1&y_2-y_1\\x_3-x_1&y_3-y_1}\right|.
+\label{eq:triangle-det}
+\end{equation}
+
+\paragraph*{Areas and solids}
+\setcounter{enumii}{30}\setcounter{equation}{0}
+A shaded region between an outer and an inner shape has area
+\par\noindent\textbf{1.1.30}\quad
+\begin{equation}
+A_{\mathrm{shaded}}=A_{\mathrm{outer}}-A_{\mathrm{inner}}.\tag{1.1.30.1}\label{eq:shaded-area}
+\end{equation}
+
+\setcounter{enumii}{31}\setcounter{equation}{0}
+The corresponding volume formula for a cylinder is
+
+\par\noindent\textbf{1.1.31}\quad
+\begin{equation}
+V_{\mathrm{cyl}}=\pi r^2h.
+\label{eq:cylinder-formula}
+\end{equation}
+
+\setcounter{enumii}{31}\setcounter{equation}{1}
+For a hemisphere and sphere,
+
+
+\begin{equation}
+V_{\mathrm{hemisphere}}=\frac23\pi r^3,\qquad V_{\mathrm{sphere}}=\frac43\pi r^3,
+\qquad A_{\mathrm{sphere}}=4\pi r^2.
+\label{eq:sphere-formula}
+\end{equation}
+
+\setcounter{enumii}{31}\setcounter{equation}{2}
+For a cylinder with two hemispherical cavities of radius $r$ scooped from its ends,
+
+
+
+\begin{equation}
+V_{\mathrm{remaining}}=\pi R^2h-\frac43\pi r^3.
+\label{eq:scooped-cylinder}
+\end{equation}
+
