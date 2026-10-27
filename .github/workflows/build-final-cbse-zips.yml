@@ -14,19 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out corrected branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: fix/final-minimal-corrections
 
       - name: Compile Class 10 PDF and LaTeX build files
-        uses: xu-cheng/latex-action@v4
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           working_directory: './CBSE-2015-Class10-GVV-final(3)-corrected/CBSE-2015-Class10-GVV-final(3)/CBSE-2015-Class10-V2'
           args: '-pdf -file-line-error -halt-on-error -interaction=nonstopmode'
           post_compile: |
             set -e
-            makeindex main.idx
             latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
 
       - name: Compile Class 12 PDF and LaTeX build files
@@ -87,7 +86,7 @@ jobs:
           } > build-output/build-report.txt
 
       - name: Upload final ZIPs, PDFs, and build report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: final-class10-class12-deliverables
           path: |
