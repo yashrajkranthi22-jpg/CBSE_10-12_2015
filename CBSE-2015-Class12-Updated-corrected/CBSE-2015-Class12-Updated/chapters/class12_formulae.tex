@@ -6,12 +6,12 @@ For vectors $\vec a,\vec b\in\mathbb R^3$,
 \vec a\times\vec b&=\begin{pmatrix}a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{pmatrix}. \tag{1.1.1.1}\label{eq:cross-product}\\
 \text{unit vector along }\vec v&=\frac{\vec v}{\norm{\vec v}},\qquad \norm{c\vec v}=|c|\norm{\vec v}. \tag{1.1.1.2}
 \end{align}
-The vector product is normal to both vectors in the product. Distances and line/plane relations are
-The cross product is perpendicular to both input vectors:
-\noindent\textbf{1.1.5}\quad
+The vector product is normal to both vectors in the product:
+\noindent\textbf{1.1.1}\quad
 \begin{equation}
-\vec a\times\vec b\perp\vec a,\qquad \vec a\times\vec b\perp\vec b.\tag{1.1.5.2}\label{eq:cross-perpendicular}
+\vec a\times\vec b\perp\vec a,\qquad \vec a\times\vec b\perp\vec b.\tag{1.1.1.3}\label{eq:cross-perpendicular}
 \end{equation}
+Distances and line/plane relations are
 \begin{align}\intertext{\textbf{1.1.6}}
 d(\text{parallel lines})&=\frac{\norm{(\vec b-\vec a)\times\vec v}}{\norm{\vec v}}. \tag{1.1.6.1}\label{eq:parallel-distance}\\
 \intertext{\textbf{1.1.2}}
@@ -57,7 +57,7 @@ The same identity gives
 \begin{align}\intertext{\textbf{1.1.25}}
 \frac{dy}{dx}&=\frac{dy/dt}{dx/dt},\qquad \frac{d^2y}{dx^2}=\frac{d}{dt}(dy/dx)\bigg/\frac{dx}{dt}. \tag{1.1.25.2}\\
 \intertext{\textbf{1.1.20}}
-y'+P(x)y&=Q(x),\quad \mu(x)=e^{\int P(x)\,dx},\quad \frac{d}{dx}(\mu y)=\mu Q. \tag{1.1.20.1}\\
+y'+P(x)y&=Q(x),\quad \mu(x)=e^{\int P(x)\,dx},\quad \frac{d}{dx}(\mu y)=\mu Q. \tag{1.1.20.1}\label{eq:if-20}\\
 \intertext{\textbf{1.1.22}}
 y=vx&\quad\Longrightarrow\quad y'=v+xv'\quad\text{(homogeneous first-order ODE)}. \tag{1.1.22.1}\label{eq:homogeneous-substitution}\\
 \intertext{\textbf{1.1.21}}
@@ -101,7 +101,7 @@ A&=\int_a^b |y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx. \tag{1.1.46.1}\label{eq
 \intertext{\textbf{1.1.41}}
 \frac{P(x)}{(x-a)(x^2+b^2)}&=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}\quad\text{(partial fractions after division)}. \tag{1.1.41.1}\label{eq:partial-fractions-41}\\
 \intertext{\textbf{1.1.45}}
-\int u\,dv&=uv-\int v\,du. \tag{1.1.45.1}
+\int u\,dv&=uv-\int v\,du. \tag{1.1.45.1}\label{eq:parts-45-1}
 \end{align}
 
 \paragraph*{Functions, relations and operations}
@@ -112,19 +112,19 @@ Continuity at an interior point requires matching one-sided limits:
 \end{equation}
 At an interior point, continuity requires matching one-sided limits; differentiability additionally requires matching one-sided derivatives:
 \noindent\textbf{1.1.48}\quad
-\[\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x),\qquad f'_{-}(a)=f'_{+}(a)=f'(a).\tag{1.1.48.1}\]
+\[\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x),\qquad f'_{-}(a)=f'_{+}(a)=f'(a).\tag{1.1.48.1}\label{eq:continuity-differentiability-48}\]
 \noindent\textbf{1.1.49}\quad
 \[
 \begin{aligned}
 \text{reflexive: }&(a,a)\in R,\\
 \text{symmetric: }&(a,b)\in R\Rightarrow(b,a)\in R,\\
 \text{transitive: }&(a,b),(b,c)\in R\Rightarrow(a,c)\in R.
-\end{aligned}\tag{1.1.49.1}
+\end{aligned}\tag{1.1.49.1}\label{eq:relation-properties-49}
 \]
 \noindent\textbf{1.1.50}\quad
-\[\text{For componentwise addition on }\mathbb R^2:\quad e=(0,0),\quad (a,b)^{-1}=(-a,-b).\tag{1.1.50.1}\]
+\[\text{For componentwise addition on }\mathbb R^2:\quad e=(0,0),\quad (a,b)^{-1}=(-a,-b).\tag{1.1.50.1}\label{eq:componentwise-operation-50}\]
 \noindent\textbf{1.1.51}\quad
-\[a*b=(a+b)\bmod n,\quad 0\text{ is the identity},\quad (-a)\bmod n\text{ is the additive inverse}.\tag{1.1.51.1}\]
+\[a*b=(a+b)\bmod n,\quad 0\text{ is the identity},\quad (-a)\bmod n\text{ is the additive inverse}.\tag{1.1.51.1}\label{eq:modular-operation-51}\]
 
 \paragraph*{Probability}
 For a binomial random variable,
@@ -145,7 +145,7 @@ P(A\mid E)=\frac{P(E\mid A)P(A)}{P(E)}.\tag{1.1.58.2}\label{eq:bayes-58-2}
 \begin{align}\intertext{\textbf{1.1.58}}
 P(A\mid E)&=\frac{P(A\cap E)}{P(E)}. \tag{1.1.58.1}\\
 \intertext{\textbf{1.1.54}}
-P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}. \tag{1.1.54.1}\\
+P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}. \tag{1.1.54.1}\label{eq:bayes-54}\\
 \intertext{\textbf{1.1.53}}
 X\sim\operatorname{Bin}(n,p):\quad P(X=k)&=\binom nkp^k(1-p)^{n-k}. \tag{1.1.53.1}\label{eq:binomial-53}\\
 G(z)&=\sum_jP(D=j)z^j. \tag{1.1.53.2}\label{eq:walk-pgf}\\
@@ -154,7 +154,7 @@ G_5(z)&=(0.4z+0.6z^{-1})^5 \text{ for the five-step walk}. \notag\\
 E[X]&=\sum_x xP(X=x),\quad \operatorname{Var}(X)=E[X^2]-E[X]^2. \tag{1.1.55.1}\label{eq:mean-variance-55}\\
 P(X=k)&=\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom Nn}. \tag{1.1.55.2}\label{eq:hypergeometric-55}\\
 \intertext{\textbf{1.1.54}}
-P(E)&=\sum_iP(E\mid A_i)P(A_i). \tag{1.1.54.2}
+P(E)&=\sum_iP(E\mid A_i)P(A_i). \tag{1.1.54.2}\label{eq:total-probability-54}
 \end{align}
 
 \paragraph*{Linear programming}
@@ -164,7 +164,7 @@ For a linear programme, compare the objective at every feasible vertex:
 \text{LPP optimum}=\text{best objective value among feasible vertices}.\tag{1.1.60.1}\label{eq:lpp-60}
 \end{equation}
 \noindent\textbf{1.1.59}\quad
-\[\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}\tag{1.1.59.1}\]
+\[\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}\tag{1.1.59.1}\label{eq:lpp-59}\]
 
 \paragraph*{Coordinate geometry and optimisation}
 The tangent to $x^2+y^2=r^2$ at $(r\cos\theta,r\sin\theta)$ is
