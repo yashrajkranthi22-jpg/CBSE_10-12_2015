@@ -109,10 +109,12 @@ a^2+b^2+c^2-ab-bc-ca
 \end{equation}
 
 \noindent\textbf{1.1.38}\quad
-\begin{equation}
-\int\frac{du}{1+u^2}=\tan^{-1}u+C.
+\begin{align}
+\int\frac{du}{a^2+u^2}&=\frac1a\tan^{-1}\left(\frac{u}{a}\right)+C
+\tag{1.1.38.1}\label{eq:scaled-arctan-integral-38}\\
+\int\frac{du}{1+u^2}&=\tan^{-1}u+C.
 \tag{1.1.38.2}\label{eq:arctan-integral-38}
-\end{equation}
+\end{align}
 
 \noindent\textbf{1.1.39}\quad
 \begin{equation}
@@ -243,10 +245,12 @@ P(E)=\sum_iP(E\mid A_i)P(A_i).
 \end{equation}
 
 \noindent\textbf{1.1.58}\quad
-\begin{equation}
-P(A\mid E)=\frac{P(E\mid A)P(A)}{P(E)}.
+\begin{align}
+P(A\mid E)&=\frac{P(A\cap E)}{P(E)}.
+\tag{1.1.58.1}\label{eq:conditional-probability-58}\\
+P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}.
 \tag{1.1.58.2}\label{eq:bayes-58-2}
-\end{equation}
+\end{align}
 
 \noindent\textbf{1.1.59}\quad
 \begin{equation}
