@@ -1,28 +1,30 @@
-"""Plot the product-dice PMF using outcome counts worked out on paper."""
+"""Generate the product PMF from the discrete push-forward map (i,j) -> i*j."""
+from collections import Counter
+from itertools import product
 
 import matplotlib.pyplot as plt
 
+outcomes = list(product(range(1, 7), repeat=2))
+counts = Counter(i * j for i, j in outcomes)
+assert len(outcomes) == 36
+assert sum(counts.values()) == 36
+assert counts[6] == 4
 
-# From the 6-by-6 outcome table, count the ordered pairs giving each product.
-# For example, product 4 has (1,4), (2,2), (4,1), while product 6 has
-# (1,6), (2,3), (3,2), (6,1). These theoretical counts add up to 36.
-products = [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36]
-favourable_counts = [1, 2, 2, 3, 2, 4, 2, 1, 2, 4, 2, 1, 2, 2, 2, 1, 2, 1]
+products = sorted(counts)
+probabilities = [counts[m] / 36 for m in products]
+pgf_coefficients = {m: counts[m] / 36 for m in products}
+assert abs(sum(pgf_coefficients.values()) - 1.0) < 1e-12
+assert pgf_coefficients[6] == 1 / 9
 
-# All 36 ordered outcomes are equally likely, so P(product=x) = count(x)/36.
-probabilities = [count / 36 for count in favourable_counts]
-positions = range(len(products))
-
-# Keep the plotting setup separate so the labels and limits are easy to adjust.
 fig, ax = plt.subplots(figsize=(7.2, 3.35))
-ax.bar(positions, probabilities)
-ax.set_xticks(list(positions), [str(value) for value in products], fontsize=7.5)
-ax.set_xlabel("Product of the two dice")
-ax.set_ylabel("Probability")
-ax.set_title("PMF of the product of two fair dice", fontsize=10)
+ax.bar(range(len(products)), probabilities)
+ax.set_xticks(range(len(products)), [str(m) for m in products], fontsize=7.5)
+ax.set_xlabel("Product random variable Z = X Y")
+ax.set_ylabel("Probability P(Z = m)")
+ax.set_title("Push-forward PMF of the product of two fair dice", fontsize=10)
 ax.grid(axis="y", alpha=0.22)
 ax.set_ylim(0, max(probabilities) * 1.28)
-ax.annotate(r"$P(X=6)=4/36=1/9$",
+ax.annotate(r"$[w^6]G_Z(w)=4/36=1/9$",
             xy=(products.index(6), probabilities[products.index(6)]),
             xytext=(products.index(6) + 2.5, max(probabilities) * 1.13),
             arrowprops={"arrowstyle": "->", "lw": 0.9}, fontsize=8)
@@ -30,4 +32,5 @@ fig.tight_layout()
 fig.savefig("figs/Q03_ProductPMF.png", dpi=220, bbox_inches="tight")
 plt.close(fig)
 
-print("Q3: plotted the PMF from theoretical favourable-outcome counts divided by 36.")
+print("C10-Q03 push-forward PMF/PGF verification: PASS")
+print("G_Z(1) =", sum(pgf_coefficients.values()), "; P(Z=6) =", pgf_coefficients[6])
