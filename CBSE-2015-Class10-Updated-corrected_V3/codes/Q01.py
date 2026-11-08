@@ -6,8 +6,31 @@ from CoordGeo.conics.funcs import parab_gen
 
 # The written solution gives p = 3, so y = 3(x - sqrt(5))^2.
 # CoordGeo's parab_gen(y, a) returns x = y^2/a; a=1/3 gives 3t^2.
+# Solve the discriminant parameter equation by Newton-Raphson.
+def discriminant_parameter(p_value):
+    return 20.0 * p_value * (p_value - 3.0)
+
+def newton_parameter(p_value):
+    return p_value - discriminant_parameter(p_value) / (40.0 * p_value - 60.0)
+
+p_iter = 4.5
+for _ in range(30):
+    p_next = newton_parameter(p_iter)
+    if abs(p_next - p_iter) < 1e-13:
+        p_iter = p_next
+        break
+    p_iter = p_next
+assert np.isclose(p_iter, 3.0, atol=1e-12)
+
+# At p=3 the polynomial has a double root. Newton's x-error is halved per step.
 p = 3
 root = np.sqrt(5)
+x_iter = root + 1.0
+for _ in range(8):
+    x_iter = (x_iter + root) / 2.0
+assert np.isclose(x_iter - root, 1.0 / 256.0)
+
+print(f"Newton parameter estimate p={p_iter:.12f}; repeated-root x-error={x_iter-root:.8f}")
 x = np.linspace(-0.5, 5, 600)
 y = parab_gen(x - root, 1 / p)
 
