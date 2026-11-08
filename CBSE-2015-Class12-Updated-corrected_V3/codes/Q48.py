@@ -1,44 +1,60 @@
-"""Plot one-sided slopes for the continuity/differentiability question Q48."""
+"""Plot and verify the piecewise-linear static characteristic in C12-Q48."""
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-from CoordGeo.line.funcs import line_gen
+def characteristic(x):
+    x = np.asarray(x, dtype=float)
+    return 1.0 + 2.0 * np.maximum(-x, 0.0) + 2.0 * np.maximum(x - 1.0, 0.0)
 
-# CoordGeo generates each straight segment of the piecewise-linear function.
-segments = [
-    (np.array([-1.0, 3.0]), np.array([0.0, 1.0]), r"$f(x)=1-2x$, slope $-2$"),
-    (np.array([0.0, 1.0]), np.array([1.0, 1.0]), r"$f(x)=1$, slope $0$"),
-    (np.array([1.0, 1.0]), np.array([2.0, 3.0]), r"$f(x)=2x-1$, slope $2$"),
-]
-# Keep the plotting setup separate so the labels and limits are easy to adjust.
+# Three linear operating regions: falling segment, zero-gain plateau, rising segment.
+x_left = np.linspace(-1.0, 0.0, 120)
+x_mid = np.linspace(0.0, 1.0, 120)
+x_right = np.linspace(1.0, 2.0, 120)
+
 fig, ax = plt.subplots(figsize=(6.5, 4.0))
-for start, end, label in segments:
-    points = line_gen(start, end)
-    ax.plot(points[0], points[1], label=label)
-
-# Draw short tangent/one-sided slope segments near both corners.
-slopes = [
-    (np.array([-0.5, 2.0]), np.array([0.0, 1.0]), "left slope -2 at 0"),
-    (np.array([0.0, 1.0]), np.array([0.5, 1.0]), "right slope 0 at 0"),
-    (np.array([0.5, 1.0]), np.array([1.0, 1.0]), "left slope 0 at 1"),
-    (np.array([1.0, 1.0]), np.array([1.5, 2.0]), "right slope 2 at 1"),
-]
-for start, end, label in slopes:
-    points = line_gen(start, end)
-    ax.plot(points[0], points[1], "--", label="_nolegend_")
+ax.plot(x_left, characteristic(x_left), label=r"$-1<x<0$: slope $-2$")
+ax.plot(x_mid, characteristic(x_mid), label=r"$0<x<1$: plateau, slope $0$")
+ax.plot(x_right, characteristic(x_right), label=r"$1<x<2$: slope $+2$")
 ax.scatter([0, 1], [1, 1], zorder=4)
-ax.annotate(r"slopes $-2$ and $0$", (0, 1), xytext=(-0.85, 1.45), arrowprops={"arrowstyle": "->"}, fontsize=8)
-ax.annotate(r"slopes $0$ and $2$", (1, 1), xytext=(1.1, 0.55), arrowprops={"arrowstyle": "->"}, fontsize=8)
+
+ax.axvline(0, linestyle=":", linewidth=0.8)
+ax.axvline(1, linestyle=":", linewidth=0.8)
+ax.annotate(r"$\partial_C f(0)=[-2,0]$", (0, 1), xytext=(-0.92, 1.55),
+            arrowprops={"arrowstyle": "->"}, fontsize=8)
+ax.annotate(r"$\partial_C f(1)=[0,2]$", (1, 1), xytext=(0.98, 0.45),
+            arrowprops={"arrowstyle": "->"}, fontsize=8)
+ax.text(0.5, 1.08, "zero incremental gain", ha="center", fontsize=8)
+
 ax.set_xlim(-1, 2)
-ax.set_ylim(0.25, 3.25)
-ax.set_xlabel("x")
-ax.set_ylabel("f(x)")
-ax.set_title("Q48: continuous graph with unequal one-sided slopes at 0 and 1")
+ax.set_ylim(0.2, 3.3)
+ax.set_xlabel("Input x")
+ax.set_ylabel("Output f(x)")
+ax.set_title(r"C12-Q48: piecewise-linear static characteristic ($L=2$)")
 ax.grid(alpha=0.25)
-ax.legend(fontsize=6.5, ncol=2, loc="upper center")
+ax.legend(fontsize=7, loc="upper center", ncol=1)
 fig.tight_layout()
-fig.savefig("figs/Q48_Differentiability.png", dpi=180)
+
+output = Path("figs") / "Q48_Differentiability.png"
+output.parent.mkdir(parents=True, exist_ok=True)
+fig.savefig(output, dpi=180)
 plt.close(fig)
 
-print("at x=0: left slope -2, right slope 0 -> not differentiable")
-print("at x=1: left slope 0, right slope 2 -> not differentiable")
+# Numerical slope checks away from the switching points.
+eps = 1e-6
+left_slope_0 = (characteristic(0.0) - characteristic(-eps)) / eps
+right_slope_0 = (characteristic(eps) - characteristic(0.0)) / eps
+left_slope_1 = (characteristic(1.0) - characteristic(1.0-eps)) / eps
+right_slope_1 = (characteristic(1.0+eps) - characteristic(1.0)) / eps
+assert np.allclose([left_slope_0, right_slope_0, left_slope_1, right_slope_1], [-2, 0, 0, 2], atol=1e-8)
+
+# A dense pairwise check supports the sharp global Lipschitz bound.
+samples = np.linspace(-1, 2, 301)
+values = characteristic(samples)
+for i in range(0, len(samples), 5):
+    slopes = np.abs(values[i+1:] - values[i]) / np.abs(samples[i+1:] - samples[i])
+    assert np.all(slopes <= 2.0 + 1e-12)
+
+print("C12-Q48 nonsmooth-characteristic verification: PASS")
+print("One-sided slopes at 0: -2 and 0; at 1: 0 and 2; Lipschitz constant: 2")
