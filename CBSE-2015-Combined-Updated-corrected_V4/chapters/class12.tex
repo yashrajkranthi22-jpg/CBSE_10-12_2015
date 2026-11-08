@@ -4,153 +4,378 @@
 \paragraph*{Vectors and three-dimensional geometry}
 \begin{enumerate}[label=\theenumi,leftmargin=4mm,itemsep=9pt]
 \setcounter{enumi}{0}\item Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
-\solution A vector perpendicular to both is parallel to their cross product:
-\begin{align*}
-\vec a\times\vec b&=\myvec{1\\-7\\5},&\norm{\vec a\times\vec b}&=\sqrt{75}=5\sqrt3\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
-\end{align*}
-Scale this direction to the required magnitude:
+\solution Perpendicularity defines a homogeneous linear system in the unknown
+vector \(v\):
 \[
-\vec d=\frac{\sqrt{171}}{5\sqrt3}\myvec{1\\-7\\5}
-=\pm\frac{\sqrt{57}}5\myvec{1\\-7\\5}.
+Av=0,\qquad
+A=\begin{pmatrix}1&-2&-3\\3&-1&-2\end{pmatrix}.
 \]
-\begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q01_3D.png}\end{figure}
+The two rows are independent, so \(\operatorname{rank}(A)=2\).
+By the rank--nullity theorem,
+\[
+\dim\ker A=3-\operatorname{rank}(A)=1.
+\]
+Solving the two homogeneous equations gives a null-space basis
+\[
+n=\begin{pmatrix}1\\-7\\5\end{pmatrix},
+\qquad \|n\|=\sqrt{75}=5\sqrt3.
+\]
+Every vector perpendicular to both given vectors is a scalar
+multiple of \(n\). Scaling to the prescribed magnitude gives
+\[
+v=\pm\frac{\sqrt{171}}{5\sqrt3}n
+=\boxed{\pm\frac{\sqrt{57}}5
+\begin{pmatrix}1\\-7\\5\end{pmatrix}}.
+\]
+An SVD is useful only as a numerical rank/null-space check; the exact
+null-space calculation determines the answer.
+\begin{figure}[H]\centering
+\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q01_3D.png}
+\caption{The null-space vector is normal to the span of the two given vectors.}
+\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q01.py}}}
-\par\smallskip
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q01.py}}}
 
 \setcounter{enumi}{4}\item Let $\vec a=\myvec{1\\4\\2}$, $\vec b=\myvec{3\\-2\\7}$ and $\vec c=\myvec{2\\-1\\4}$. Find $\vec d$ perpendicular to both $\vec a,\vec b$ with $\vec c\cdot\vec d=27$.
-\solution The required direction is $\vec a\times\vec b=(32,-1,-14)^T$. Set $\vec d=t(32,-1,-14)^T$. Since $\vec c\cdot(\vec a\times\vec b)=9\qquad\eqref{eq:dot-product}$, the constraint gives $9t=27$, hence
+\solution The cross product is an antisymmetric bilinear operation. Its
+determinant representation gives
 \[
-\vec d=\myvec{96\\-3\\-42}\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
+\vec a\times\vec b=
+\begin{vmatrix}
+\hat i&\hat j&\hat k\\
+1&4&2\\
+3&-2&7
+\end{vmatrix}
+=\begin{pmatrix}32\\-1\\-14\end{pmatrix}.
 \]
-\begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q05_3D.png}\end{figure}
+It reverses sign when its inputs are exchanged and is orthogonal to
+each input vector. Every vector perpendicular to both is therefore
+parallel to this cross product; write
+\(\vec d=t(\vec a\times\vec b)\). The scalar constraint is
+\[
+\vec c\cdot(\vec a\times\vec b)
+=(2,-1,4)\cdot(32,-1,-14)=64+1-56=9.
+\]
+Thus \(9t=27\), so \(t=3\) and the corrected vector is
+\[
+\boxed{\vec d=(96,-3,-42)^T}.
+\]
+\begin{figure}[H]\centering
+\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q05_3D.png}
+\caption{The required vector is normal to both prescribed directions.}
+\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q05.py}}}
-\par\smallskip
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q05.py}}}
 
 \setcounter{enumi}{5}\item Find the shortest distance between $\vec r=(1,2,3)+\lambda(2,3,4)$ and $\vec r=(2,4,5)+\mu(4,6,8)$.
-\solution The direction vectors are parallel, since $(4,6,8)=2(2,3,4)$. For parallel lines the distance is the perpendicular distance from one point to the other line:
+\solution The common direction of the parallel lines is \(v=(2,3,4)^T\).
+Let \(w=B-A=(1,2,2)^T\). The orthogonal projector onto the line
+direction is
 \[
-d=\frac{\norm{(B-A)\times\vec v}}{\norm{\vec v}},\quad B-A=(1,2,2),\quad \vec v=(2,3,4).
+P_v=\frac{vv^T}{v^Tv}
+=\frac1{29}\begin{pmatrix}
+4&6&8\\6&9&12\\8&12&16
+\end{pmatrix}.
 \]
-Here $(B-A)\times\vec v=(2,0,-1)$, so
+The parallel component is \(P_vw=(16/29)v\), and the perpendicular
+least-squares residual is
 \[
-d=\frac{\sqrt5}{\sqrt{29}}\qquad\eqref{eq:parallel-distance}.
+r=(I-P_v)w
+=\frac1{29}\begin{pmatrix}-3\\10\\-6\end{pmatrix}.
 \]
-\begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q06_3D.png}\end{figure}
+Because \(r^Tv=0\), this is the shortest connector between the lines.
+Its norm gives the distance:
+\[
+d=\|r\|=\frac{\sqrt{145}}{29}
+=\boxed{\frac{\sqrt5}{\sqrt{29}}}.
+\]
+The projection residual makes both the minimizing property and
+perpendicularity explicit.
+\begin{figure}[H]\centering
+\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q06_3D.png}
+\caption{The orthogonal residual joins the closest points on the parallel lines.}
+\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q06.py}}}
-\par\smallskip
-
-
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q06.py}}}
 
 \paragraph*{Lines and planes}
 \setcounter{enumi}{9}\item Find the plane through the intersection of $2x+y-z=3$ and $5x-3y+4z+9=0$ that is parallel to $\frac{x-1}{2}=\frac{y-3}{-4}=\frac{5-z}{-5}$.
-\solution A plane through the intersection has equation
+\solution Every plane through the intersection of the two specified planes
+belongs to their affine plane pencil:
 \[
-(2x+y-z-3)+\lambda(5x-3y+4z+9)=0.
+F_1+\lambda F_2=0,\quad
+F_1=2x+y-z-3,\quad F_2=5x-3y+4z+9.
 \]
-The line direction is $(2,-4,5)$. Its dot product with the plane normal $(2+5\lambda,1-3\lambda,-1+4\lambda)$ must vanish:
+Its normal vector is
+\[
+n(\lambda)=\begin{pmatrix}2+5\lambda\\1-3\lambda\\-1+4\lambda\end{pmatrix}.
+\]
+The line direction is \(d=(2,-4,5)^T\). For the plane to be parallel
+to this line, its normal must satisfy \(n(\lambda)^Td=0\):
 \[
 2(2+5\lambda)-4(1-3\lambda)+5(-1+4\lambda)=0,
 \]
-so $\lambda=5/42$. Multiplying by 42 and simplifying gives
+which gives \(42\lambda-5=0\), so \(\lambda=5/42\).
+Substitution in the plane pencil yields the corrected plane
 \[
-109x+27y-22z-81=0\qquad\eqref{eq:line-plane-parallel},\ \eqref{eq:plane-normal}.
+\boxed{109x+27y-22z-81=0}.
 \]
-\begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q10_3D.png}\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q10_3D.png}
+\caption{The selected member of the plane pencil is parallel to the given line.}
+\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q10.py}}}
-\par\smallskip
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q10.py}}}
 
 \setcounter{enumi}{14}\item Find where the line through $A(3,4,1)$ and $B(5,1,6)$ meets the plane through $P(2,1,2)$, $Q(3,1,0)$ and $R(4,-2,1)$.
-\solution A normal to the plane is $(Q-P)\times(R-P)=(1,0,-2)\times(2,-3,-1)\propto(2,1,1)$ \qquad\eqref{eq:cross-product}. Thus the plane is $2x+y+z=7$. The line is $(3,4,1)+t(2,-3,5)$. Substitution into the plane yields $4+6t=0$, so $t=-2/3$. The intersection is
+\solution The plane through \(P,Q,R\) has normal
 \[
-\left(\frac53,6,-\frac73\right)\qquad\eqref{eq:line-point-direction},\ \eqref{eq:plane-normal}.
+(Q-P)\times(R-P)=(1,0,-2)\times(2,-3,-1)=(-6,-3,-3),
 \]
-\begin{figure}[H]\centering\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q15_3D.png}\end{figure}
+so a reduced normal is \(n=(2,1,1)^T\), and the affine plane is
+\(2x+y+z=7\). The line \(AB\) has direction \((2,-3,5)^T\).
+Formulate the line and plane together as an affine system in
+\((x,y,z,t)\):
+\[
+\begin{pmatrix}
+1&0&0&-2\\
+0&1&0&3\\
+0&0&1&-5\\
+2&1&1&0
+\end{pmatrix}
+\begin{pmatrix}x\\y\\z\\t\end{pmatrix}
+=
+\begin{pmatrix}3\\4\\1\\7\end{pmatrix}.
+\]
+The coefficient matrix has rank four, equal to the rank of its
+augmented matrix. The system is therefore consistent and has a
+unique solution:
+\[
+t=-\frac23,\qquad
+(x,y,z)=\boxed{\left(\frac53,6,-\frac73\right)}.
+\]
+Substitution into all four affine constraints gives zero residual.
+\begin{figure}[H]\centering
+\includegraphics[width=0.96\linewidth]{../CBSE-2015-Class12-Updated-corrected_V3/figs/Q15_3D.png}
+\caption{The unique solution of the affine line--plane system.}
+\end{figure}
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q15.py}}}
-\par\smallskip
-
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q15.py}}}
 
 \paragraph*{Differential equations}
 \setcounter{enumi}{21}\item Show that $(x-y)\frac{dy}{dx}=x+2y$ is homogeneous and solve it.
-\solution The derivative is a ratio of homogeneous first-degree expressions. Put $y=vx$, so $y'=v+xv'$. Substitution gives
+\solution Use logarithmic time \(t=\ln|x|\) and the scale-free state
+\(u(t)=y(x)/x\), so \(y=xu\) and \(dy/dx=u+du/dt\). Substitution
+into the given ODE gives
 \[
-x\frac{dv}{dx}=\frac{1+v+v^2}{1-v},\qquad
-\frac{1-v}{1+v+v^2}\,dv=\frac{dx}{x}\qquad\eqref{eq:homogeneous-substitution}.
+(1-u)\left(u+\frac{du}{dt}\right)=1+2u,
 \]
-Integrating,
+hence the autonomous dynamical system
 \[
--\frac12\ln(v^2+v+1)+\sqrt3\tan^{-1}\!\left(\frac{2v+1}{\sqrt3}\right)=\ln|x|+C.
+\frac{du}{dt}=\frac{1+u+u^2}{1-u},\qquad u\ne1.
 \]
-Using $v=y/x$ gives the implicit solution
+The numerator is strictly positive for real \(u\), so the reduced
+system has no equilibrium; trajectories are monotone on either side
+of the singular state \(u=1\). Separating variables,
 \[
--\tfrac12\ln\!\left(\frac{y^2}{x^2}+\frac yx+1\right)+\sqrt3\tan^{-1}\!\left(\frac{2y/x+1}{\sqrt3}\right)=\ln|x|+C.
+\int\frac{1-u}{u^2+u+1}\,du=t+C.
 \]
+Using
+\[
+\frac{1-u}{u^2+u+1}
+=-\frac12\frac{2u+1}{u^2+u+1}
++\frac32\frac1{u^2+u+1},
+\]
+integration gives
+\[
+-\frac12\ln(u^2+u+1)
++\sqrt3\tan^{-1}\!\left(\frac{2u+1}{\sqrt3}\right)
+=\ln|x|+C.
+\]
+Finally substitute \(u=y/x\). The implicit solution holds on
+intervals with \(x\ne0\) and does not cross the excluded state \(u=1\).
 
 \setcounter{enumi}{23}\item Find the particular solution of $y'+y\tan x=3x^2+x^3\tan x$, given $y=0$ at $x=\pi/3$ and $x\ne\pi/2$.
-\solution The integrating factor is $e^{\int\tan x\,dx}=\sec x$. Multiplication gives
+\solution Set
 \[
-\frac{d}{dx}(y\sec x)=3x^2\sec x+x^3\sec x\tan x=\frac{d}{dx}(x^3\sec x)\qquad\eqref{eq:if-24}.
+u=y-x^3,\qquad \tau=\ln(\sec x).
 \]
-So $y\sec x=x^3\sec x+C$ and $y=x^3+C\cos x$. From $y(\pi/3)=0$, $C=-2\pi^3/27$. Therefore
+Then \(y'=u'+3x^2\), and the differential equation reduces to
+\(u'+u\tan x=0\). Since \(d\tau/dx=\tan x\), on the branch
+containing \(x_0=\pi/3\) this becomes
 \[
-y=x^3-\frac{2\pi^3}{27}\cos x.
+\frac{du}{d\tau}+u=0.
 \]
-\par\smallskip
-\noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q24.py}}}
-\par\smallskip
+The initial point gives
+\[
+\tau_0=\ln2,\qquad
+u(\tau_0)=y(\pi/3)-(\pi/3)^3=-\frac{\pi^3}{27}.
+\]
+Shift to \(\eta=\tau-\tau_0\) and write \(U(\eta)=u(\tau_0+\eta)\).
+The unilateral Laplace transform gives
+\[
+s\bar U(s)-U(0)+\bar U(s)=0,\qquad
+\bar U(s)=\frac{-\pi^3/27}{s+1}.
+\]
+Inverse transformation yields
+\[
+u=-\frac{\pi^3}{27}e^{-(\tau-\ln2)}
+=-\frac{2\pi^3}{27}\cos x,
+\]
+and therefore
+\[
+\boxed{y=x^3-\frac{2\pi^3}{27}\cos x}.
+\]
+The transformed coordinate is monotone on \(0<x<\pi/2\), which
+contains the initial point and a neighbourhood on both sides of it.
+The displayed solution is regular at \(x=0\) and directly satisfies
+the original ODE there, so it extends uniquely across zero to the
+maximal interval \(-\pi/2<x<\pi/2\). The endpoints are excluded
+because \(\tan x\) is singular there.
 
 \setcounter{enumi}{24}\item If $y=\log\left(\frac{x}{a+bx}\right)^x$, prove that $x^3y''=(xy'-y)^2$.
-\solution Interpret the expression as $y=x\log\left(\frac{x}{a+bx}\right)$. Then
+\solution The question's printed notation is retained:
+\(y=\log\left(\frac{x}{a+bx}\right)^x\). The requested identity is
+consistent with reading the power as inside the logarithm, namely
 \[
-y'=\log\left(\frac{x}{a+bx}\right)+\frac{a}{a+bx},\qquad
- y''=\frac{a^2}{x(a+bx)^2}\qquad\eqref{eq:log-derivative-25}.
+y=\log\left[\left(\frac{x}{a+bx}\right)^x\right]
+=x\log\left(\frac{x}{a+bx}\right).
 \]
-Thus $xy'-y=ax/(a+bx)$ and
+Introduce the Euler differential operator \(\theta=x\,d/dx\).
+Then
 \[
-x^3y''=\frac{a^2x^2}{(a+bx)^2}=(xy'-y)^2.
+(\theta-1)y=xy'-y=\frac{ax}{a+bx}.
 \]
-
-
-
+The operator factorization
+\[
+\theta(\theta-1)y=x^2y''
+\]
+therefore gives
+\[
+x^3y''=x\,\theta(\theta-1)y
+=x\frac{d}{dx}\left(\frac{ax}{a+bx}\right)
+=\frac{a^2x^2}{(a+bx)^2}
+=(xy'-y)^2.
+\]
+This proves the identity wherever the logarithm is defined and
+\(a+bx\ne0\). The original question statement is not altered.
 
 \paragraph*{Matrices and determinants}
 \setcounter{enumi}{27}\item If $A=\myvec{\cos\theta&\sin\theta\\\sin\theta&\cos\theta}$, find $\det(A^n)$ for natural $n$.
-\solution Determinants are multiplicative, so $\det(A^n)=(\det A)^n$. Now $\det A=\cos^2\theta-\sin^2\theta=\cos2\theta$. Thus
+\solution The matrix is real symmetric and has the orthonormal eigenvectors
 \[
-\det(A^n)=(\cos2\theta)^n\qquad\eqref{eq:det-power}.
+q_+=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix},
+\qquad
+q_-=\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix},
 \]
+with eigenvalues
+\[
+\lambda_+=\cos\theta+\sin\theta,\qquad
+\lambda_-=\cos\theta-\sin\theta.
+\]
+Let \(P_\pm=q_\pm q_\pm^T\) be the associated orthogonal spectral
+projectors. Then
+\[
+A=\lambda_+P_++\lambda_-P_-,
+\qquad
+A^n=\lambda_+^nP_++\lambda_-^nP_-.
+\]
+The determinant is the product of the eigenvalues, counted with
+multiplicity:
+\[
+\det(A^n)=(\lambda_+\lambda_-)^n
+=(\cos^2\theta-\sin^2\theta)^n
+=\boxed{(\cos2\theta)^n}.
+\]
+The orthonormal eigenbasis remains valid even when the eigenvalues
+coincide.
 
 \setcounter{enumi}{29}\item Find the inverse of $\myvec{0&1&2\\1&2&3\\3&1&0}$ using elementary row operations.
-\solution Augment the matrix by $I$ and row-reduce to $[I\mid A^{-1}]$. The determinant is $-1$, so the matrix is invertible. The result is
+\solution Let
 \[
-A^{-1}=\myvec{3&-2&1\\-9&6&-2\\5&-3&1}\qquad\eqref{eq:inverse-matrix}.
+A=\begin{pmatrix}0&1&2\\1&2&3\\3&1&0\end{pmatrix},
+\qquad
+P=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}.
 \]
-The product check $AA^{-1}=I$ is carried out in code.
+The first pivot is obtained by interchanging the first two rows.
+An exact factorization is
+\[
+PA=LU,\quad
+L=\begin{pmatrix}1&0&0\\0&1&0\\3&-5&1\end{pmatrix},
+\quad
+U=\begin{pmatrix}1&2&3\\0&1&2\\0&0&1\end{pmatrix}.
+\]
+The triangular inverses are
+\[
+U^{-1}=\begin{pmatrix}1&-2&1\\0&1&-2\\0&0&1\end{pmatrix},
+\quad
+L^{-1}=\begin{pmatrix}1&0&0\\0&1&0\\-3&5&1\end{pmatrix}.
+\]
+Since \(PA=LU\), inverse reconstruction gives
+\[
+A^{-1}=U^{-1}L^{-1}P
+=\boxed{\begin{pmatrix}3&-2&1\\-9&6&-2\\5&-3&1\end{pmatrix}}.
+\]
+The factorization and reconstruction use exact integer arithmetic;
+multiplication gives \(AA^{-1}=I_3\).
 \par\smallskip
 \noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q30.py}}}
-\par\smallskip
+\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering
+\texttt{../CBSE-2015-Class12-Updated-corrected_V3/codes/Q30.py}}}
 
 \setcounter{enumi}{35}\item If $a+b+c\ne0$ and $\mydet{a&b&c\\b&c&a\\c&a&b}=0$, prove that $a=b=c$.
-\solution Expanding and factorising the determinant gives
+\solution Let
 \[
--(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0.
+M=\begin{pmatrix}a&b&c\\b&c&a\\c&a&b\end{pmatrix}.
 \]
-The first factor is nonzero by assumption, so $a^2+b^2+c^2-ab-bc-ca=0$. But
+Use the real three-point Fourier basis (the constant DFT mode and
+the cosine/sine modes)
 \[
-a^2+b^2+c^2-ab-bc-ca=\tfrac12[(a-b)^2+(b-c)^2+(c-a)^2]\qquad\eqref{eq:sum-squares}.
+q_0=\frac1{\sqrt3}(1,1,1)^T,\quad
+q_c=\frac1{\sqrt6}(2,-1,-1)^T,\quad
+q_s=\frac1{\sqrt2}(0,1,-1)^T.
 \]
-Each square must be zero, hence $a=b=c$.
+For \(Q=(q_0\ q_c\ q_s)\), direct transformation yields
+\[
+Q^TMQ=
+\begin{pmatrix}
+a+b+c&0&0\\
+0&d&e\\
+0&e&-d
+\end{pmatrix},
+\quad
+d=a-\frac{b+c}{2},\qquad e=\frac{\sqrt3}{2}(b-c).
+\]
+The lower Fourier block has eigenvalues
+\[
+\lambda_\pm=\pm\sqrt{d^2+e^2}
+=\pm\sqrt{a^2+b^2+c^2-ab-bc-ca}.
+\]
+Thus the full spectrum is \(a+b+c,\lambda_+,\lambda_-\), and
+\[
+\det M=-(a+b+c)(a^2+b^2+c^2-ab-bc-ca).
+\]
+The displayed matrix is reverse-circulant, not an ordinary
+circulant: the Fourier basis isolates the two-dimensional Fourier
+subspace, and that block must then be diagonalized. Since
+\(a+b+c\ne0\) and \(\det M=0\), the squared radical is zero. Hence
+\[
+\frac12\bigl((a-b)^2+(b-c)^2+(c-a)^2\bigr)=0,
+\]
+which forces
+\[
+\boxed{a=b=c}.
+]
 
 \setcounter{enumi}{36}\item A trust receives Rs. 30,000 per month. Half is spent on care, and 2\% of the amount spent is collected from beneficiaries. The unspent balance is deposited in a bank. Find the monthly interest rate needed for total monthly income of Rs. 1800.
 \solution Let $u$ be the monthly contribution collected from beneficiaries and $v$ the bank interest. Half of Rs. $30,000$ is spent, so
