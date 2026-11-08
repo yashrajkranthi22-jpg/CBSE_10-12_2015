@@ -1,61 +1,73 @@
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
 \begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=0pt,itemsep=6pt]
 \item
-\paragraph*{Formulae referenced in the problems}\par
-
-\begin{equation}
+\paragraph*{Null-space and rank--nullity}
+For two independent row constraints on $\vec d\in\mathbb R^3$,
+\[
+M\vec d=0,\quad \operatorname{rank}(M)=2
+\Longrightarrow \dim\ker M=3-2=1.
+\]
+The required vectors lie on the one-dimensional null space and are scaled to the prescribed norm.
+\label{eq:nullspace-01}
+\addtocounter{enumi}{3}
+\item
+\paragraph*{Antisymmetric bilinear vector operation}
+The cross product admits the determinant representation
+\[
 \vec a\times\vec b=
-\begin{pmatrix}
-a_2b_3-a_3b_2\\
-a_3b_1-a_1b_3\\
-a_1b_2-a_2b_1
-\end{pmatrix}.
+\begin{vmatrix}
+\hat i&\hat j&\hat k\\
+a_1&a_2&a_3\\
+b_1&b_2&b_3
+\end{vmatrix},
+\qquad
+\vec a\times\vec b=-(\vec b\times\vec a).
+\]
+It is orthogonal to both arguments:
+\[
+(\vec a\times\vec b)\cdot\vec a=0,\qquad
+(\vec a\times\vec b)\cdot\vec b=0.
+\]
 \label{eq:cross-product}
-\end{equation}
-\begin{equation}
-\vec a\times\vec b\perp\vec a,\qquad
-\vec a\times\vec b\perp\vec b.
-\label{eq:cross-perpendicular}
-\end{equation}
-
-\addtocounter{enumi}{3}
 \item
-\begin{equation}
-\vec a\cdot\vec b=a_1b_1+a_2b_2+a_3b_3,\qquad
-\vec a\perp\vec b\iff\vec a\cdot\vec b=0.
-\label{eq:dot-product}
-\end{equation}
-
-\item
-\begin{equation}
-d(\text{parallel lines})=
-\frac{\norm{(\vec b-\vec a)\times\vec v}}{\norm{\vec v}}.
+\paragraph*{Orthogonal projection and least-squares residual}
+For a nonzero direction column $u$, the orthogonal projector onto its span and the perpendicular residual are
+\[
+P=u(u^Tu)^{-1}u^T,\qquad r_\perp=(I-P)w.
+\]
+The distance from displacement $w$ to the line direction is
+\[
+d=\|r_\perp\|_2,\qquad u^Tr_\perp=0.
+\]
 \label{eq:parallel-distance}
-\end{equation}
-
 \addtocounter{enumi}{3}
 \item
-\begin{align}
-\text{line parallel to plane}&\iff \vec d\cdot\vec n=0.
-\label{eq:line-plane-parallel}\\
-\text{plane through }\vec r_0\text{ with normal }\vec n:\quad
-\vec n\cdot(\vec r-\vec r_0)&=0.
-\label{eq:plane-normal}
-\end{align}
-
+\paragraph*{Affine plane pencil and normal constraints}
+The pencil of planes through two intersecting planes is
+\[
+\Pi_\lambda:\ F_1(x,y,z)+\lambda F_2(x,y,z)=0.
+\]
+A required direction $d$ is parallel to a member of the pencil precisely when its normal $n_\lambda$ satisfies
+\[
+d^Tn_\lambda=0.
+\]
+\label{eq:line-plane-parallel}
 \addtocounter{enumi}{4}
 \item
-\begin{equation}
-\vec r=\vec A+t\vec d
-\quad\text{for a line through }\vec A\text{ with direction }\vec d.
+\paragraph*{Affine line--plane constraints}
+A line is $r=A+td$ and a plane is $n^Tr=c$. Their intersection is obtained from the augmented affine system
+\[
+\begin{pmatrix}I&-d\\n^T&0\end{pmatrix}
+\begin{pmatrix}r\\t\end{pmatrix}
+=
+\begin{pmatrix}A\\c\end{pmatrix}.
+\]
+Rank equality of the coefficient and augmented matrices determines consistency; full column rank gives a unique intersection.
 \label{eq:line-point-direction}
-\end{equation}
-
 \addtocounter{enumi}{8}
 \item
 \paragraph*{Transformed-coordinate Laplace solution}
 For $u=y-x^3$ and $\tau=\ln(\sec x)$,
-\[
 \begin{align}
 u'+u\tan x&=0,\qquad \frac{d\tau}{dx}=\tan x,\qquad
 \frac{du}{d\tau}+u=0,
@@ -65,34 +77,49 @@ u'+u\tan x&=0,\qquad \frac{d\tau}{dx}=\tan x,\qquad
 \end{align}
 The backward coordinate $\rho=-\sigma$ changes the transformed ODE to $u_\rho-u=0$.
 \item
-\begin{equation}
-\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\paragraph*{Euler differential operator}
+Let $\theta=xD$, with $D=d/dx$. Then
+\[
+\theta y=xy',\qquad
+(\theta^2-\theta)y=x^2y'',\qquad
+x(\theta^2-\theta)y=x^3y''.
+\]
+The identity in Q25 is thus naturally expressed as an Euler-operator relation.
 \label{eq:log-derivative-25}
-\end{equation}
-
 \addtocounter{enumi}{2}
 \item
-\begin{equation}
-\det(AB)=\det(A)\det(B),\qquad
-\det(A^n)=(\det A)^n.
+\paragraph*{Spectral decomposition and matrix powers}
+If $A=Q\Lambda Q^{-1}$ is diagonalizable, then
+\[
+A^n=Q\Lambda^nQ^{-1},\qquad
+\det(A^n)=\prod_j\lambda_j^n.
+\]
 \label{eq:det-power}
-\end{equation}
-
 \addtocounter{enumi}{1}
 \item
-\begin{equation}
-A^{-1}=\frac{\operatorname{adj}(A)}{\det A},\qquad \det A\ne0.
+\paragraph*{Pivoted LU decomposition}
+With a permutation matrix $P$, partial-pivoted LU has
+\[
+PA=LU,\qquad A^{-1}=U^{-1}L^{-1}P.
+\]
+Solve $Ly=Pe_j$ and $Ux=y$ for each column $e_j$ to compute the inverse exactly.
 \label{eq:inverse-matrix}
-\end{equation}
-
 \addtocounter{enumi}{5}
 \item
-\begin{equation}
-a^2+b^2+c^2-ab-bc-ca
-=\frac12\bigl((a-b)^2+(b-c)^2+(c-a)^2\bigr).
+\paragraph*{Three-point DFT and cyclic spectral decomposition}
+For $\omega=e^{2\pi i/3}$, the DFT basis is $(1,1,1)^T$, $(1,\omega,\omega^2)^T$, $(1,\omega^2,\omega)^T$. For the left-cyclic matrix in Q36, the DFT transform separates the constant mode from a two-dimensional anti-diagonal block. With
+\[
+s=a+b+c,\qquad
+\lambda=a+b\omega+c\omega^2,\qquad
+\bar\lambda=a+b\omega^2+c\omega,
+\]
+the transformed block is
+\[
+\begin{pmatrix}s&0&0\\0&0&\bar\lambda\\0&\lambda&0\end{pmatrix}.
+\]
+Its spectral values are $s,\pm\sqrt{\lambda\bar\lambda}$ and
+$\lambda\bar\lambda=a^2+b^2+c^2-ab-bc-ca$.
 \label{eq:sum-squares}
-\end{equation}
-
 \item
 \begin{equation}
 [A\mid\vec b]\xrightarrow{\text{elementary row operations}}[I\mid\vec x]
@@ -173,98 +200,109 @@ f(x)&=1+2(-x)^++2(x-1)^+,
 Its three slopes are $-2,0,2$, and the sharp global Lipschitz bound is
 $|f(x)-f(y)|\le2|x-y|$.
 \item
-\begin{equation}
-\begin{aligned}
-\text{reflexive: }&(a,a)\in R,\\
-\text{symmetric: }&(a,b)\in R\Rightarrow(b,a)\in R,\\
-\text{transitive: }&(a,b),(b,c)\in R\Rightarrow(a,c)\in R.
-\end{aligned}
+\paragraph*{Predicate logic for binary relations}
+A relation $R$ on a set is reflexive when $\forall a,\ aRa$; symmetric when $\forall a,b,\ aRb\Rightarrow bRa$; and transitive when $\forall a,b,c,\ (aRb\land bRc)\Rightarrow aRc$.
+A single valid counterexample refutes a universal property.
 \label{eq:relation-properties-49}
-\end{equation}
-
 \item
-\begin{equation}
-\text{For componentwise addition on }\mathbb R^2:\quad
-e=(0,0),\quad(a,b)^{-1}=(-a,-b).
+\paragraph*{Abelian group axioms}
+A group operation is closed and associative, has an identity $e$, and gives every element an inverse. Commutativity adds $a*b=b*a$; a commutative group is Abelian.
 \label{eq:componentwise-operation-50}
-\end{equation}
-
 \item
-\begin{equation}
-a*b=(a+b)\bmod n,\quad
-0\text{ is the identity},\quad
-(-a)\bmod n\text{ is the additive inverse}.
+\paragraph*{Cyclic group over $\mathbb Z_7$}
+Addition modulo 7 is
+\[
+a*b=(a+b)\bmod7,\quad e=0,\quad a^{-1}=(-a)\bmod7.
+\]
+Since 7 is prime, every nonzero residue is a generator of the cyclic additive group.
 \label{eq:modular-operation-51}
-\end{equation}
-
 \item
-\begin{equation}
-\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x).
+\paragraph*{Piecewise nonlinear transfer and Lipschitz bound}
+For a continuous piecewise-$C^1$ scalar characteristic on an interval, a global bound $|f'(x)|\le L$ on each smooth piece gives
+\[
+|f(x)-f(y)|\le L|x-y|.
+\]
+At a switching point, continuity is tested by matching one-sided values; differentiability requires matching one-sided slopes.
 \label{eq:continuity-limits-52}
-\end{equation}
-
 \item
-\begin{align}
-X\sim\operatorname{Bin}(n,p):\quad
-P(X=k)&=\binom nkp^k(1-p)^{n-k}.
-\label{eq:binomial-53}\\
-G(z)&=\sum_jP(D=j)z^j.
+\paragraph*{Bilateral $Z$-transform and Laurent PGF}
+For integer-valued displacement $D$, the bilateral probability-generating function is
+\[
+G_D(z)=E[z^D]=\sum_{k\in\mathbb Z}P(D=k)z^k.
+\]
+Independent increments multiply their Laurent PGFs; on $z=e^{i\omega}$ the function is the characteristic function.
 \label{eq:walk-pgf}
-\end{align}
-
 \item
-\begin{align}
-P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}.
-\label{eq:bayes-54}\\
-P(E)&=\sum_iP(E\mid A_i)P(A_i).
-\label{eq:total-probability-54}
-\end{align}
-
+\paragraph*{Bayesian likelihood ratio}
+For hypotheses $A,B$ and observation $E$, posterior odds satisfy
+\[
+\frac{P(B\mid E)}{P(A\mid E)}
+=\frac{P(B)}{P(A)}
+\frac{P(E\mid B)}{P(E\mid A)}.
+\]
+\label{eq:bayes-54}
 \item
-\begin{align}
-E[X]&=\sum_x xP(X=x),\quad
-\operatorname{Var}(X)=E[X^2]-E[X]^2.
-\label{eq:mean-variance-55}\\
-P(X=k)&=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn}.
+\paragraph*{Hypergeometric PGF and covariance}
+For $X$ black items in a sample of size $n$ without replacement from $N$ objects with $K$ black,
+\[
+G_X(s)=\sum_k\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn}s^k,
+\quad E[X]=G_X'(1),\quad
+E[X(X-1)]=G_X''(1).
+\]
+For two draw indicators, $X=I_1+I_2$ and
+$\operatorname{Var}(X)=\operatorname{Var}(I_1)+\operatorname{Var}(I_2)+2\operatorname{Cov}(I_1,I_2)$.
 \label{eq:hypergeometric-55}
-\end{align}
-
 \item
-\begin{equation}
-P(X=k)=\binom nkp^k(1-p)^{n-k}.
+\paragraph*{Binomial PGF and boundary parameter}
+For $X\sim\operatorname{Bin}(n,p)$,
+\[
+G_X(z)=(1-p+pz)^n,\qquad
+P(X=k)=[z^k]G_X(z).
+\]
+Parameter equations must be solved on the closed probability interval $0\le p\le1$, retaining boundary roots before division by powers of $p$ or $1-p$.
 \label{eq:binomial-56}
-\end{equation}
-
 \item
-\begin{equation}
-P(E)=\sum_iP(E\mid A_i)P(A_i).
+\paragraph*{Pólya-urn state transition}
+Represent the urn by its composition state $S=(R,B)$. Drawing a colour and reinforcing that colour by $c$ balls changes the state by
+\[
+(R,B)\xrightarrow{R}(R+c,B),\qquad
+(R,B)\xrightarrow{B}(R,B+c).
+\]
+Conditional transition probabilities are combined over the state tree.
 \label{eq:total-probability-57}
-\end{equation}
-
 \addtocounter{enumi}{1}
 \item
-\begin{equation}
-\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}
+\paragraph*{Linear-programming duality}
+For the primal $\min c^Tx$ subject to $Ax\ge b,\ x\ge0$, the dual is
+\[
+\max b^Tu\quad\text{subject to}\quad A^Tu\le c,\ u\ge0.
+\]
+Every primal feasible and dual feasible pair satisfies $b^Tu\le c^Tx$; equality certifies global optimality.
 \label{eq:lpp-59}
-\end{equation}
-
 \item
-\begin{equation}
-\text{LPP optimum}=\text{best objective value among feasible vertices}.
+\paragraph*{Complementary slackness}
+For primal maximisation with $Ax\le b,\ x\ge0$ and dual minimisation with $A^Tu\ge c,\ u\ge0$, optimal solutions obey
+\[
+u_i(b_i-a_i^Tx)=0,\qquad
+x_j((A^Tu)_j-c_j)=0.
+\]
+Feasibility plus these equations is an optimality certificate.
 \label{eq:lpp-60}
-\end{equation}
-
 \addtocounter{enumi}{3}
 \item
-\begin{equation}
-x\cos\theta+y\sin\theta=r.
+\paragraph*{KKT conditions for constrained circle geometry}
+For minimising $F(u,v)$ subject to $g(u,v)=0$, interior stationarity requires
+\[
+\nabla F(u,v)+\lambda\nabla g(u,v)=0,\qquad
+g(u,v)=0.
+\]
+Boundary limits and feasibility must also be checked for global optimality.
 \label{eq:circle-tangent-64}
-\end{equation}
-
 \item
-\begin{equation}
-\text{ellipse point }(a\cos t,b\sin t),\qquad
-A_{\triangle}=\frac12 bh.
+\paragraph*{KKT optimisation on an ellipse}
+An ellipse is parameterised by $u^2/a^2+v^2/b^2=1$. For an area objective $A(u,v)$, solve
+\[
+\nabla A=\lambda\nabla\left(u^2/a^2+v^2/b^2\right),
+\]
+then test the admissible endpoints and global feasible set.
 \label{eq:ellipse-area-65}
-\end{equation}
-\end{enumerate}
