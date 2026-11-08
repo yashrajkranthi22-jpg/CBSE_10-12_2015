@@ -48,7 +48,7 @@ P_Z(m)=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}\mathbf1_{\{ij=m\}}.
 \]
 Its probability-generating polynomial is
 \[
-G_Z(w)=E[w^Z]=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}w^{ij}\qquad\eqref{eq:prob-classical}.
+G_Z(w)=E[w^Z]=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}w^{ij}\qquad\eqref{eq:product-pgf}.
 \]
 Collecting equal powers gives the complete nonzero PMF:
 \[
@@ -108,7 +108,7 @@ T_J=-D^{-1}(A-D)=
 The eigenvalues are
 \[
 \lambda_{1,2}=\pm\sqrt{\frac{31}{54}},\qquad
-\rho(T_J)=\sqrt{\frac{31}{54}}\approx0.757677<1\qquad\eqref{eq:ap}.
+\rho(T_J)=\sqrt{\frac{31}{54}}\approx0.757677<1\qquad\eqref{eq:jacobi-08}.
 \]
 Thus the iteration converges for every initial vector. Starting with $x^{(0)}=(0,0)^T$, representative iterates are
 \[
@@ -144,7 +144,7 @@ Thus $p=4$ or $p=7$. The second value makes $B=C$, so it does not form a triangl
 \[
 M=\begin{pmatrix}x+5&y-7\\1&-2\end{pmatrix}.
 \]
-The fixed displacement $C-B=(1,-2)$ is nonzero, so collinearity is exactly the rank-one condition $\operatorname{rank}(M)=1$. For this $2\times2$ matrix that is equivalent to determinant zero:
+The fixed displacement $C-B=(1,-2)$ is nonzero, so collinearity is exactly the rank-one condition $\operatorname{rank}(M)=1$\qquad\eqref{eq:collinear-det}. For this $2\times2$ matrix that is equivalent to determinant zero:
 \[
 \det M=-2(x+5)-(y-7)=0.
 \]
@@ -337,10 +337,10 @@ P(K\cup Q)=\frac{E[I_K]+E[I_Q]}{1}=\frac{4+4}{52}
 =\boxed{\frac2{13}}.
 \]
 Each result follows from indicator expectations and event intersections, rather than separate outcome-by-outcome counting.
-\item The 13 spades and 4 aces overlap at the ace of spades. Thus $P=(13+4-1)/52=4/13\qquad\eqref{eq:prob-classical}, \eqref{eq:prob-union}$.
-\item There are two black kings, so $P=2/52=1/26\qquad\eqref{eq:prob-classical}$.
-\item There are four jacks and four kings. Their complement contains $52-4-4=44$ cards, so $P=44/52=11/13\qquad\eqref{eq:prob-classical}$.
-\item Kings and queens are disjoint categories, each with four cards. Thus $P=(4+4)/52=2/13\qquad\eqref{eq:prob-classical}$.
+\item The 13 spades and 4 aces overlap at the ace of spades. Thus $P=(13+4-1)/52=4/13\qquad\eqref{eq:product-pgf}, \eqref{eq:prob-union}$.
+\item There are two black kings, so $P=2/52=1/26\qquad\eqref{eq:product-pgf}$.
+\item There are four jacks and four kings. Their complement contains $52-4-4=44$ cards, so $P=44/52=11/13\qquad\eqref{eq:product-pgf}$.
+\item Kings and queens are disjoint categories, each with four cards. Thus $P=(4+4)/52=2/13\qquad\eqref{eq:product-pgf}$.
 \end{enumerate}
 
 \item Find $k$ if the triangle with vertices $(1,-1)$, $(-4,2k)$ and $(-k,-5)$ has area 24 square units.
