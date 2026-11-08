@@ -2,15 +2,10 @@
 % gadepall/cbse-papers/2015/math/12/main.tex. Obvious transcription errors are
 % corrected in the question text where the intended statement is unambiguous.
 
-\begin{enumerate}[label={},leftmargin=0pt]
-\item[]
-\begin{enumerate}[label={},leftmargin=4mm,itemsep=9pt]
-\renewcommand{\theenumi}{\thesubsection}
-
+\renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
+\begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=4mm,itemsep=9pt]
 \paragraph*{Vectors and three-dimensional geometry}
-\setcounter{enumii}{1}
-\setcounter{equation}{0}
-\item[\textbf{1.2.1}] Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
+\item Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
 \solution A vector perpendicular to both is parallel to their cross product:
 \begin{align*}
 \vec a\times\vec b&=\myvec{1\\-7\\5},&\norm{\vec a\times\vec b}&=\sqrt{75}=5\sqrt3\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
@@ -26,9 +21,8 @@ Scale this direction to the required magnitude:
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q01.py}}}
 \par\smallskip
 
-\setcounter{enumii}{5}
-\setcounter{equation}{0}
-\item[\textbf{1.2.5}] Let $\vec a=\myvec{1\\4\\2}$, $\vec b=\myvec{3\\-2\\7}$ and $\vec c=\myvec{2\\-1\\4}$. Find $\vec d$ perpendicular to both $\vec a,\vec b$ with $\vec c\cdot\vec d=27$.
+\addtocounter{enumi}{3}
+\item Let $\vec a=\myvec{1\\4\\2}$, $\vec b=\myvec{3\\-2\\7}$ and $\vec c=\myvec{2\\-1\\4}$. Find $\vec d$ perpendicular to both $\vec a,\vec b$ with $\vec c\cdot\vec d=27$.
 \solution The required direction is $\vec a\times\vec b=(32,-1,-14)^T$. Set $\vec d=t(32,-1,-14)^T$. Since $\vec c\cdot(\vec a\times\vec b)=9\qquad\eqref{eq:dot-product}$, the constraint gives $9t=27$, hence
 \[
 \vec d=\myvec{96\\-3\\-42}\qquad\eqref{eq:cross-product},\ \eqref{eq:cross-perpendicular}.
@@ -39,9 +33,7 @@ Scale this direction to the required magnitude:
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q05.py}}}
 \par\smallskip
 
-\setcounter{enumii}{6}
-\setcounter{equation}{0}
-\item[\textbf{1.2.6}] Find the shortest distance between $\vec r=(1,2,3)+\lambda(2,3,4)$ and $\vec r=(2,4,5)+\mu(4,6,8)$.
+\item Find the shortest distance between $\vec r=(1,2,3)+\lambda(2,3,4)$ and $\vec r=(2,4,5)+\mu(4,6,8)$.
 \solution The direction vectors are parallel, since $(4,6,8)=2(2,3,4)$. For parallel lines the distance is the perpendicular distance from one point to the other line:
 \[
 d=\frac{\norm{(B-A)\times\vec v}}{\norm{\vec v}},\quad B-A=(1,2,2),\quad \vec v=(2,3,4).
@@ -56,12 +48,9 @@ d=\frac{\sqrt5}{\sqrt{29}}\qquad\eqref{eq:parallel-distance}.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q06.py}}}
 \par\smallskip
 
-
-
 \paragraph*{Lines and planes}
-\setcounter{enumii}{10}
-\setcounter{equation}{0}
-\item[\textbf{1.2.10}] Find the plane through the intersection of $2x+y-z=3$ and $5x-3y+4z+9=0$ that is parallel to $\frac{x-1}{2}=\frac{y-3}{-4}=\frac{5-z}{-5}$.
+\addtocounter{enumi}{3}
+\item Find the plane through the intersection of $2x+y-z=3$ and $5x-3y+4z+9=0$ that is parallel to $\frac{x-1}{2}=\frac{y-3}{-4}=\frac{5-z}{-5}$.
 \solution A plane through the intersection has equation
 \[
 (2x+y-z-3)+\lambda(5x-3y+4z+9)=0.
@@ -80,9 +69,8 @@ so $\lambda=5/42$. Multiplying by 42 and simplifying gives
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q10.py}}}
 \par\smallskip
 
-\setcounter{enumii}{15}
-\setcounter{equation}{0}
-\item[\textbf{1.2.15}] Find where the line through $A(3,4,1)$ and $B(5,1,6)$ meets the plane through $P(2,1,2)$, $Q(3,1,0)$ and $R(4,-2,1)$.
+\addtocounter{enumi}{4}
+\item Find where the line through $A(3,4,1)$ and $B(5,1,6)$ meets the plane through $P(2,1,2)$, $Q(3,1,0)$ and $R(4,-2,1)$.
 \solution A normal to the plane is $(Q-P)\times(R-P)=(1,0,-2)\times(2,-3,-1)\propto(2,1,1)$ \qquad\eqref{eq:cross-product}. Thus the plane is $2x+y+z=7$. The line is $(3,4,1)+t(2,-3,5)$. Substitution into the plane yields $4+6t=0$, so $t=-2/3$. The intersection is
 \[
 \left(\frac53,6,-\frac73\right)\qquad\eqref{eq:line-point-direction},\ \eqref{eq:plane-normal}.
@@ -93,70 +81,40 @@ so $\lambda=5/42$. Multiplying by 42 and simplifying gives
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q15.py}}}
 \par\smallskip
 
-
 \paragraph*{Differential equations}
-\setcounter{enumii}{20}
-\setcounter{equation}{0}
-\item[\textbf{1.2.20}] Find the integrating factor of $x\log x\,\frac{dy}{dx}+y=2\log x$.
-\solution In standard form,
+\addtocounter{enumi}{8}
+\item Find the particular solution of $y'+y\tan x=3x^2+x^3\tan x$, given $y=0$ at $x=\pi/3$ and $x\ne\pi/2$.
+\solution Set $u=y-x^3$. Substitution into the original equation cancels the known polynomial forcing:
 \[
-y'+\frac{1}{x\log x}y=\frac2x.
+u'+u\tan x=0.
 \]
-Thus the integrating factor is
+Introduce the transformed independent variable $\tau=\ln(\sec x)$, for which $d\tau/dx=\tan x$. Away from $x=0$, the equation becomes the autonomous first-order system
 \[
-\exp\!\left(\int\frac{dx}{x\log x}\right)=\exp(\log|\log x|)\qquad\eqref{eq:if-20}.
+\frac{du}{d\tau}+u=0.
 \]
-On a domain where $\log x>0$, this is $\log x$ (more generally the factor can be taken as $|\log x|$ on an interval not crossing $x=1$).
-
-\setcounter{enumii}{21}
-\setcounter{equation}{0}
-\item[\textbf{1.2.21}] Find the differential equation of the family $(x-h)^2+(y-k)^2=r^2$, where $h,k$ are arbitrary constants and $r$ is fixed.
-\solution Differentiate once:
+At the initial point $x_0=\pi/3$, $\tau_0=\ln2$ and $u_0=-\pi^3/27$. We use unilateral Laplace transforms in a forward coordinate $\sigma=\tau-\tau_0\ge0$:
 \[
-(x-h)+(y-k)y'=0.
+\mathcal L\{u_\sigma\}=sU_+(s)-u_0,\qquad
+(s+1)U_+(s)=u_0.
 \]
-Differentiate again: $1+(y')^2+(y-k)y''=0$, giving $y-k=-(1+(y')^2)/y''$. Substitute this and $x-h=-(y-k)y'$ into the original circle equation. Then
+Hence
 \[
-\frac{(1+(y')^2)^3}{(y'')^2}=r^2,
-\quad(1+(y')^2)^3=r^2(y'')^2\qquad\eqref{eq:circle-family}.
+U_+(s)=-\frac{\pi^3}{27(s+1)},\qquad
+u_+(\sigma)=-\frac{\pi^3}{27}e^{-\sigma}.
 \]
-
-\setcounter{enumii}{22}
-\setcounter{equation}{0}
-\item[\textbf{1.2.22}] Show that $(x-y)\frac{dy}{dx}=x+2y$ is homogeneous and solve it.
-\solution The derivative is a ratio of homogeneous first-degree expressions. Put $y=vx$, so $y'=v+xv'$. Substitution gives
+For the side $0<x<\pi/3$, use the backward coordinate $\rho=\tau_0-\tau\ge0$. Then $du/d\rho-u=0$, and its unilateral transform gives
 \[
-x\frac{dv}{dx}=\frac{1+v+v^2}{1-v},\qquad
-\frac{1-v}{1+v+v^2}\,dv=\frac{dx}{x}\qquad\eqref{eq:homogeneous-substitution}.
+(s-1)U_-(s)=u_0,\qquad
+U_-(s)=-\frac{\pi^3}{27(s-1)},\qquad
+u_-(\rho)=-\frac{\pi^3}{27}e^\rho.
 \]
-Integrating,
+Since $e^{-\sigma}=e^\rho=2\cos x$ on the corresponding branches, both inverse transforms yield the same expression:
 \[
--\frac12\ln(v^2+v+1)+\sqrt3\tan^{-1}\!\left(\frac{2v+1}{\sqrt3}\right)=\ln|x|+C.
+u(x)=-\frac{2\pi^3}{27}\cos x,\qquad
+\boxed{y(x)=x^3-\frac{2\pi^3}{27}\cos x}.
 \]
-Using $v=y/x$ gives the implicit solution
-\[
--\tfrac12\ln\!\left(\frac{y^2}{x^2}+\frac yx+1\right)+\sqrt3\tan^{-1}\!\left(\frac{2y/x+1}{\sqrt3}\right)=\ln|x|+C.
-\]
-
-\setcounter{enumii}{24}
-\setcounter{equation}{0}
-\item[\textbf{1.2.24}] Find the particular solution of $y'+y\tan x=3x^2+x^3\tan x$, given $y=0$ at $x=\pi/3$ and $x\ne\pi/2$.
-\solution The integrating factor is $e^{\int\tan x\,dx}=\sec x$. Multiplication gives
-\[
-\frac{d}{dx}(y\sec x)=3x^2\sec x+x^3\sec x\tan x=\frac{d}{dx}(x^3\sec x)\qquad\eqref{eq:if-24}.
-\]
-So $y\sec x=x^3\sec x+C$ and $y=x^3+C\cos x$. From $y(\pi/3)=0$, $C=-2\pi^3/27$. Therefore
-\[
-y=x^3-\frac{2\pi^3}{27}\cos x.
-\]
-\par\smallskip
-\noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q24.py}}}
-\par\smallskip
-
-\setcounter{enumii}{25}
-\setcounter{equation}{0}
-\item[\textbf{1.2.25}] If $y=\log\left(\frac{x}{a+bx}\right)^x$, prove that $x^3y''=(xy'-y)^2$.
+The transformed coordinate has a turning point at $x=0$; the original equation is nonsingular there, so uniqueness extends this solution through $x=0$ to the full connected interval $-\pi/2<x<\pi/2$ containing the initial point. Direct substitution verifies the original ODE and $y(\pi/3)=0.
+\item If $y=\log\left(\frac{x}{a+bx}\right)^x$, prove that $x^3y''=(xy'-y)^2$.
 \solution Interpret the expression as $y=x\log\left(\frac{x}{a+bx}\right)$. Then
 \[
 y'=\log\left(\frac{x}{a+bx}\right)+\frac{a}{a+bx},\qquad
@@ -167,21 +125,16 @@ Thus $xy'-y=ax/(a+bx)$ and
 x^3y''=\frac{a^2x^2}{(a+bx)^2}=(xy'-y)^2.
 \]
 
-
-
-
 \paragraph*{Matrices and determinants}
-\setcounter{enumii}{28}
-\setcounter{equation}{0}
-\item[\textbf{1.2.28}] If $A=\myvec{\cos\theta&\sin\theta\\\sin\theta&\cos\theta}$, find $\det(A^n)$ for natural $n$.
+\addtocounter{enumi}{2}
+\item If $A=\myvec{\cos\theta&\sin\theta\\\sin\theta&\cos\theta}$, find $\det(A^n)$ for natural $n$.
 \solution Determinants are multiplicative, so $\det(A^n)=(\det A)^n$. Now $\det A=\cos^2\theta-\sin^2\theta=\cos2\theta$. Thus
 \[
 \det(A^n)=(\cos2\theta)^n\qquad\eqref{eq:det-power}.
 \]
 
-\setcounter{enumii}{30}
-\setcounter{equation}{0}
-\item[\textbf{1.2.30}] Find the inverse of $\myvec{0&1&2\\1&2&3\\3&1&0}$ using elementary row operations.
+\addtocounter{enumi}{1}
+\item Find the inverse of $\myvec{0&1&2\\1&2&3\\3&1&0}$ using elementary row operations.
 \solution Augment the matrix by $I$ and row-reduce to $[I\mid A^{-1}]$. The determinant is $-1$, so the matrix is invertible. The result is
 \[
 A^{-1}=\myvec{3&-2&1\\-9&6&-2\\5&-3&1}\qquad\eqref{eq:inverse-matrix}.
@@ -192,9 +145,8 @@ The product check $AA^{-1}=I$ is carried out in code.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q30.py}}}
 \par\smallskip
 
-\setcounter{enumii}{36}
-\setcounter{equation}{0}
-\item[\textbf{1.2.36}] If $a+b+c\ne0$ and $\mydet{a&b&c\\b&c&a\\c&a&b}=0$, prove that $a=b=c$.
+\addtocounter{enumi}{5}
+\item If $a+b+c\ne0$ and $\mydet{a&b&c\\b&c&a\\c&a&b}=0$, prove that $a=b=c$.
 \solution Expanding and factorising the determinant gives
 \[
 -(a+b+c)(a^2+b^2+c^2-ab-bc-ca)=0.
@@ -205,9 +157,7 @@ a^2+b^2+c^2-ab-bc-ca=\tfrac12[(a-b)^2+(b-c)^2+(c-a)^2]\qquad\eqref{eq:sum-square
 \]
 Each square must be zero, hence $a=b=c$.
 
-\setcounter{enumii}{37}
-\setcounter{equation}{0}
-\item[\textbf{1.2.37}] A trust receives Rs. 30,000 per month. Half is spent on care, and 2\% of the amount spent is collected from beneficiaries. The unspent balance is deposited in a bank. Find the monthly interest rate needed for total monthly income of Rs. 1800.
+\item A trust receives Rs. 30,000 per month. Half is spent on care, and 2\% of the amount spent is collected from beneficiaries. The unspent balance is deposited in a bank. Find the monthly interest rate needed for total monthly income of Rs. 1800.
 \solution Let $u$ be the monthly contribution collected from beneficiaries and $v$ the bank interest. Half of Rs. $30,000$ is spent, so
 \[
 u=0.02(15000)=300.
@@ -238,38 +188,28 @@ r=\frac{1500}{15000}\times100\%=10\%\text{ per month}.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q37.py}}}
 \par\smallskip
 
-
-
 \paragraph*{Integration and area}
-\setcounter{enumii}{38}
-\setcounter{equation}{0}
-\item[\textbf{1.2.38}] Evaluate $\displaystyle I=\int_0^{\pi/2}\frac{\cos^2x}{1+3\sin^2x}\,dx$.
+\item Evaluate $\displaystyle I=\int_0^{\pi/2}\frac{\cos^2x}{1+3\sin^2x}\,dx$.
 \solution Let $t=\tan x$. Then $dx=dt/(1+t^2)$ and the integral becomes
 \[
 I=\int_0^\infty\frac{dt}{(1+t^2)(1+4t^2)}=\int_0^\infty\left[-\frac1{3(1+t^2)}+\frac4{3(1+4t^2)}\right]dt.
 \]
 Evaluating the arctangent limits gives $I=-\pi/6+\pi/3=\pi/6\qquad\eqref{eq:scaled-arctan-integral-38},\ \eqref{eq:arctan-integral-38}$.
 
-\setcounter{enumii}{39}
-\setcounter{equation}{0}
-\item[\textbf{1.2.39}] Evaluate $\displaystyle\int_0^{\pi/4}\frac{\sin x+\cos x}{3+\sin2x}\,dx$.
+\item Evaluate $\displaystyle\int_0^{\pi/4}\frac{\sin x+\cos x}{3+\sin2x}\,dx$.
 \solution Set $u=\sin x-\cos x$, so $du=(\sin x+\cos x)dx$ and $\sin2x=1-u^2$. The limits become $u=-1$ and $u=0$. Hence
 \[
 I=\int_{-1}^{0}\frac{du}{4-u^2}=\left[\frac14\ln\left|\frac{2+u}{2-u}\right|\right]_{-1}^{0}=\frac14\ln3\qquad\eqref{eq:int-rational-39}.
 \]
 
-\setcounter{enumii}{40}
-\setcounter{equation}{0}
-\item[\textbf{1.2.40}] Evaluate $\displaystyle\int\frac{\sin x-x\cos x}{x(x+\sin x)}\,dx$.
+\item Evaluate $\displaystyle\int\frac{\sin x-x\cos x}{x(x+\sin x)}\,dx$.
 \solution Since
 \[
 \frac{d}{dx}\ln\left|\frac{x}{x+\sin x}\right|=\frac{\sin x-x\cos x}{x(x+\sin x)}\qquad\eqref{eq:log-derivative-40},
 \]
 the integral is $\ln\left|\frac{x}{x+\sin x}\right|+C$.
 
-\setcounter{enumii}{41}
-\setcounter{equation}{0}
-\item[\textbf{1.2.41}] Evaluate $\displaystyle\int\frac{x^3}{(x-1)(x^2+1)}\,dx$.
+\item Evaluate $\displaystyle\int\frac{x^3}{(x-1)(x^2+1)}\,dx$.
 \solution Polynomial division and partial fractions give
 \[
 \frac{x^3}{(x-1)(x^2+1)}=1+\frac1{2(x-1)}+\frac{x-1}{2(x^2+1)}\qquad\eqref{eq:partial-fractions-41}.
@@ -279,17 +219,13 @@ Therefore
 x+\frac12\ln|x-1|+\frac14\ln(x^2+1)-\frac12\tan^{-1}x+C.
 \]
 
-\setcounter{enumii}{42}
-\setcounter{equation}{0}
-\item[\textbf{1.2.42}] Find $\displaystyle\int\frac{x\,dx}{1+x\tan x}$.
+\item Find $\displaystyle\int\frac{x\,dx}{1+x\tan x}$.
 \solution Rewrite the integrand as $x\cos x/(\cos x+x\sin x)$. Since $d(\cos x+x\sin x)/dx=x\cos x$,
 \[
 \int\frac{x\,dx}{1+x\tan x}=\ln|\cos x+x\sin x|+C\qquad\eqref{eq:log-derivative-42}.
 \]
 
-\setcounter{enumii}{43}
-\setcounter{equation}{0}
-\item[\textbf{1.2.43}] Evaluate $\displaystyle\int\frac{x^4}{(x-1)(x^2+1)}\,dx$.
+\item Evaluate $\displaystyle\int\frac{x^4}{(x-1)(x^2+1)}\,dx$.
 \solution Division gives $x^4/[(x-1)(x^2+1)]=x+1+1/[(x-1)(x^2+1)]$. Decompose the last term as
 \[
 \frac1{(x-1)(x^2+1)}=\frac1{2(x-1)}-\frac{x+1}{2(x^2+1)}\qquad\eqref{eq:partial-fractions-43}.
@@ -299,25 +235,19 @@ Thus
 \frac{x^2}{2}+x+\frac12\ln|x-1|-\frac14\ln(x^2+1)-\frac12\tan^{-1}x+C.
 \]
 
-\setcounter{enumii}{44}
-\setcounter{equation}{0}
-\item[\textbf{1.2.44}] Evaluate $\displaystyle\int_0^{\pi/2}\frac{5\sin x+3\cos x}{\sin x+\cos x}\,dx$.
+\item Evaluate $\displaystyle\int_0^{\pi/2}\frac{5\sin x+3\cos x}{\sin x+\cos x}\,dx$.
 \solution Write the numerator as $4(\sin x+\cos x)+(\sin x-\cos x)$. Then
 \[
 I=4\int_0^{\pi/2}dx-\left[\ln(\sin x+\cos x)\right]_0^{\pi/2}=2\pi\qquad\eqref{eq:trig-split-44}.
 \]
 
-\setcounter{enumii}{45}
-\setcounter{equation}{0}
-\item[\textbf{1.2.45}] Find $\displaystyle\int\left[\log(\log x)+\frac1{(\log x)^2}\right]dx$.
+\item Find $\displaystyle\int\left[\log(\log x)+\frac1{(\log x)^2}\right]dx$.
 \solution Differentiate $x\log(\log x)-x/\log x$ to check that it equals the integrand. Hence
 \[
 x\log(\log x)-\frac{x}{\log x}+C,\qquad x>1\text{ for a real-valued }\log(\log x).
 \]
 
-\setcounter{enumii}{46}
-\setcounter{equation}{0}
-\item[\textbf{1.2.46}] If the area bounded by $y^2=16ax$ and $y=4mx$ is $a^2/2$, find $m$.
+\item If the area bounded by $y^2=16ax$ and $y=4mx$ is $a^2/2$, find $m$.
 \solution Use the upper branch $y=4\sqrt{ax}$. At an intersection with $y=4mx$,
 \[
 4\sqrt{ax}=4mx\quad\Longrightarrow\quad x=0\quad\text{or}\quad x=\frac{a}{m^2}.
@@ -339,9 +269,7 @@ The graph uses $a=1$ for visibility; the value of $m$ is independent of that sca
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q46.py}}}
 \par\smallskip
 
-\setcounter{enumii}{47}
-\setcounter{equation}{0}
-\item[\textbf{1.2.47}] Find the area of $\{(x,y):x^2+y^2\le4,\;x+y\ge2\}$ by integration.
+\item Find the area of $\{(x,y):x^2+y^2\le4,\;x+y\ge2\}$ by integration.
 \solution The chord $x+y=2$ meets the circle at $(0,2)$ and $(2,0)$. For $0\le x\le2$, the upper circle boundary is $y=\sqrt{4-x^2}$ and the line is $y=2-x$. Therefore
 \begin{align*}
 A&=\int_0^2\left(\sqrt{4-x^2}-(2-x)\right)dx\\
@@ -356,41 +284,47 @@ The graph shades the circular segment above the chord.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q47.py}}}
 \par\smallskip
 
-
 \paragraph*{Functions and relations}
-\setcounter{enumii}{48}
-\setcounter{equation}{0}
-\item[\textbf{1.2.48}] Discuss continuity and differentiability of $f(x)=|x|+|x-1|$ on $(-1,2)$.
-\solution First split the absolute values at $x=0$ and $x=1$:
+\item Discuss continuity and differentiability of $f(x)=|x|+|x-1|$ on $(-1,2)$.
+\solution Interpret $f$ as a piecewise-linear static characteristic. With $r^+=\max(r,0)$,
 \[
-f(x)=\begin{cases}
+f(x)=1+2(-x)^++2(x-1)^+.
+\]
+Resolving the two switching points gives
+\[
+f(x)=
+\begin{cases}
 1-2x,&-1<x<0,\\
 1,&0\le x<1,\\
 2x-1,&1\le x<2.
 \end{cases}
 \]
-\textbf{Continuity.} At $x=0$, the left limit, right limit and function value are all $1$. The same is true at $x=1$. Each branch is continuous on its interval; hence $f$ is continuous throughout $(-1,2)$.
+At $x=0$ and $x=1$, the adjacent branches agree and equal $1$; thus the characteristic is continuous on $(-1,2)$.
 
-\textbf{Differentiability at $x=0$.} The left-hand slope is $-2$ and the right-hand slope is $0$:
+On each smooth segment, the incremental gain is constant:
 \[
-f'_-(0)=-2\ne0=f'_+(0).
+f'(x)=
+\begin{cases}
+-2,&-1<x<0,\\
+0,&0<x<1,\\
+2,&1<x<2.
+\end{cases}
 \]
-Thus $f$ is not differentiable at $0$.
-
-\textbf{Differentiability at $x=1$.} The left-hand slope is $0$ and the right-hand slope is $2$ (see the one-sided derivative criterion \eqref{eq:continuity-differentiability-48}):
+At the switching points the one-sided gains disagree:
 \[
+f'_-(0)=-2\ne0=f'_+(0),\qquad
 f'_-(1)=0\ne2=f'_+(1).
 \]
-Thus $f$ is not differentiable at $1$. At other points the function is linear and differentiable. The plot shows these one-sided slopes: differentiability requires equal one-sided slopes, and the two corners fail that test.
-\begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figs/Q48_Differentiability.png}\end{figure}
-\par\smallskip
-\noindent\textbf{Code reference -}
-\par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q48.py}}}
-\par\smallskip
-
-\setcounter{enumii}{49}
-\setcounter{equation}{0}
-\item[\textbf{1.2.49}] On $\mathbb R$, define $(a,b)\in R$ when $a-b+\sqrt3$ is irrational. Determine whether $R$ is reflexive, symmetric and transitive.
+The classical derivative therefore fails exactly at $0$ and $1$. The slope is nondecreasing across the breakpoints, so the characteristic is convex. Its Clarke generalized derivatives are
+\[
+\partial_C f(0)=[-2,0],\qquad \partial_C f(1)=[0,2].
+\]
+Since every segment has slope magnitude at most $2$, the complete piecewise characteristic is globally Lipschitz with the sharp constant
+\[
+|f(x_2)-f(x_1)|\le2|x_2-x_1|,\qquad x_1,x_2\in(-1,2).
+\]
+Thus it is continuous and bounded on the stated interval, but nonsmooth at the two switching points.
+\item On $\mathbb R$, define $(a,b)\in R$ when $a-b+\sqrt3$ is irrational. Determine whether $R$ is reflexive, symmetric and transitive.
 \solution We test each property separately using the criteria in \eqref{eq:relation-properties-49}.
 
 \textbf{1. Reflexive.} Reflexivity requires $(a,a)\in R$ for every real $a$. Substituting $b=a$ gives
@@ -421,14 +355,10 @@ which is rational. Thus $(a,c)\notin R$, and $R$ is not transitive.
 
 \textbf{Conclusion.} $R\text{ is reflexive, but neither symmetric nor transitive.}$
 
-\setcounter{enumii}{50}
-\setcounter{equation}{0}
-\item[\textbf{1.2.50}] On $\mathbb R\times\mathbb R$, define $(a,b)*(c,d)=(a+c,b+d)$. Prove commutativity and associativity, and find the identity and the inverse of $(3,-5)$.
+\item On $\mathbb R\times\mathbb R$, define $(a,b)*(c,d)=(a+c,b+d)$. Prove commutativity and associativity, and find the identity and the inverse of $(3,-5)$.
 \solution Addition of real components is commutative and associative, so $*$ has both properties. Its identity is $(0,0)$, since $(a,b)*(0,0)=(a,b)$. The inverse of $(3,-5)$ is $(-3,5)$\qquad\eqref{eq:componentwise-operation-50}.
 
-\setcounter{enumii}{51}
-\setcounter{equation}{0}
-\item[\textbf{1.2.51}] On $\{0,1,2,3,4,5,6\}$ define $a*b=a+b$ if $a+b<7$, and $a*b=a+b-7$ otherwise. Give the operation table and show that 0 is the identity and $7-a$ is the inverse for nonzero $a$.
+\item On $\{0,1,2,3,4,5,6\}$ define $a*b=a+b$ if $a+b<7$, and $a*b=a+b-7$ otherwise. Give the operation table and show that 0 is the identity and $7-a$ is the inverse for nonzero $a$.
 \solution This is addition modulo 7 \eqref{eq:modular-operation-51}. Its table is
 \[
 \begin{array}{c|rrrrrrr}
@@ -444,9 +374,7 @@ which is rational. Thus $(a,c)\notin R$, and $R$ is not transitive.
 \]
 Row and column 0 reproduce every element, hence 0 is the identity. For each $a=1,\ldots,6$, $a+(7-a)=7\equiv0\pmod7$, so $7-a$ is its inverse.
 
-\setcounter{enumii}{52}
-\setcounter{equation}{0}
-\item[\textbf{1.2.52}] Find any point of discontinuity of $f(x)=x-|x-x^2|$, $x\in[-1,1]$.
+\item Find any point of discontinuity of $f(x)=x-|x-x^2|$, $x\in[-1,1]$.
 \solution On $[-1,1]$, $x-x^2=x(1-x)$, whose sign changes only at 0. Thus
 \[
 f(x)=\begin{cases}2x-x^2,&-1\le x\le0,\\x^2,&0\le x\le1.\end{cases}
@@ -458,11 +386,8 @@ Both pieces take value 0 at $x=0$ and meet continuously \eqref{eq:continuity-lim
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q52.py}}}
 \par\smallskip
 
-
 \paragraph*{Probability}
-\setcounter{enumii}{53}
-\setcounter{equation}{0}
-\item[\textbf{1.2.53}] A man steps forward with probability $0.4$ and backward with probability $0.6$. Find the probability that after 5 steps he is one step away from his starting point.
+\item A man steps forward with probability $0.4$ and backward with probability $0.6$. Find the probability that after 5 steps he is one step away from his starting point.
 \solution Let $k$ be the number of forward steps. The net displacement after five steps is
 \[
 D=k-(5-k)=2k-5.
@@ -498,9 +423,7 @@ The coefficient of $z^1$ is $0.2304$ and the coefficient of $z^{-1}$ is $0.3456$
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q53.py}}}
 \par\smallskip
 
-\setcounter{enumii}{54}
-\setcounter{equation}{0}
-\item[\textbf{1.2.54}] A girl throws a die. If it shows 1 or 2, she tosses a coin three times; otherwise she tosses it once. Given that exactly one tail was obtained, find the probability that the die showed 3, 4, 5 or 6.
+\item A girl throws a die. If it shows 1 or 2, she tosses a coin three times; otherwise she tosses it once. Given that exactly one tail was obtained, find the probability that the die showed 3, 4, 5 or 6.
 \solution Let $A$ mean that the die shows 1 or 2, $B$ mean that it shows 3, 4, 5 or 6, and $E$ mean that exactly one tail is observed.
 
 \textbf{Step 1: Find the prior probabilities.}
@@ -530,9 +453,7 @@ P(B\mid E)=\frac{P(E\mid B)P(B)}{P(E)}
 =\frac{(1/2)(2/3)}{11/24}=\frac8{11}\qquad\eqref{eq:bayes-54}.
 \]
 
-\setcounter{enumii}{55}
-\setcounter{equation}{0}
-\item[\textbf{1.2.55}] An urn contains 5 red and 2 black balls. Two balls are drawn without replacement. Let $X$ be the number of black balls. State its possible values and find its mean and variance.
+\item An urn contains 5 red and 2 black balls. Two balls are drawn without replacement. Let $X$ be the number of black balls. State its possible values and find its mean and variance.
 \solution The possible values are $0,1,2$. The probabilities from the hypergeometric model are
 \[
 P(X=0)=\frac{10}{21},\quad P(X=1)=\frac{10}{21},\quad P(X=2)=\frac1{21}\qquad\eqref{eq:hypergeometric-55}.
@@ -547,9 +468,7 @@ So $E[X]=0(10/21)+1(10/21)+2(1/21)=4/7$. Also $E[X^2]=10/21+4/21=2/3$, hence
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q55.py}}}
 \par\smallskip
 
-\setcounter{enumii}{56}
-\setcounter{equation}{0}
-\item[\textbf{1.2.56}] In 3 trials of a binomial distribution, the probability of exactly 2 successes is 9 times the probability of 3 successes. Find the success probability.
+\item In 3 trials of a binomial distribution, the probability of exactly 2 successes is 9 times the probability of 3 successes. Find the success probability.
 \solution Let the success probability be $p$ and $q=1-p$. The probability-generating polynomial is
 \[
 B(z)=(q+pz)^3=q^3+3pq^2z+3p^2qz^2+p^3z^3.
@@ -577,9 +496,7 @@ The polynomial's coefficients directly identify the two probabilities; no separa
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q56.py}}}
 \par\smallskip
 
-\setcounter{enumii}{57}
-\setcounter{equation}{0}
-\item[\textbf{1.2.57}] An urn contains 3 red and 5 black balls. A ball is drawn, its colour recorded and returned, and 2 more balls of that colour are added. Then two balls are drawn without replacement. Find the probability both are red.
+\item An urn contains 3 red and 5 black balls. A ball is drawn, its colour recorded and returned, and 2 more balls of that colour are added. Then two balls are drawn without replacement. Find the probability both are red.
 \solution If the first ball is red, with probability $3/8$, the urn becomes 5 red and 5 black; the chance of two reds is $(5/10)(4/9)=2/9$. If the first ball is black, with probability $5/8$, the urn becomes 3 red and 7 black; the chance of two reds is $(3/10)(2/9)=1/15$. Thus
 \[
 P(\text{two red})=\frac38\frac29+\frac58\frac1{15}=\frac18\qquad\eqref{eq:total-probability-57}.
@@ -589,25 +506,8 @@ P(\text{two red})=\frac38\frac29+\frac58\frac1{15}=\frac18\qquad\eqref{eq:total-
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q57.py}}}
 \par\smallskip
 
-\setcounter{enumii}{58}
-\setcounter{equation}{0}
-\item[\textbf{1.2.58}] A man speaks truth 3 out of 5 times. He throws a die and reports that it is 4. Find the probability that it actually is 4.
-\solution Let $A$ be the event that the die shows 4, and $R$ the event that he reports 4. Assuming that when he lies each of the five wrong numbers is equally likely, $P(A)=1/6$, $P(R|A)=3/5$, and $P(R|A^c)=(2/5)(1/5)=2/25$. Hence
-\[
-\begin{aligned}
-P(A\mid R)
-&=\frac{P(A\cap R)}{P(R)}
-=\frac{P(R\mid A)P(A)}{P(R)}\\
-&=\frac{(1/6)(3/5)}{(1/6)(3/5)+(5/6)(2/25)}\\
-&=\frac35\qquad\eqref{eq:conditional-probability-58},\ \eqref{eq:bayes-58-2}.
-\end{aligned}
-\]
-
-
-\paragraph*{Linear programming}
-\setcounter{enumii}{59}
-\setcounter{equation}{0}
-\item[\textbf{1.2.59}] Solve graphically: minimise $z=3x+5y$ subject to $x+2y\ge10$, $x+y\ge6$, $3x+y\ge8$, $x,y\ge0$.
+\addtocounter{enumi}{1}
+\item Solve graphically: minimise $z=3x+5y$ subject to $x+2y\ge10$, $x+y\ge6$, $3x+y\ge8$, $x,y\ge0$.
 \solution The lower-boundary vertices are $(0,8)$, $(1,5)$, $(2,4)$ and $(10,0)$. Their objective values are respectively $40$, $28$, $26$ and $30$. The smallest value is attained at $(2,4)$:
 \[
 x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-59}.
@@ -618,9 +518,7 @@ x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-59}.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q59.py}}}
 \par\smallskip
 
-\setcounter{enumii}{60}
-\setcounter{equation}{0}
-\item[\textbf{1.2.60}] A dealer has Rs. 57,600 and space for at most 20 sewing machines. An electronic machine costs Rs. 3600 and earns Rs. 220 profit; a manual machine costs Rs. 2400 and earns Rs. 180 profit. How should he invest to maximise profit?
+\item A dealer has Rs. 57,600 and space for at most 20 sewing machines. An electronic machine costs Rs. 3600 and earns Rs. 220 profit; a manual machine costs Rs. 2400 and earns Rs. 180 profit. How should he invest to maximise profit?
 \solution Let $x$ and $y$ be electronic and manual machines. The constraints are $3x+2y\le48$, $x+y\le20$, $x,y\ge0$, and profit is $P=220x+180y$. At the intersection of the two active limits, $3x+2y=48$ and $x+y=20$, we get $(x,y)=(8,12)$ and $P=3920$. The axis vertices give profits Rs. 3520 and Rs. 3600. Therefore the best feasible integer plan is
 \[
 8\text{ electronic and }12\text{ manual machines; maximum profit Rs. }3920\qquad\eqref{eq:lpp-60}.
@@ -631,13 +529,9 @@ x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-59}.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q60.py}}}
 \par\smallskip
 
-
-
-
 \paragraph*{Coordinate geometry and optimisation}
-\setcounter{enumii}{64}
-\setcounter{equation}{0}
-\item[\textbf{1.2.64}] A tangent to $x^2+y^2=4$ at a point in the first quadrant meets the positive axes at $A$ and $B$. Find the minimum of $OA+OB$.
+\addtocounter{enumi}{3}
+\item A tangent to $x^2+y^2=4$ at a point in the first quadrant meets the positive axes at $A$ and $B$. Find the minimum of $OA+OB$.
 \solution At the point $(2\cos\theta,2\sin\theta)$, the tangent is $x\cos\theta+y\sin\theta=2$. Thus $OA=2\sec\theta$ and $OB=2\csc\theta$. By symmetry (or differentiating), their sum is minimised when $\sin\theta=\cos\theta=1/\sqrt2$. Hence
 \[
 \min(OA+OB)=2(\sqrt2+\sqrt2)=4\sqrt2\qquad\eqref{eq:circle-tangent-64}.
@@ -648,9 +542,7 @@ x=2,\ y=4,\ z_{\min}=26\qquad\eqref{eq:lpp-59}.
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q64.py}}}
 \par\smallskip
 
-\setcounter{enumii}{65}
-\setcounter{equation}{0}
-\item[\textbf{1.2.65}] Find the maximum area of an isosceles triangle inscribed in $\frac{x^2}{16}+\frac{y^2}{9}=1$ with its vertex at an end of the major axis.
+\item Find the maximum area of an isosceles triangle inscribed in $\frac{x^2}{16}+\frac{y^2}{9}=1$ with its vertex at an end of the major axis.
 \solution By symmetry, take the fixed vertex as $(4,0)$ and the other two vertices as $(u,v)$ and $(u,-v)$. From the ellipse, $v=3\sqrt{1-u^2/16}$. The area is
 \[
 A(u)=v(4-u)=3(4-u)\sqrt{1-u^2/16}.
@@ -664,6 +556,5 @@ A_{\max}=6\left(\frac{3\sqrt3}{2}\right)=9\sqrt3\qquad\eqref{eq:ellipse-area-65}
 \noindent\textbf{Code reference -}
 \par\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\texttt{codes/Q65.py}}}
 \par\smallskip
-\end{enumerate}
 \end{enumerate}
 
