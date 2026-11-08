@@ -1,0 +1,290 @@
+\paragraph*{Formulae referenced in the problems}\par
+\begin{enumerate}[label=\theenumi,leftmargin=4mm,itemsep=4pt]
+\setcounter{enumi}{0}\item
+
+\begin{equation}
+\vec a\times\vec b=
+\begin{pmatrix}
+a_2b_3-a_3b_2\\
+a_3b_1-a_1b_3\\
+a_1b_2-a_2b_1
+\end{pmatrix}.
+\label{eq:cross-product}
+\end{equation}
+\begin{equation}
+\vec a\times\vec b\perp\vec a,\qquad
+\vec a\times\vec b\perp\vec b.
+\label{eq:cross-perpendicular}
+\end{equation}
+
+\setcounter{enumi}{4}\item
+
+\begin{equation}
+\vec a\cdot\vec b=a_1b_1+a_2b_2+a_3b_3,\qquad
+\vec a\perp\vec b\iff\vec a\cdot\vec b=0.
+\label{eq:dot-product}
+\end{equation}
+
+\setcounter{enumi}{5}\item
+
+\begin{equation}
+d(\text{parallel lines})=
+\frac{\norm{(\vec b-\vec a)\times\vec v}}{\norm{\vec v}}.
+\label{eq:parallel-distance}
+\end{equation}
+
+\setcounter{enumi}{9}\item
+
+\begin{align}
+\text{line parallel to plane}&\iff \vec d\cdot\vec n=0.
+\label{eq:line-plane-parallel}\\
+\text{plane through }\vec r_0\text{ with normal }\vec n:\quad
+\vec n\cdot(\vec r-\vec r_0)&=0.
+\label{eq:plane-normal}
+\end{align}
+
+\setcounter{enumi}{14}\item
+
+\begin{equation}
+\vec r=\vec A+t\vec d
+\quad\text{for a line through }\vec A\text{ with direction }\vec d.
+\label{eq:line-point-direction}
+\end{equation}
+
+\setcounter{enumi}{21}\item
+
+\begin{equation}
+y=vx\quad\Longrightarrow\quad y'=v+xv'
+\quad\text{(homogeneous first-order ODE)}.
+\label{eq:homogeneous-substitution}
+\end{equation}
+
+\setcounter{enumi}{23}\item
+
+\begin{equation}
+\mu(x)=e^{\int P(x)\,dx}.
+\label{eq:if-24}
+\end{equation}
+
+\setcounter{enumi}{24}\item
+
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\label{eq:log-derivative-25}
+\end{equation}
+
+\setcounter{enumi}{27}\item
+
+\begin{equation}
+\det(AB)=\det(A)\det(B),\qquad
+\det(A^n)=(\det A)^n.
+\label{eq:det-power}
+\end{equation}
+
+\setcounter{enumi}{29}\item
+
+\begin{equation}
+A^{-1}=\frac{\operatorname{adj}(A)}{\det A},\qquad \det A\ne0.
+\label{eq:inverse-matrix}
+\end{equation}
+
+\setcounter{enumi}{35}\item
+
+\begin{equation}
+a^2+b^2+c^2-ab-bc-ca
+=\frac12\bigl((a-b)^2+(b-c)^2+(c-a)^2\bigr).
+\label{eq:sum-squares}
+\end{equation}
+
+\setcounter{enumi}{36}\item
+
+\begin{equation}
+[A\mid\vec b]\xrightarrow{\text{elementary row operations}}[I\mid\vec x]
+\quad\text{(Gaussian elimination)}.
+\label{eq:gaussian-elimination}
+\end{equation}
+
+\setcounter{enumi}{37}\item
+
+\begin{align}
+\int\frac{du}{a^2+u^2}&=\frac1a\tan^{-1}\left(\frac{u}{a}\right)+C
+\label{eq:scaled-arctan-integral-38}\\
+\int\frac{du}{1+u^2}&=\tan^{-1}u+C.
+\label{eq:arctan-integral-38}
+\end{align}
+
+\setcounter{enumi}{38}\item
+
+\begin{equation}
+\int\frac{du}{a^2-u^2}
+=\frac1{2a}\log\left|\frac{a+u}{a-u}\right|+C.
+\label{eq:int-rational-39}
+\end{equation}
+
+\setcounter{enumi}{39}\item
+
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\label{eq:log-derivative-40}
+\end{equation}
+
+\setcounter{enumi}{40}\item
+
+\begin{equation}
+\frac{P(x)}{(x-a)(x^2+b^2)}
+=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}.
+\label{eq:partial-fractions-41}
+\end{equation}
+
+\setcounter{enumi}{41}\item
+
+\begin{equation}
+\frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
+\label{eq:log-derivative-42}
+\end{equation}
+
+\setcounter{enumi}{42}\item
+
+\begin{equation}
+\frac{P(x)}{(x-a)(x^2+b^2)}
+=Q(x)+\frac{A}{x-a}+\frac{Bx+C}{x^2+b^2}.
+\label{eq:partial-fractions-43}
+\end{equation}
+
+\setcounter{enumi}{43}\item
+
+\begin{equation}
+\frac{5\sin x+3\cos x}{\sin x+\cos x}
+=4+\frac{\sin x-\cos x}{\sin x+\cos x}.
+\label{eq:trig-split-44}
+\end{equation}
+
+\setcounter{enumi}{45}\item
+
+\begin{equation}
+A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.
+\label{eq:area-between-46}
+\end{equation}
+
+\setcounter{enumi}{46}\item
+
+\begin{equation}
+A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.
+\label{eq:area-between-47}
+\end{equation}
+
+\setcounter{enumi}{47}\item
+
+\begin{equation}
+\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x),\qquad
+f'_{-}(a)=f'_{+}(a)=f'(a).
+\label{eq:continuity-differentiability-48}
+\end{equation}
+
+\setcounter{enumi}{48}\item
+
+\begin{equation}
+\begin{aligned}
+\text{reflexive: }&(a,a)\in R,\\
+\text{symmetric: }&(a,b)\in R\Rightarrow(b,a)\in R,\\
+\text{transitive: }&(a,b),(b,c)\in R\Rightarrow(a,c)\in R.
+\end{aligned}
+\label{eq:relation-properties-49}
+\end{equation}
+
+\setcounter{enumi}{49}\item
+
+\begin{equation}
+\text{For componentwise addition on }\mathbb R^2:\quad
+e=(0,0),\quad(a,b)^{-1}=(-a,-b).
+\label{eq:componentwise-operation-50}
+\end{equation}
+
+\setcounter{enumi}{50}\item
+
+\begin{equation}
+a*b=(a+b)\bmod n,\quad
+0\text{ is the identity},\quad
+(-a)\bmod n\text{ is the additive inverse}.
+\label{eq:modular-operation-51}
+\end{equation}
+
+\setcounter{enumi}{51}\item
+
+\begin{equation}
+\lim_{x\to a^-}f(x)=f(a)=\lim_{x\to a^+}f(x).
+\label{eq:continuity-limits-52}
+\end{equation}
+
+\setcounter{enumi}{52}\item
+
+\begin{align}
+X\sim\operatorname{Bin}(n,p):\quad
+P(X=k)&=\binom nkp^k(1-p)^{n-k}.
+\label{eq:binomial-53}\\
+G(z)&=\sum_jP(D=j)z^j.
+\label{eq:walk-pgf}
+\end{align}
+
+\setcounter{enumi}{53}\item
+
+\begin{align}
+P(A\mid E)&=\frac{P(E\mid A)P(A)}{P(E)}.
+\label{eq:bayes-54}\\
+P(E)&=\sum_iP(E\mid A_i)P(A_i).
+\label{eq:total-probability-54}
+\end{align}
+
+\setcounter{enumi}{54}\item
+
+\begin{align}
+E[X]&=\sum_x xP(X=x),\quad
+\operatorname{Var}(X)=E[X^2]-E[X]^2.
+\label{eq:mean-variance-55}\\
+P(X=k)&=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn}.
+\label{eq:hypergeometric-55}
+\end{align}
+
+\setcounter{enumi}{55}\item
+
+\begin{equation}
+P(X=k)=\binom nkp^k(1-p)^{n-k}.
+\label{eq:binomial-56}
+\end{equation}
+
+\setcounter{enumi}{56}\item
+
+\begin{equation}
+P(E)=\sum_iP(E\mid A_i)P(A_i).
+\label{eq:total-probability-57}
+\end{equation}
+
+\setcounter{enumi}{58}\item
+
+\begin{equation}
+\text{Evaluate the objective at each feasible corner; an optimum occurs at a feasible vertex.}
+\label{eq:lpp-59}
+\end{equation}
+
+\setcounter{enumi}{59}\item
+
+\begin{equation}
+\text{LPP optimum}=\text{best objective value among feasible vertices}.
+\label{eq:lpp-60}
+\end{equation}
+
+\setcounter{enumi}{63}\item
+
+\begin{equation}
+x\cos\theta+y\sin\theta=r.
+\label{eq:circle-tangent-64}
+\end{equation}
+
+\setcounter{enumi}{64}\item
+
+\begin{equation}
+\text{ellipse point }(a\cos t,b\sin t),\qquad
+A_{\triangle}=\frac12 bh.
+\label{eq:ellipse-area-65}
+\end{equation}
+\end{enumerate}
