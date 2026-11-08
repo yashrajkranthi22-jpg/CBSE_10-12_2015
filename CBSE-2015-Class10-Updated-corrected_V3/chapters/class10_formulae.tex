@@ -1,18 +1,20 @@
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
 \begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=0pt,itemsep=6pt]
 \item
-\paragraph*{Quadratic equations}
-For $ax^2+bx+c=0$, where $a\ne0$, the discriminant and roots are
-
+\paragraph*{Nonlinear parameter identification and root multiplicity}
+For $P_p(x)=px^2-2\sqrt5\,px+15$, the repeated-root constraint is
 \begin{equation}
-\Delta=b^2-4ac,\qquad x=\frac{-b\pm\sqrt{\Delta}}{2a}.
+F(p)=\Delta(p)=20p^2-60p=0,\qquad
+\Delta=b^2-4ac.
 \label{eq:quad-general}
 \end{equation}
-Equal real roots occur when $\Delta=0$. Always check that the leading coefficient is nonzero before treating an expression as a quadratic equation.
-
-\paragraph*{Right-triangle trigonometry and motion}
-For an angle $\theta$ in a right triangle,
-
+Newton--Raphson on the parameter equation uses
+\begin{equation}
+p_{n+1}=p_n-\frac{20p_n(p_n-3)}{40p_n-60}.
+\label{eq:newton-multiplicity-01}
+\end{equation}
+For a double root $x_\star$ of $g(x)=c(x-x_\star)^2$, Newton's error obeys
+$e_{n+1}=e_n/2$, so convergence is linear rather than quadratic.
 \item
 \begin{equation}
 \tan\theta=\frac{\text{opposite}}{\text{adjacent}},\quad
@@ -27,16 +29,14 @@ Useful values are $\tan30^\circ=1/\sqrt3$, $\tan60^\circ=\sqrt3$, $\cot30^\circ=
 For equally likely outcomes,
 
 \item
-\begin{equation}
-P(E)=\frac{n(E)}{n(S)}.
+\paragraph*{Push-forward product distribution}
+For independent $X,Y\sim\operatorname{Unif}\{1,\ldots,6\}$ and $Z=XY$,
+\begin{align}
+P_Z(m)&=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}\mathbf1_{\{ij=m\}},\\
+G_Z(w)&=E[w^Z]=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}w^{ij}.
 \label{eq:prob-classical}
-\end{equation}
-When two different dice are tossed, there are $6\cdot6=36$ equally likely ordered outcomes; exchanging the dice generally gives a different outcome.
-
-\paragraph*{Circles and tangents}
-A radius is perpendicular to the tangent at the point of contact. Tangents drawn from the same external point have equal lengths. The angle between a tangent and a chord equals the angle in the alternate segment; the angle at the centre is twice the angle at the circumference standing on the same arc.
-
-The tangent--chord theorem is
+\end{align}
+The coefficient $[w^m]G_Z(w)$ is $P(Z=m)$, and $G_Z(1)=1$ verifies total probability.
 \item
 \begin{equation}
 \theta_{\mathrm{tangent-chord}}=\theta_{\mathrm{alternate\ segment}}.\label{eq:tangent-chord}
@@ -59,16 +59,15 @@ For first term $a$ and common difference $d$,
 
 \addtocounter{enumi}{1}
 \item
+\paragraph*{Jacobi iteration and convergence}
+For $Ax=b$, $A=D+R$ with diagonal $D$, Jacobi iteration is
 \begin{equation}
-t_n=a+(n-1)d,\qquad
-S_n=\frac n2\bigl(2a+(n-1)d\bigr)=\frac n2(a+t_n).
+x^{(k+1)}=-D^{-1}Rx^{(k)}+D^{-1}b,\qquad
+\rho(-D^{-1}R)<1\Longrightarrow x^{(k)}\to A^{-1}b.
 \label{eq:ap}
 \end{equation}
-If the unknown parameters satisfy two linear equations, write them as an augmented matrix and use Gaussian elimination (elementary row operations) to solve the system.
-
-\paragraph*{Coordinate geometry as linear algebra}
-Two nonzero vectors are perpendicular exactly when their inner product is zero.
-For a right angle at $B$,
+The residual $r^{(k)}=b-Ax^{(k)}$ and the increment
+$\|x^{(k+1)}-x^{(k)}\|_\infty$ provide numerical stopping checks.
 \item
 \begin{equation}
 \overrightarrow{BA}\cdot\overrightarrow{BC}=0.\label{eq:right-angle-dot}
@@ -77,21 +76,26 @@ For a right angle at $B$,
 For $A(x_1,y_1)$, $B(x_2,y_2)$, and $C(x_3,y_3)$, collinearity is equivalent to
 
 \item
+\paragraph*{Rank and collinearity}
+For two displacement rows $u,v$ in $\mathbb R^2$, the coordinate matrix
+\[
+M=\begin{pmatrix}u_1&u_2\\v_1&v_2\end{pmatrix}
+\]
+has rank one exactly when the nonzero row vectors are linearly dependent:
 \begin{equation}
-\mydet{x_2-x_1&y_2-y_1\\x_3-x_1&y_3-y_1}=0.
+\operatorname{rank}(M)=1\iff\det M=0.
 \label{eq:collinear-det}
 \end{equation}
-
-\paragraph*{Arithmetic progressions}
-
-For an arithmetic progression,
 \item
-\begin{equation}
- t_n=a+(n-1)d,\qquad S_n=\frac n2\left(2a+(n-1)d\right).\label{eq:ap-question-11}
-\end{equation}
-
-Uniform motion obeys
-
+\paragraph*{Unilateral $Z$-transform of an arithmetic progression}
+For the causal sequence $x[n]=a+(n-1)d$, $n\ge1$,
+\begin{align}
+X(z)&=\mathcal Z_u\{x[n]\}
+=\frac{az^{-1}}{1-z^{-1}}+\frac{dz^{-2}}{(1-z^{-1})^2},
+\label{eq:ap-question-11}\\
+S(z)&=\frac{X(z)}{1-z^{-1}}
+\end{align}
+is the transform of its causal accumulated sum.
 \addtocounter{enumi}{1}
 \item
 \begin{equation}
@@ -121,13 +125,14 @@ If $P$ divides $AB$ internally in the ratio $AP:PB=m:n$, then
 
 If $E_1,E_2,E_3$ form an exhaustive set of mutually exclusive events, then
 \item
+\paragraph*{Inverse probability and integer feasibility}
+For exhaustive, disjoint colour classes,
 \begin{equation}
-P(E_1)+P(E_2)+P(E_3)=1.\label{eq:three-events}
+P(R)+P(B)+P(O)=1,\qquad
+R=\frac N4,\quad B=\frac N3,\quad O=N-R-B.
+\label{eq:three-events}
 \end{equation}
-
-\paragraph*{Areas and solids}
-For a sector of angle $\theta$ degrees and radius $r$,
-
+Integer counts require $N$ to satisfy all divisibility and nonnegativity constraints.
 \item
 \begin{equation}
 A_{\mathrm{sector}}=\frac{\theta}{360^\circ}\pi r^2,\qquad
@@ -166,24 +171,26 @@ x=h\cot\theta.\label{eq:horizontal-range}
 For events $A$ and $B$,
 
 \item
-\begin{equation}
-P(A\cup B)=P(A)+P(B)-P(A\cap B),\qquad P(A^c)=1-P(A).
+\paragraph*{Indicator variables and inclusion--exclusion}
+For event indicators,
+\begin{align}
+I_{A\cup B}&=I_A+I_B-I_AI_B,\\
+P(A\cup B)&=E[I_A]+E[I_B]-E[I_AI_B].
 \label{eq:prob-union}
-\end{equation}
-
-\paragraph*{Coordinate geometry as linear algebra}
-
-The triangle area is half the absolute determinant:
-
+\end{align}
+For disjoint events the product term is zero; a complement indicator is $1-I_A$.
 \item
+\paragraph*{Determinant area as a nonlinear parameter constraint}
+For vertices $P_1,P_2,P_3\in\mathbb R^2$,
 \begin{equation}
-[ABC]=\frac12\left|\mydet{x_2-x_1&y_2-y_1\\x_3-x_1&y_3-y_1}\right|.
+2A=\left|\det\begin{pmatrix}
+x_2-x_1&y_2-y_1\\
+x_3-x_1&y_3-y_1
+\end{pmatrix}\right|.
 \label{eq:triangle-det}
 \end{equation}
-
-\paragraph*{Areas and solids}
-
-A shaded region between an outer and an inner shape has area
+When the coordinates depend on a parameter, solve the resulting determinant
+equation and check that each candidate gives a nonzero determinant.
 \item
 \begin{equation}
 A_{\mathrm{shaded}}=A_{\mathrm{outer}}-A_{\mathrm{inner}}.\label{eq:shaded-area}
