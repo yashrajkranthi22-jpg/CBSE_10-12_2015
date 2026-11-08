@@ -1,30 +1,28 @@
-"""Plot the Q15 PMF from the probabilities derived in the written solution."""
+"""Check the inverse-probability model and integer-count feasibility for C10-Q15."""
+from fractions import Fraction
+from math import lcm
 
-import matplotlib.pyplot as plt
+p_red = Fraction(1, 4)
+p_blue = Fraction(1, 3)
+orange_count = 10
 
+# The denominator of each prescribed probability constrains the integer total.
+required_multiple = lcm(p_red.denominator, p_blue.denominator)
+assert required_multiple == 12
 
-# Theoretical probabilities: red = 1/4, blue = 1/3, and orange = 5/12.
-# The orange probability is the remainder 1 - 1/4 - 1/3 = 5/12.
-categories = ["Red", "Blue", "Orange"]
-# These values come from the cases counted in the written solution.
-probabilities = [1 / 4, 1 / 3, 5 / 12]
-fractions = [r"$1/4$", r"$1/3$", r"$5/12$"]
+# Probability conservation determines the total exactly.
+orange_probability = 1 - p_red - p_blue
+total = Fraction(orange_count, 1) / orange_probability
+assert total.denominator == 1
+N = int(total)
 
-# Keep the plotting setup separate so the labels and limits are easy to adjust.
-fig, ax = plt.subplots(figsize=(5.7, 3.25))
-bars = ax.bar(categories, probabilities)
+red = N * p_red
+blue = N * p_blue
+orange = orange_count
+assert red.denominator == blue.denominator == 1
+assert red + blue + orange == N
+assert N % required_multiple == 0
+assert (red, blue, orange, N) == (6, 8, 10, 24)
 
-# Print the exact fractions above the bars rather than rounded decimals.
-for bar, fraction in zip(bars, fractions):
-    ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.012,
-            fraction, ha="center", va="bottom", fontsize=10)
-
-ax.set_ylim(0, 0.49)
-ax.set_ylabel("Probability")
-ax.set_title("PMF of the ball colour", fontsize=10)
-ax.grid(axis="y", alpha=0.22)
-fig.tight_layout()
-fig.savefig("figs/Q15_ColourPMF.png", dpi=220, bbox_inches="tight")
-plt.close(fig)
-
-print("Q15: plotted the theoretically calculated colour probabilities.")
+print("C10-Q15 integer-feasibility verification: PASS")
+print(f"R={red}, B={blue}, O={orange}, N={N}")
