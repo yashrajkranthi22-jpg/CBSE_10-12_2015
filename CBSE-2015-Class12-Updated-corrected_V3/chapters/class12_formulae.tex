@@ -1,5 +1,6 @@
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
-\begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=0pt,itemsep=6pt]
+\renewcommand{\labelenumi}{\textbf{\theenumi}}
+\begin{enumerate}[leftmargin=0pt,itemsep=6pt]
 \item
 \paragraph*{Null-space and rank--nullity}
 For two independent row constraints on $\vec d\in\mathbb R^3$,
