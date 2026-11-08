@@ -1,7 +1,8 @@
 % Question labels retain the original paper numbering, even where questions were omitted.
 
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
-\begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=4mm,itemsep=9pt]
+\renewcommand{\labelenumi}{\textbf{\theenumi}}
+\begin{enumerate}[leftmargin=4mm,itemsep=9pt]
 \item If the quadratic equation $px^2-2\sqrt5\,px+15=0$ has two equal roots, find $p$.
 \solution Treat the discriminant condition as a nonlinear parameter-identification equation. For
 \[
