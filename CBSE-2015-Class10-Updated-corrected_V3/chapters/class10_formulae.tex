@@ -148,11 +148,13 @@ A_{\mathrm{cyl}}=2\pi rh,\qquad A_{\mathrm{cone}}=\pi r\ell,\qquad \ell=\sqrt{r^
 \paragraph*{Finite-support discrete-time sequence}
 For $x[k]=a+kd$ on $0\le k\le N-1$, its finite $Z$-transform is
 \[
-X(z)=a\frac{1-z^{-N}}{1-z^{-1}}
-+d\frac{z^{-1}\left(1-Nz^{-(N-1)}+(N-1)z^{-N}\right)}{(1-z^{-1})^2}.
-\]
-The discrete-time accumulator satisfies $S(z)=X(z)/(1-z^{-1})$; its terminal sample is the accumulated sum over the finite support.
-\label{eq:finite-z-22}
+\begin{align}
+X(z)&=a\frac{1-z^{-N}}{1-z^{-1}}
++d\frac{z^{-1}\left(1-Nz^{-(N-1)}+(N-1)z^{-N}\right)}{(1-z^{-1})^2},
+\label{eq:finite-z-22}\\
+S(z)&=\frac{X(z)}{1-z^{-1}}.
+\end{align}
+The discrete-time accumulator sums the finite-support record without adding samples beyond its terminal index.
 \addtocounter{enumi}{4}
 \item
 \begin{equation}
