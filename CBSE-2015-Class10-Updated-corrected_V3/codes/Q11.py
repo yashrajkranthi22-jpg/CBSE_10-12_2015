@@ -1,17 +1,22 @@
-"""Check the arithmetic-progression calculations for Q11."""
-# These are the first term and common difference obtained in the solution.
-first_term = 2
-common_difference = -2
+"""Verify C10-Q11 by the unilateral Z-transform and accumulator."""
+import sympy as sp
 
-# The nth term is a + (n - 1)d.
-term_14 = first_term + 13 * common_difference
-term_8 = first_term + 7 * common_difference
-term_6 = first_term + 5 * common_difference
+q = sp.symbols("q")  # q = z^{-1}
+a, d = sp.Integer(2), sp.Integer(-2)
 
-# The sum of n terms is n/2 * (2a + (n - 1)d).
-sum_20 = 20 / 2 * (2 * first_term + 19 * common_difference)
+# Unilateral transform X(q) = a*q/(1-q) + d*q^2/(1-q)^2.
+X = a * q / (1 - q) + d * q**2 / (1 - q) ** 2
+series = sp.series(X, q, 0, 21).removeO()
+coeff = lambda n: sp.expand(series).coeff(q, n)
 
-assert term_14 == 2 * term_8
-assert term_6 == -8
+assert coeff(6) == -8
+assert coeff(14) == 2 * coeff(8)
+
+# The accumulator transfer 1/(1-q) turns the sequence into its partial sums.
+S = sp.series(X / (1 - q), q, 0, 21).removeO()
+sum_20 = sp.expand(S).coeff(q, 20)
 assert sum_20 == -340
-print(f"Q11: t14={term_14}, t8={term_8}, t6={term_6}, S20={sum_20:.0f}")
+
+print("C10-Q11 unilateral Z-transform verification: PASS")
+print("x[6] =", coeff(6), "; x[14] =", coeff(14), "; 2*x[8] =", 2*coeff(8))
+print("Accumulator coefficient s[20] =", sum_20)
