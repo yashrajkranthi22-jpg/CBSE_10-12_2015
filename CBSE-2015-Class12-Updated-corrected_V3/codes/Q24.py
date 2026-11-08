@@ -7,12 +7,12 @@ u0 = -sp.pi**3 / 27
 # Forward coordinate sigma = tau - tau_0: u_sigma + u = 0.
 U_forward = u0 / (s + 1)
 u_forward = sp.inverse_laplace_transform(U_forward, s, sigma, noconds=True)
-assert sp.simplify(u_forward - u0 * sp.exp(-sigma)) == 0
+assert sp.simplify(u_forward - u0 * sp.exp(-sigma) * sp.Heaviside(sigma)) == 0
 
 # Backward coordinate rho = tau_0 - tau: u_rho - u = 0.
 U_backward = u0 / (s - 1)
 u_backward = sp.inverse_laplace_transform(U_backward, s, rho, noconds=True)
-assert sp.simplify(u_backward - u0 * sp.exp(rho)) == 0
+assert sp.simplify(u_backward - u0 * sp.exp(rho) * sp.Heaviside(rho)) == 0
 
 # Both branches map to the same x-domain expression on cos(x) > 0.
 u_x = -2 * sp.pi**3 * sp.cos(x) / 27
