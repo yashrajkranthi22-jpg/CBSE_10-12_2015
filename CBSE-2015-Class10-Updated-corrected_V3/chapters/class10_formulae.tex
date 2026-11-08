@@ -1,5 +1,6 @@
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
-\begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=0pt,itemsep=6pt]
+\renewcommand{\labelenumi}{\textbf{\theenumi}}
+\begin{enumerate}[leftmargin=0pt,itemsep=6pt]
 \item
 \paragraph*{Nonlinear parameter identification and root multiplicity}
 For $P_p(x)=px^2-2\sqrt5\,px+15$, the repeated-root constraint is
