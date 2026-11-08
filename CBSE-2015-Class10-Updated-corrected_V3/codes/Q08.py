@@ -1,23 +1,39 @@
-"""Use NumPy to check the theoretically derived values for Q8."""
+"""Verify the Jacobi iteration and spectral-radius convergence for C10-Q08."""
 import numpy as np
 
-# The written elimination gives a = 1 and d = 5.
-theoretical_values = np.array([1, 5], dtype=float)
+A = np.array([[12.0, 31.0], [10.0, 45.0]])
+b = np.array([167.0, 235.0])
+D = np.diag(np.diag(A))
+R = A - D
+T = -np.linalg.inv(D) @ R
+c = np.linalg.solve(D, b)
 
-# The two conditions S5 + S7 = 167 and S10 = 235 reduce to this system:
-# 12a + 31d = 167 and 10a + 45d = 235.
-coefficients = np.array([[12, 31],
-                         [10, 45]], dtype=float)
-right_hand_side = np.array([167, 235], dtype=float)
+eigenvalues = np.linalg.eigvals(T)
+spectral_radius = max(abs(eigenvalues))
+assert np.isclose(spectral_radius, np.sqrt(31 / 54))
+assert spectral_radius < 1.0
 
-# NumPy's built-in linear solver independently solves for [a, d].
-solved_values = np.linalg.solve(coefficients, right_hand_side)
-
-# Compare the numerical solution with the values already found theoretically.
-if np.allclose(solved_values, theoretical_values):
-    print("Q8: NumPy confirms the theoretical values a=1 and d=5.")
-    print("The arithmetic progression is 1, 6, 11, 16, ...")
+x = np.zeros(2)
+history = []
+for k in range(1, 501):
+    x_next = T @ x + c
+    increment = np.linalg.norm(x_next - x, ord=np.inf)
+    residual = np.linalg.norm(b - A @ x_next, ord=np.inf)
+    if k in (1, 2, 10, 20, 40, 60):
+        history.append((k, x_next.copy(), residual))
+    x = x_next
+    if increment < 1e-8:
+        history.append((k, x.copy(), residual))
+        break
 else:
-    raise ValueError(
-        f"Theoretical values do not match the NumPy solution: {solved_values}"
-    )
+    raise RuntimeError("Jacobi iteration did not meet the stopping criterion")
+
+assert k == 77
+assert np.allclose(x, [1.0, 5.0], atol=2e-8)
+assert np.linalg.norm(b - A @ x, ord=np.inf) < 2e-7
+
+for iteration, values, residual in history:
+    print(f"k={iteration:3d}: a={values[0]:.8f}, d={values[1]:.8f}, "
+          f"||b-Ax||_inf={residual:.3e}")
+print(f"rho(T_J)={spectral_radius:.9f}; stopping iteration={k}")
+print("C10-Q08 Jacobi verification: PASS; AP = 1, 6, 11, 16, ...")
