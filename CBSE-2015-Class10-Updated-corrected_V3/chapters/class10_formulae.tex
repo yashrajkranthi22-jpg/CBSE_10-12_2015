@@ -34,7 +34,7 @@ For independent $X,Y\sim\operatorname{Unif}\{1,\ldots,6\}$ and $Z=XY$,
 \begin{align}
 P_Z(m)&=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}\mathbf1_{\{ij=m\}},\\
 G_Z(w)&=E[w^Z]=\frac1{36}\sum_{i=1}^{6}\sum_{j=1}^{6}w^{ij}.
-\label{eq:prob-classical}
+\label{eq:product-pgf}
 \end{align}
 The coefficient $[w^m]G_Z(w)$ is $P(Z=m)$, and $G_Z(1)=1$ verifies total probability.
 \item
@@ -64,7 +64,7 @@ For $Ax=b$, $A=D+R$ with diagonal $D$, Jacobi iteration is
 \begin{equation}
 x^{(k+1)}=-D^{-1}Rx^{(k)}+D^{-1}b,\qquad
 \rho(-D^{-1}R)<1\Longrightarrow x^{(k)}\to A^{-1}b.
-\label{eq:ap}
+\label{eq:jacobi-08}
 \end{equation}
 The residual $r^{(k)}=b-Ax^{(k)}$ and the increment
 $\|x^{(k+1)}-x^{(k)}\|_\infty$ provide numerical stopping checks.
