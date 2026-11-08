@@ -6,7 +6,14 @@ from CoordGeo.line.funcs import line_gen
 
 # Enter the coefficients from the equations derived above.
 A = np.array([1.0, -1.0])
-valid_k_values = [3.0, -4.5]  # Values obtained from the area equation in the written solution.
+valid_k_values = [3.0, -4.5]  # Exact roots: 3 and -9/2.
+
+def oriented_double_area(k):
+    # Determinant of the two displacement vectors from A.
+    return (-5.0) * (-4.0) - (2.0*k + 1.0) * (-k - 1.0)
+
+for k in valid_k_values:
+    assert np.isclose(oriented_double_area(k), 48.0)
 
 
 def display_number(value):
@@ -30,6 +37,8 @@ for ax, k in zip(axes, valid_k_values):
     # CoordGeo has no triangle-area function in this upstream version, so use the coordinate formula.
     triangle_area = abs((B[0] - A[0]) * (C[1] - A[1])
                         - (B[1] - A[1]) * (C[0] - A[0])) / 2
+
+    assert np.isclose(triangle_area, 24.0)
 
     # Small offsets keep the labels separate from the plotted points.
     point_labels = [
