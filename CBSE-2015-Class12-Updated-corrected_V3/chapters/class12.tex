@@ -3,7 +3,8 @@
 % corrected in the question text where the intended statement is unambiguous.
 
 \renewcommand{\theenumi}{\thesubsection.\arabic{enumi}}
-\begin{enumerate}[label=\textbf{\thesubsection.\arabic*},leftmargin=4mm,itemsep=9pt]
+\renewcommand{\labelenumi}{\textbf{\theenumi}}
+\begin{enumerate}[leftmargin=4mm,itemsep=9pt]
 \paragraph*{Vectors and three-dimensional geometry}
 \item Find a vector of magnitude $\sqrt{171}$ perpendicular to both $\vec a=\myvec{1\\-2\\-3}$ and $\vec b=\myvec{3\\-1\\-2}$.
 \solution Perpendicularity gives a homogeneous linear system for the unknown vector $\vec d=(d_1,d_2,d_3)^T$:
