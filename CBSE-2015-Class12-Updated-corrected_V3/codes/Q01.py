@@ -1,39 +1,20 @@
-"""Plot and check the theoretically derived vector for Question 1."""
-import numpy as np
-import matplotlib.pyplot as plt
+"""Null-space/rank-nullity verification for C12-Q01."""
+import sympy as sp
 
-# CoordGeo's line generator also accepts 3D endpoint vectors. It supplies the
-# points for each arrow; Matplotlib's 3D axes draw them.
-from CoordGeo.line.funcs import line_gen
+M = sp.Matrix([[1, -2, -3], [3, -1, -2]])
+assert M.rank() == 2
+basis = M.nullspace()
+assert len(basis) == 1
+v = basis[0]
+assert M * v == sp.zeros(2, 1)
+assert v == sp.Matrix([1, -7, 5])
+assert sp.sqrt((v.T * v)[0]) == 5 * sp.sqrt(3)
 
-a = np.array([1.0, -2.0, -3.0])
-b = np.array([3.0, -1.0, -2.0])
-# This is the answer already derived in the written solution; the script checks it.
-d = (np.sqrt(57) / 5) * np.array([1.0, -7.0, 5.0])
-origin = np.zeros(3)
+scale = sp.sqrt(171) / sp.sqrt((v.T * v)[0])
+d = sp.simplify(scale * v)
+assert sp.simplify(sp.sqrt((d.T * d)[0]) - sp.sqrt(171)) == 0
+assert M * d == sp.zeros(2, 1)
 
-fig = plt.figure(figsize=(7.0, 5.2))
-ax = fig.add_subplot(111, projection="3d")
-# The finite parallelogram helps show the plane spanned by a and b.
-u, v = np.meshgrid(np.linspace(0, 1, 12), np.linspace(0, 1, 12))
-plane_points = u[..., None] * a + v[..., None] * b
-ax.plot_surface(plane_points[:, :, 0], plane_points[:, :, 1], plane_points[:, :, 2], alpha=0.22)
-for vector, label in [(a, r"$a$"), (b, r"$b$"), (d, r"$d$ (answer)")]:
-    points = line_gen(origin, vector)
-    ax.plot(points[0], points[1], points[2], label=label)
-    ax.quiver(0, 0, 0, *vector, arrow_length_ratio=0.08)
-    ax.text(*vector, label)
-
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-ax.set_zlabel("z")
-ax.set_title("Q1: the answer vector is normal to the plane spanned by a and b")
-ax.legend(fontsize=8)
-ax.set_box_aspect((1, 1, 1))
-fig.tight_layout()
-fig.savefig("figs/Q01_3D.png", dpi=180)
-plt.close(fig)
-
-print("a dot d (should be 0):", np.dot(a, d))
-print("b dot d (should be 0):", np.dot(b, d))
-print("magnitude (should be sqrt(171)):", np.linalg.norm(d), "required:", np.sqrt(171))
+print("C12-Q01 null-space verification: PASS")
+print("rank(M) =", M.rank(), "; nullity =", 3-M.rank())
+print("d =", d.T, "or its negative")
