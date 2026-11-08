@@ -56,15 +56,14 @@ d(\text{parallel lines})=
 \paragraph*{Transformed-coordinate Laplace solution}
 For $u=y-x^3$ and $\tau=\ln(\sec x)$,
 \[
-u'+u\tan x=0,\qquad \frac{d\tau}{dx}=\tan x
-\quad\Longrightarrow\quad \frac{du}{d\tau}+u=0.
-\]
-With $\sigma=\tau-\tau_0$, the unilateral Laplace derivative rule is
-\[
-\mathcal L\{u_\sigma\}=sU(s)-u(0).
-\]
-For the backward coordinate $\rho=-\sigma$, the transformed equation is $u_\rho-u=0$.
-\label{eq:laplace-24}
+\begin{align}
+u'+u\tan x&=0,\qquad \frac{d\tau}{dx}=\tan x,\qquad
+\frac{du}{d\tau}+u=0,
+\label{eq:laplace-24}\\
+\mathcal L\{u_\sigma\}&=sU_+(s)-u(0),\qquad
+\mathcal L\{u_\rho\}=sU_-(s)-u(0).
+\end{align}
+The backward coordinate $\rho=-\sigma$ changes the transformed ODE to $u_\rho-u=0$.
 \item
 \begin{equation}
 \frac{d}{dx}\log|u(x)|=\frac{u'(x)}{u(x)},\qquad u(x)\ne0.
@@ -166,17 +165,13 @@ A=\int_a^b|y_{\mathrm{upper}}-y_{\mathrm{lower}}|\,dx.
 \paragraph*{Piecewise-linear static characteristic and nonsmooth analysis}
 For $r^+=\max(r,0)$, the characteristic in Q48 is
 \[
-f(x)=1+2(-x)^++2(x-1)^+.
-\]
-Its slopes on the three open segments are $-2,0,2$. At the switching points,
-\[
-\partial_Cf(0)=[-2,0],\qquad \partial_Cf(1)=[0,2],
-\]
-and its sharp global Lipschitz constant is $L=2$:
-\[
-|f(x)-f(y)|\le2|x-y|.
-\]
-\label{eq:nonsmooth-characteristic-48}
+\begin{align}
+f(x)&=1+2(-x)^++2(x-1)^+,
+\label{eq:nonsmooth-characteristic-48}\\
+\partial_Cf(0)&=[-2,0],\qquad \partial_Cf(1)=[0,2],\qquad L=2.
+\end{align}
+Its three slopes are $-2,0,2$, and the sharp global Lipschitz bound is
+$|f(x)-f(y)|\le2|x-y|$.
 \item
 \begin{equation}
 \begin{aligned}
