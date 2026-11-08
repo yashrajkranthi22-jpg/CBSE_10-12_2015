@@ -1,0 +1,51 @@
+name: Build combined CBSE 2015 PDF
+
+on:
+  push:
+    branches: [combined-engineering-methods]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - name: Install TeX and Python dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-base texlive-latex-recommended \
+            texlive-latex-extra texlive-publishers texlive-science texlive-pictures \
+            texlive-fonts-extra texlive-fonts-recommended texlive-lang-english
+          python -m pip install --upgrade pip
+          python -m pip install sympy numpy matplotlib
+      - name: Validate source, numbering, exclusions and style files
+        run: python scripts/verify_combined_source.py
+      - name: Run focused mathematical verification
+        run: |
+          (cd CBSE-2015-Class10-Updated-corrected_V3 && python codes/Q22.py)
+          (cd CBSE-2015-Class12-Updated-corrected_V3 && python codes/Q24.py)
+          (cd CBSE-2015-Class12-Updated-corrected_V3 && python codes/Q48.py)
+      - name: Compile combined PDF
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+      - name: Upload combined PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: combined-cbse-2015-pdf
+          path: main.pdf
+      - name: Commit built PDF to branch
+        if: ${{ github.event_name != 'pull_request' && github.ref_name == 'combined-engineering-methods' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Build combined CBSE 2015 PDF [skip ci]"
+            git push
+          fi
