@@ -19,16 +19,16 @@
 
     As a root-finding check, set $F(x)=x(x-3)$. Newton--Raphson gives
     \begin{align*}
-        p_{x+1} & =p_x-\frac{F(p_x)}{F'(p_x)}
+        x_{n+1} & =x_n-\frac{F(x_n)}{F'(x_n)}
     \end{align*}
     \hfill\eqref{formula:C10-Q01-F02}
 
     \par
     \begin{align*}
-        & =p_x-\frac{p_x(p_x-3)}{2p_x-3}.
+        & =x_n-\frac{x_n(x_n-3)}{2x_n-3}.
     \end{align*}
 
-    At the desired simple root $p=3$, $F'(3)=3\ne0$ and the Newton map has the expected local quadratic convergence; the singular midpoint $p=3/2$ must be avoided.
+    At the desired simple root $x=3$, $F'(3)=3\ne0$ and the Newton map has the expected local quadratic convergence; the singular midpoint $x=3/2$ must be avoided.
 
     \begin{align*}
         p & =3
@@ -36,13 +36,13 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C10/Q01.png}
+        \includegraphics[width=0.92\linewidth]{10/figs/Q01.png}
     \end{figure}
 
     The following code verifies the solution.
-
+\\
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q01.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q01.py}@*)
     \end{lstlisting}
 
 
@@ -82,17 +82,16 @@
         P(XY=6) & =4\left(\frac1{36}\right)=\frac4{36}=\frac19.
     \end{align*}
 
-    The four pairs exhaust the positive factorisations of $6$ within the die support, which verifies that no outcome has been omitted.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.98\linewidth]{figs/C10/Q03.png}
+        \includegraphics[width=0.98\linewidth]{10/figs/Q03.png}
     \end{figure}
 
     The following code generates random variables for the experimental plot.
 
      \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q03/dice\_simulation.c}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q03/dice\_simulation.c}@*)
     \end{lstlisting}
 
     The following code verifies the solution.
@@ -182,12 +181,12 @@
 
 	      The general term is
 		\begin{align*}
-			x[n] &= (a+(n-1)d)u(n-1).
+			x(n) &= (a+(n-1)d)u(n-1).
 		\end{align*}
 		\hfill\eqref{formula:C10-Q08-F03}\par
 
 		\begin{align*}
-			x[n] &= (1+5(n-1))u(n-1)\\
+			x(n) &= (1+5(n-1))u(n-1)\\
 			&= (5n-4)u(n-1).
 		\end{align*}
 		
@@ -209,7 +208,7 @@ u(n-1) =
 
 	      Both conditions are satisfied. The following code verifies the solution.
 	      \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q08.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q08.py}@*)
 \end{lstlisting}
 
     \item
@@ -252,11 +251,11 @@ u(n-1) =
 	      \end{align*}
 	       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.3\linewidth]{figs/C10/Q10.png}
+        \includegraphics[width=0.3\linewidth]{10/figs/Q10.png}
     \end{figure}
 
      \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q10.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q10.py}@*)
 \end{lstlisting}
 
 
@@ -270,7 +269,7 @@ u(n-1) =
 
     Model the AP as the discrete-time sequence $x[n]=(a+(n-1)d)u(n-1)$, $n\ge1$. Its unilateral transform separates the constant and ramp components:
     \begin{align*}
-        X(z) & =\sum_{n=1}^{\infty}x[n]z^{-n}=\frac{az^{-1}}{1-z^{-1}}+\frac{dz^{-2}}{(1-z^{-1})^2}.
+	    X(z) & =\sum_{n=1}^{\infty}x(n)z^{-n}=\frac{az^{-1}}{1-z^{-1}}+\frac{dz^{-2}}{(1-z^{-1})^2}.
     \end{align*}
     \hfill\eqref{formula:C10-Q11}
 
@@ -303,7 +302,7 @@ u(n-1) =
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q11.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q11.py}@*)
     \end{lstlisting}
 
 
@@ -376,13 +375,13 @@ u(n-1) =
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\linewidth]{figs/C10/Q15.png}
+        \includegraphics[width=0.9\linewidth]{10/figs/Q15.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q15.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q15.py}@*)
     \end{lstlisting}
 
 
@@ -394,7 +393,7 @@ u(n-1) =
     \smallskip
     \solution
 
-    Index the finite AP from zero so that $x[n]=(8+2n)u(n)$ for $0\le n\le59$. The finite-support signal, rather than an infinite extension, is represented by
+    Index the finite AP from zero so that $x(n)=(8+2n)u(n)$ for $0\le n\le59$. The finite-support signal, rather than an infinite extension, is represented by
     \begin{align*}
         X(z) & =8\sum_{n=0}^{59}z^{-n}+2\sum_{n=0}^{59}nz^{-n}.
     \end{align*}
@@ -410,18 +409,18 @@ u(n) =
 
     The requested term is the sample at the final index:
     \begin{align*}
-        x[59] & =8+2(59)=126.
+	    x(59) & =8+2(59)=126.
     \end{align*}
 
     The last ten terms are indexed by $n=50,\ldots,59$, with
     \begin{align*}
-        x[50] & =8+100=108. \\
-        x[59] & =126.
+	    x(50) & =8+100=108. \\
+	    x(59) & =126.
     \end{align*}
 
     Using the arithmetic-series sum,
     \begin{align*}
-        \sum_{n=50}^{59}x[n] & =\frac{10}{2}(108+126)=5(234)=1170.
+	    \sum_{n=50}^{59}x(n) & =\frac{10}{2}(108+126)=5(234)=1170.
     \end{align*}
 
     The finite index range confirms that no samples beyond the 60-term support have entered the calculation.
@@ -429,7 +428,7 @@ u(n) =
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C10/Q22.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{10/codes/Q22.py}@*)
     \end{lstlisting}
 
 

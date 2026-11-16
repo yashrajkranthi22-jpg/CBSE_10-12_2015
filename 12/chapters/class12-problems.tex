@@ -26,13 +26,13 @@
 
     Indeed,
     \begin{align*}
-        \vec a\cdot(1,-7,5) & =1+14-15=0. \\
-        \vec b\cdot(1,-7,5) & =3+7-10=0.
+	    \vec a^T\myvec{1\\-7\\5} & =1+14-15=0. \\
+	    \vec b^T\myvec{1\\-7\\5} & =3+7-10=0.
     \end{align*}
 
     Every admissible vector is therefore $\vec d=t(1,-7,5)^T$. Since
     \begin{align*}
-        \|(1,-7,5)\|^2 & =1+49+25=75,
+        \|(1,-7,5)^T\|^2 & =1+49+25=75,
     \end{align*}
 
     the magnitude condition gives $75t^2=171$, or $t=\pm\sqrt{57}/5$. Hence
@@ -42,13 +42,13 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.96\linewidth]{figs/C12/Q01.png}
+        \includegraphics[width=0.96\linewidth]{12/figs/Q01.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q01.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q01.py}@*)
     \end{lstlisting}
 
 
@@ -78,7 +78,7 @@
 
     The remaining scalar constraint selects the scale. First,
     \begin{align*}
-        \vec c\cdot(32,-1,-14) & =2(32)+(-1)(-1)+4(-14)=64+1-56=9.
+	    \vec c^T \myvec{32\\-1\\-14} & =2(32)+(-1)(-1)+4(-14)=64+1-56=9.
     \end{align*}
 
     Therefore $9t=27$, so $t=3$ and
@@ -86,17 +86,17 @@
         \vec d & =\myvec{96 \\-3\\-42}.
     \end{align*}
 
-    The dot products $\vec a\cdot\vec d=0$ and $\vec b\cdot\vec d=0$, together with $\vec c\cdot\vec d=27$, verify the corrected result.
+    The inner products $\vec a^T \vec d=0$ and $\vec b^T \vec d=0$, together with $\vec c^T \vec d=27$, verify the corrected result.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.96\linewidth]{figs/C12/Q05.png}
+        \includegraphics[width=0.96\linewidth]{12/figs/Q05.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q05.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q05.py}@*)
     \end{lstlisting}
 
 
@@ -110,7 +110,7 @@
 
     The direction vectors $(2,3,4)$ and $(4,6,8)$ are parallel. Choose one point on each line and form the joining vector
     \begin{align*}
-        \vec v & =(2,3,4)^T,\qquad \vec w=(2,4,5)-(1,2,3)=(1,2,2)^T.
+        \vec v & =(2,3,4)^T,\qquad \vec w=(2,4,5)^T-(1,2,3)^T=(1,2,2)^T.
     \end{align*}
 
     Only the component of $\vec w$ orthogonal to the common direction contributes to the shortest distance. The projection-residual operator is
@@ -142,19 +142,18 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.96\linewidth]{figs/C12/Q06.png}
+        \includegraphics[width=0.96\linewidth]{12/figs/Q06.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q06.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q06.py}@*)
     \end{lstlisting}
 
 
     \par
     \medskip
-    \noindent\textbf{Lines and planes}
     \par
     \smallskip
 
@@ -174,12 +173,12 @@
 
     Every plane through the intersection line belongs to the affine pencil $P_1+\lambda P_2=0$. Its normal is
     \begin{align*}
-        \vec n(\lambda) & =(2+5\lambda,\,1-3\lambda,\,-1+4\lambda).
+	    \vec n(\lambda) & = \myvec{2+5\lambda\\1-3\lambda\\-1+4\lambda}.
     \end{align*}
 
-    The direction of the given line is $\vec d=(2,-4,5)$. The required parallelism condition is
+    The direction of the given line is $\vec d=(2,-4,5)^T$. The required parallelism condition is
     \begin{align*}
-        (\vec n_1+\lambda\vec n_2)\cdot\vec d & =0.
+        (\vec n_1+\lambda\vec n_2)^T\vec d & =0.
     \end{align*}
     \hfill\eqref{formula:C12-Q10}
 
@@ -199,13 +198,13 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.96\linewidth]{figs/C12/Q10.png}
+        \includegraphics[width=0.96\linewidth]{12/figs/Q10.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q10.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q10.py}@*)
     \end{lstlisting}
 
 
@@ -219,17 +218,17 @@
 
     The two plane-edge vectors are
     \begin{align*}
-        Q-P & =(1,0,-2).  \\
-        R-P & =(2,-3,-1).
+        Q-P & =(1,0,-2)^T.  \\
+        R-P & =(2,-3,-1)^T.
     \end{align*}
 
-    Their cross product is proportional to $(2,1,1)$, so the plane equation is
+    Their cross product is proportional to $(2,1,1)^T$, so the plane equation is
     \begin{align*}
         2(x-2)+(y-1)+(z-2) & =0
         \Longrightarrow 2x+y+z=7.
     \end{align*}
 
-    The line direction is $B-A=(2,-3,5)$. Its affine representation is
+    The line direction is $B-A=(2,-3,5)^T$. Its affine representation is
     \begin{align*}
         \vec r & =\vec A+t\vec d.
     \end{align*}
@@ -238,7 +237,7 @@
     \par
     Thus
     \begin{align*}
-        \vec r & =(3,4,1)+t(2,-3,5).
+        \vec r & =(3,4,1)^T+t(2,-3,5)^T.
     \end{align*}
 
     Substitution into the plane gives
@@ -250,20 +249,20 @@
 
     The intersection point is therefore
     \begin{align*}
-        & \left(\frac53,6,-\frac73\right).
+        & \left(\frac53,6,-\frac73\right)^T.
     \end{align*}
 
     Putting this point back into $2x+y+z$ gives $10/3+6-7/3=7$, which verifies the incidence condition.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.96\linewidth]{figs/C12/Q15.png}
+        \includegraphics[width=0.96\linewidth]{12/figs/Q15.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q15.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q15.py}@*)
     \end{lstlisting}
 
 
@@ -323,7 +322,6 @@
 
     \par
     \medskip
-    \noindent\textbf{Matrices and determinants}
     \par
     \smallskip
 
@@ -489,7 +487,7 @@ AA^{-1}
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q30.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q30.py}@*)
     \end{lstlisting}
 
 
@@ -533,13 +531,13 @@ is differentiable elsewhere.
 
 	\begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q48.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q48.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q48.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q48.py}@*)
     \end{lstlisting}
 
 
@@ -571,7 +569,6 @@ is differentiable elsewhere.
 
     \par
     \medskip
-    \noindent\textbf{Algebraic structures}
     \par
     \smallskip
 
@@ -680,19 +677,16 @@ is differentiable elsewhere.
 
     Thus there is no discontinuity on the domain.
 
-    \begin{align*}
-        \text{there is no point of discontinuity on }[-1,1].
-    \end{align*}
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q52.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q52.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q52.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q52.py}@*)
     \end{lstlisting}
 
 
@@ -707,7 +701,7 @@ is differentiable elsewhere.
 
     After five steps, displacement $+1$ requires three forward and two backward steps, while displacement $-1$ requires two forward and three backward steps.
     \begin{align*}
-        P(|D|=1) & =\binom53(0.4)^3(0.6)^2+\binom52(0.4)^2(0.6)^3.
+        P(|X|=1) & =\binom53(0.4)^3(0.6)^2+\binom52(0.4)^2(0.6)^3.
     \end{align*}
     \hfill\eqref{formula:C12-Q53}\par
 
@@ -720,13 +714,13 @@ is differentiable elsewhere.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q53.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q53.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q53.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q53.py}@*)
     \end{lstlisting}
 
 
@@ -763,17 +757,17 @@ is differentiable elsewhere.
 
         \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q54.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q54.png}
     \end{figure}
 
     The following code generates 10,000 outcomes.
         \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q54/Q54.c}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q54/Q54.c}@*)
     \end{lstlisting}
 
     The following code verifies the solution.
         \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q54/Q54.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q54/Q54.py}@*)
     \end{lstlisting}
 
 
@@ -814,7 +808,7 @@ is differentiable elsewhere.
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q56.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q56.py}@*)
     \end{lstlisting}
 
 
@@ -854,13 +848,12 @@ is differentiable elsewhere.
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q57.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q57.py}@*)
     \end{lstlisting}
 
 
     \par
     \medskip
-    \noindent\textbf{Optimization}
     \par
     \smallskip
 
@@ -872,33 +865,247 @@ is differentiable elsewhere.
     \smallskip
     \solution
 
-    The feasible region is the intersection of three half-planes in the first quadrant. Its relevant corner is obtained by making the first two constraints active:
-    \begin{align*}
-        x+2y & =10. \\
-        x+y  & =6.
-    \end{align*}
 
-    The objective admits the duality decomposition
-    \begin{align*}
-        3x+5y & =2(x+2y)+(x+y).
-    \end{align*}
+    Wrinting all the equations in form $A\vec{x}=\vec{b}$
+\[
+\vec{x}=\myvec{
+x\\
+y
+},\qquad
+\vec{c}=\myvec{
+3\\
+5
+},\qquad
+\vec{b}=\myvec{
+10\\
+6\\
+8
+}
+\]
 
-    For every feasible point this gives $3x+5y\ge2(10)+6=26$. At $(2,4)$ equality holds, and the third constraint is satisfied because $3(2)+4=10\ge8$. Therefore the graphical minimum is
-    \begin{align*}
-        (x,y) & =(2,4),\qquad z_{\min}=3(2)+5(4)=26.
-    \end{align*}
+\[
+A=\myvec{
+1&2\\
+1&1\\
+3&1
+}
+\]
 
-    Equivalently, the dual certificate $(u,v,w)=(2,1,0)$ is feasible and has objective value $20+6=26$, confirming global optimality.
+\[
+\text{Minimise } z=\vec{c}^{\,T}\vec{x}
+\]
+
+\[
+A\vec{x}\geq\vec{b},
+\qquad
+\vec{x}\geq\vec{0}
+\]
+
+\[
+\myvec{
+1&2\\
+1&1\\
+3&1
+}
+\myvec{
+x\\
+y
+}
+\geq
+\myvec{
+10\\
+6\\
+8
+}
+\]
+
+\[
+\vec{x}=\myvec{
+x\\
+y
+}
+\]
+
+\[
+\myvec{
+1&2\\
+1&1
+}
+\myvec{
+x\\
+y
+}
+=
+\myvec{
+10\\
+6
+}
+\]
+
+\[
+\myvec{
+1&2\\
+1&1
+}^{-1}
+\myvec{
+10\\
+6
+}
+=
+\myvec{
+x\\
+y
+}
+\]
+
+\[
+\myvec{
+-1&2\\
+1&-1
+}
+\myvec{
+10\\
+6
+}
+=
+\myvec{
+x\\
+y
+}
+\]
+
+\[
+\vec{x}=\myvec{
+2\\
+4
+}
+\]
+
+\[
+\myvec{
+3&1
+}
+\myvec{
+2\\
+4
+}
+=10\geq8
+\]
+
+\[
+\begin{aligned}
+z
+&=\vec{c}^{\,T}\vec{x}\\
+&=\myvec{3&5}
+\myvec{
+2\\
+4
+}\\
+&=3(2)+5(4)\\
+&=26
+\end{aligned}
+\]
+
+\[
+\vec{y}=\myvec{
+u\\
+v\\
+w
+}
+\]
+
+\[
+\text{Maximise } W=\vec{b}^{\,T}\vec{y}
+\]
+
+\[
+A^T\vec{y}\leq\vec{c},
+\qquad
+\vec{y}\geq\vec{0}
+\]
+
+\[
+\myvec{
+1&1&3\\
+2&1&1
+}
+\myvec{
+u\\
+v\\
+w
+}
+\leq
+\myvec{
+3\\
+5
+}
+\]
+
+\[
+\vec{y}=\myvec{
+2\\
+1\\
+0
+}
+\]
+
+\[
+A^T\vec{y}
+=
+\myvec{
+1&1&3\\
+2&1&1
+}
+\myvec{
+2\\
+1\\
+0
+}
+=
+\myvec{
+3\\
+5
+}
+\]
+
+\[
+\begin{aligned}
+W
+&=\vec{b}^{\,T}\vec{y}\\
+&=\myvec{10&6&8}
+\myvec{
+2\\
+1\\
+0
+}\\
+&=20+6\\
+&=26
+\end{aligned}
+\]
+
+\[
+z_{\min}=W_{\max}=26
+\]
+
+\[
+\vec{x}=\myvec{
+2\\
+4
+},\qquad z_{\min}=26
+\]
+
+
+
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q59.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q59.png}
     \end{figure}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q59.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q59.py}@*)
     \end{lstlisting}
 
 
@@ -1108,14 +1315,14 @@ P_{\max}=\text{Rs. }3920
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q60.png}
+        \includegraphics[width=0.92\linewidth]{12/figs/Q60.png}
     \end{figure}
 
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q60.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q60.py}@*)
     \end{lstlisting}
 
     \end{enumerate}
