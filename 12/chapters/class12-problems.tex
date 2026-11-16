@@ -776,61 +776,6 @@ is differentiable elsewhere.
 (*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q54/Q54.py}@*)
     \end{lstlisting}
 
-    \item
-    \label{question:C12-Q55}
-    \label{question-short:C12-Q55} An urn contains 5 red and 2 black balls. Two balls are drawn without replacement. Let $X$ be the number of black balls. State its possible values and find its mean and variance.
-
-    \par
-    \smallskip
-    \solution
-
-    Without replacement, $X$ has a hypergeometric distribution with population size $N=7$, black count $K=2$, and sample size $n=2$. Thus $X\in\{0,1,2\}$ and the probability mass is
-    \begin{align*}
-        P(X=0) & =\frac{10}{21}. \\
-        P(X=1) & =\frac{10}{21}. \\
-        P(X=2) & =\frac1{21}.
-    \end{align*}
-
-    The three probabilities are
-    \begin{align*}
-        P(X=0) & =\frac{10}{21},\qquad P(X=1)=\frac{10}{21},\qquad P(X=2)=\frac1{21}.
-    \end{align*}
-
-    The probability-generating function method uses
-    \begin{align*}
-        G_X(z) & =\sum_xP(X=x)z^x.
-    \end{align*}
-    \hfill\eqref{formula:C12-Q55}
-
-    \par
-    Here
-    \begin{align*}
-        G_X(z)  & =\frac{10+10z+z^2}{21}. \\
-        G'_X(1) & =\frac{12}{21}=\frac47.
-    \end{align*}
-
-    and
-    \begin{align*}
-        G''_X(1) & =\frac2{21}=E[X(X-1)].
-    \end{align*}
-
-    Consequently,
-    \begin{align*}
-        E[X^2]                & =E[X(X-1)]+E[X]=\frac2{21}+\frac47=\frac{20}{21},          \\
-        \operatorname{Var}(X) & =E[X^2]-E[X]^2=\frac{20}{21}-\frac{16}{49}=\frac{50}{147}.
-    \end{align*}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.92\linewidth]{figs/C12/Q55.png}
-    \end{figure}
-
-    The following code verifies the solution.
-
-    \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{codes/C12/Q55.py}@*)
-    \end{lstlisting}
-
 
     \item
     \label{question:C12-Q56}
