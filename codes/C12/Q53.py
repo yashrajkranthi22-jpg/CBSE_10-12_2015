@@ -9,7 +9,7 @@ probabilities = [0.07776, 0.2592, 0.3456, 0.2304, 0.0768, 0.01024]
 
 # Keep the plotting setup separate so the labels and limits are easy to adjust.
 fig, ax = plt.subplots(figsize=(6.6, 3.8))
-ax.bar(displacement, probabilities, width=0.7)
+ax.stem(displacement, probabilities)
 ax.set_xlabel("Net displacement (steps)")
 ax.set_ylabel("Probability")
 ax.set_title("Five-step random walk: theoretical PMF")

@@ -8,7 +8,7 @@ probabilities = [10/21, 10/21, 1/21]
 
 # Keep the plotting setup separate so the labels and limits are easy to adjust.
 fig, ax = plt.subplots(figsize=(6.2, 3.7))
-ax.bar(x_values, probabilities, width=0.55)
+ax.stem(x_values, probabilities)
 ax.set_xticks(x_values)
 ax.set_xlabel("Number of black balls, X")
 ax.set_ylabel("P(X = x)")

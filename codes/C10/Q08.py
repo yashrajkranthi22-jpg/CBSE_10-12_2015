@@ -1,23 +1,42 @@
-"""Use NumPy to check the theoretically derived values for Q8."""
 import numpy as np
 
-# The written elimination gives a = 1 and d = 5.
-theoretical_values = np.array([1, 5], dtype=float)
+# Coefficients of the equations:
+# 12a + 31d = 167
+# 10a + 45d = 235
 
-# The two conditions S5 + S7 = 167 and S10 = 235 reduce to this system:
-# 12a + 31d = 167 and 10a + 45d = 235.
-coefficients = np.array([[12, 31],
-                         [10, 45]], dtype=float)
-right_hand_side = np.array([167, 235], dtype=float)
+A = np.array([
+    [12, 31],
+    [10, 45]
+], dtype=float)
 
-# NumPy's built-in linear solver independently solves for [a, d].
-solved_values = np.linalg.solve(coefficients, right_hand_side)
+B = np.array([167, 235], dtype=float)
 
-# Compare the numerical solution with the values already found theoretically.
-if np.allclose(solved_values, theoretical_values):
-    print("Q8: NumPy confirms the theoretical values a=1 and d=5.")
-    print("The arithmetic progression is 1, 6, 11, 16, ...")
-else:
-    raise ValueError(
-        f"Theoretical values do not match the NumPy solution: {solved_values}"
-    )
+# Solve the system using NumPy
+a, d = np.linalg.solve(A, B)
+
+print("First term (a):", a)
+print("Common difference (d):", d)
+
+# Generate the first 10 terms of the AP
+n = np.arange(1, 11)
+terms = a + (n - 1) * d
+
+print("\nFirst 10 terms of the AP:")
+print(terms)
+
+# Calculate the required sums
+S5 = np.sum(terms[:5])
+S7 = np.sum(terms[:7])
+S10 = np.sum(terms[:10])
+
+print("\nVerification:")
+print("S5 =", S5)
+print("S7 =", S7)
+print("S5 + S7 =", S5 + S7)
+print("S10 =", S10)
+
+# Verify the given conditions
+assert np.isclose(S5 + S7, 167)
+assert np.isclose(S10, 235)
+
+print("\nBoth conditions are verified successfully!")
