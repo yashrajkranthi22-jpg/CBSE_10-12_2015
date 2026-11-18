@@ -16,12 +16,12 @@
     The two rows are independent, so rank--nullity gives a one-dimensional null space. Its antisymmetric cross-product basis is
     \begin{align*}
         \operatorname{Null}(M) & =\{\vec v:M\vec v=0\}.
+	    \tag*{\eqref{formula:C12-Q01}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q01}
 
     \par
     \begin{align*}
-        \vec a\times\vec b & =\myvec{1 \\-7\\5}.
+	    \text{Vector perpendicular to } \vec{a} \text{ and } \vec{b} \text{ is } \myvec{1 \\-7\\5}.
     \end{align*}
 
     Indeed,
@@ -60,20 +60,27 @@
     \smallskip
     \solution
 
-    The antisymmetric bilinear operation supplies a direction perpendicular to both prescribed vectors. Computing its determinant gives
+Perpendicularity requires a vector in the null space of the matrix with rows $\vec a^T$ and $\vec b^T$:
     \begin{align*}
-        \vec d & =t(\vec a\times\vec b)
+        M       & =\myvec{1 & 4 & 2 \\3&-2&7}. \\
+        M\vec d & =0.
     \end{align*}
-    \hfill\eqref{formula:C12-Q05}
+
+    The two rows are independent, so rank--nullity gives a one-dimensional null space. Its antisymmetric cross-product basis is
+    \begin{align*}
+        \operatorname{Null}(M) & =\{\vec v:M\vec v=0\}.
+	    \tag*{\eqref{formula:C12-Q01}}
+    \end{align*}
 
     \par
     \begin{align*}
-        \vec a\times\vec b & =\myvec{32 \\-1\\-14}.
+         \text{Vector perpendicular to } \vec{a} \text{ and } \vec{b} \text{ is } \myvec{32 \\-1\\-14}.
     \end{align*}
 
     Thus the complete perpendicular family is
     \begin{align*}
         \vec d & =t\myvec{32 \\-1\\-14}.
+	    \tag*{\eqref{formula:C12-Q05}}
     \end{align*}
 
     The remaining scalar constraint selects the scale. First,
@@ -116,14 +123,14 @@
     Only the component of $\vec w$ orthogonal to the common direction contributes to the shortest distance. The projection-residual operator is
     \begin{align*}
         P_\perp & =I-\frac{\vec v\vec v^T}{\vec v^T\vec v}.
+	    \tag*{\eqref{formula:C12-Q06}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q06}
 
     \par
     \begin{align*}
         d & =\|P_\perp\vec w\|=\frac{\|\vec w\times\vec v\|}{\|\vec v\|}
+	    \tag*{\eqref{formula:C12-Q06-S01}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q06-S01}
 
     \par
     Here
@@ -179,8 +186,8 @@
     The direction of the given line is $\vec d=(2,-4,5)^T$. The required parallelism condition is
     \begin{align*}
         (\vec n_1+\lambda\vec n_2)^T\vec d & =0.
+	    \tag*{\eqref{formula:C12-Q10}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q10}
 
     \par
     Substitution gives
@@ -194,7 +201,7 @@
         \Longrightarrow 109x+27y-22z-81=0.
     \end{align*}
 
-    The plane contains the intersection line by construction, and its normal has zero dot product with the given line direction.
+    The plane contains the intersection line by construction, and its normal has zero inner product with the given line direction.
 
     \begin{figure}[H]
         \centering
@@ -210,7 +217,7 @@
 
     \item
     \label{question:C12-Q15}
-    \label{question-short:C12-Q15} Find where the line through $A(3,4,1)$ and $B(5,1,6)$ meets the plane through $P(2,1,2)$, $Q(3,1,0)$ and $R(4,-2,1)$.
+    \label{question-short:C12-Q15} Find where the line through $\vec{A}(3,4,1)$ and $\vec B(5,1,6)$ meets the plane through $\vec P(2,1,2)$, $\vec Q(3,1,0)$ and $\vec R(4,-2,1)$.
 
     \par
     \smallskip
@@ -218,8 +225,8 @@
 
     The two plane-edge vectors are
     \begin{align*}
-        Q-P & =(1,0,-2)^T.  \\
-        R-P & =(2,-3,-1)^T.
+	    \vec{Q-P} & =(1,0,-2)^T.  \\
+	    \vec{R-P} & =(2,-3,-1)^T.
     \end{align*}
 
     Their cross product is proportional to $(2,1,1)^T$, so the plane equation is
@@ -231,8 +238,8 @@
     The line direction is $B-A=(2,-3,5)^T$. Its affine representation is
     \begin{align*}
         \vec r & =\vec A+t\vec d.
+	    \tag*{\eqref{formula:C12-Q15}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q15}
 
     \par
     Thus
@@ -260,70 +267,12 @@
     \end{figure}
 
     The following code verifies the solution.
-
+\\
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
 (*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q15.py}@*)
     \end{lstlisting}
 
 
-    \item
-    \label{question:C12-Q25}
-    \label{question-short:C12-Q25} If $y=\log\left(\frac{x}{a+bx}\right)^x$, prove that $x^3y''=(xy'-y)^2$.
-
-    \par
-    \smallskip
-    \solution
-
-    Interpret the displayed power as
-    \begin{align*}
-        y & =x\log\left(\frac{x}{a+bx}\right),
-    \end{align*}
-
-    on a domain where the logarithm is defined. The logarithmic derivative identity and the Euler operator $\theta=x\,d/dx$ give
-    \begin{align*}
-        \frac{d}{dx}\log|u| & =\frac{u'}u.
-    \end{align*}
-    \hfill\eqref{formula:C12-Q25}
-
-    \par
-    \begin{align*}
-        \theta y-y & =xy'-y
-    \end{align*}
-    \hfill\eqref{formula:C12-Q25-S01}
-
-    \par
-    Differentiate $y$ explicitly:
-    \begin{align*}
-        y' & =\log\left(\frac{x}{a+bx}\right)+x\left(\frac1x-\frac b{a+bx}\right)
-        =\log\left(\frac{x}{a+bx}\right)+\frac a{a+bx}.
-    \end{align*}
-
-    Differentiating once more,
-    \begin{align*}
-        y'' & =\frac1x-\frac b{a+bx}-\frac{ab}{(a+bx)^2}
-        =\frac{a^2}{x(a+bx)^2}.
-    \end{align*}
-
-    The Euler combination simplifies without the logarithm:
-    \begin{align*}
-        xy'-y & =x\frac a{a+bx}=\frac{ax}{a+bx}.
-    \end{align*}
-
-    Squaring it and comparing with $y''$ gives
-    \begin{align*}
-        (xy'-y)^2 & =\frac{a^2x^2}{(a+bx)^2}=x^3\frac{a^2}{x(a+bx)^2}=x^3y''.
-    \end{align*}
-
-    Hence
-    \begin{align*}
-        x^3y'' & =(xy'-y)^2.
-    \end{align*}
-
-
-    \par
-    \medskip
-    \par
-    \smallskip
 
     \item
     \label{question:C12-Q28}
@@ -333,22 +282,22 @@
     \smallskip
     \solution
 
-    The symmetric matrix has eigenvectors $q_+=(1,1)^T$ and $q_-=(1,-1)^T$. Their eigenvalues are
+    The symmetric matrix has eigenvectors $\vec q_1=(1,1)^T$ and $\vec q_2=(1,-1)^T$. Their eigenvalues are
     \begin{align*}
-        \lambda_+ & =\cos\theta+\sin\theta. \\
-        \lambda_- & =\cos\theta-\sin\theta.
+        \lambda_1 & =\cos\theta+\sin\theta. \\
+        \lambda_2 & =\cos\theta-\sin\theta.
     \end{align*}
 
-    $\det A=\lambda_+\lambda_-$ and raises each eigenvalue to the $n$th power. Using the determinant-power identity,
+    $\det A=\lambda_1\lambda_2$ and raises each eigenvalue to the $n$th power. Using the determinant-power identity,
     \begin{align*}
         \det(A^n) & =(\det A)^n.
+	    \tag*{\eqref{formula:C12-Q28}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q28}
 
     \par
     We obtain
     \begin{align*}
-        \det(A^n) & =(\lambda_+\lambda_-)^n
+        \det(A^n) & =(\lambda_1\lambda_2)^n
         =\bigl((\cos\theta+\sin\theta)(\cos\theta-\sin\theta)\bigr)^n
         =(\cos2\theta)^n.
     \end{align*}
@@ -541,112 +490,6 @@ is differentiable elsewhere.
     \end{lstlisting}
 
 
-    \item
-    \label{question:C12-Q49}
-    \label{question-short:C12-Q49} On $\mathbb R$, define $(a,b)\in R$ when $a-b+\sqrt3$ is irrational. Determine whether $R$ is reflexive, symmetric and transitive.
-
-    \par
-    \smallskip
-    \solution
-
-    Write the relation as the predicate $R(a,b)$: the number $a-b+\sqrt3$ must lie outside $\mathbb Q$. Its defining condition is
-    \begin{align*}
-        R(a,b)\Longleftrightarrow a-b+\sqrt3\text{ is irrational}.
-    \end{align*}
-
-    For reflexivity, $a-a+\sqrt3=\sqrt3$ is irrational, so $R(a,a)$ holds for every $a$. Symmetry fails: with $(a,b)=(\sqrt3,0)$, the forward expression is $2\sqrt3$ (irrational), but the reversed expression is $0$ (rational). Transitivity fails for
-    \begin{align*}
-        a & =0.                \\
-        b & =\frac{\sqrt3}{2}. \\
-        c & =\sqrt3.
-    \end{align*}
-
-    Both $a-b+\sqrt3=\sqrt3/2$ and $b-c+\sqrt3=\sqrt3/2$ are irrational, while $a-c+\sqrt3=0$. Therefore
-    \begin{align*}
-        R\text{ is reflexive, but neither symmetric nor transitive}.
-    \end{align*}
-
-
-    \par
-    \medskip
-    \par
-    \smallskip
-
-    \item
-    \label{question:C12-Q50}
-    \label{question-short:C12-Q50} On $\mathbb R\times\mathbb R$, define $(a,b)*(c,d)=(a+c,b+d)$. Prove commutativity and associativity, and find the identity and the inverse of $(3,-5)$.
-
-    \par
-    \smallskip
-    \solution
-
-    The operation is coordinatewise addition, so it is closed on $\mathbb R^2$. Its defining law is
-    \begin{align*}
-        (a,b)*(c,d) & =(a+c,b+d).
-    \end{align*}
-    \hfill\eqref{formula:C12-Q50}
-
-    \par
-    For associativity,
-    \begin{align*}
-        ((a,b)*(c,d))*(e,f) & =(a+c+e,b+d+f)
-        =(a,b)*((c,d)*(e,f)).
-    \end{align*}
-    \hfill\eqref{formula:C12-Q50-F01}
-
-    \par
-    For commutativity,
-    \begin{align*}
-        (a,b)*(c,d) & =(a+c,b+d)=(c+a,d+b)=(c,d)*(a,b).
-    \end{align*}
-    \hfill\eqref{formula:C12-Q50-F02}
-
-    \par
-    The identity is $(0,0)$, and the inverse of $(3,-5)$ solves
-    \begin{align*}
-        (3,-5)*(u,v) & =(3+u,-5+v)=(0,0),
-    \end{align*}
-
-    so it is $(-3,5)$. Thus the structure is an Abelian group and
-    \begin{align*}
-        e & =(0,0),\qquad (3,-5)^{-1}=(-3,5).
-    \end{align*}
-
-
-    \item
-    \label{question:C12-Q51}
-    \label{question-short:C12-Q51} On $\{0,1,2,3,4,5,6\}$ define $a*b=a+b$ if $a+b<7$, and $a*b=a+b-7$ otherwise. Give the operation table and show that 0 is the identity and $7-a$ is the inverse for nonzero $a$.
-
-    \par
-    \smallskip
-    \solution
-
-    The piecewise definition is addition modulo $7$:
-    \begin{align*}
-        a*b & =(a+b)\bmod 7.
-    \end{align*}
-    \hfill\eqref{formula:C12-Q51}
-
-    \par
-    The Cayley table is
-    \begin{align*}
-        \begin{array}{c|rrrrrrr}* & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
-            0            & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\1&1&2&3&4&5&6&0\\2&2&3&4&5&6&0&1\\3&3&4&5&6&0&1&2\\4&4&5&6&0&1&2&3\\5&5&6&0&1&2&3&4\\6&6&0&1&2&3&4&5
-        \end{array}
-    \end{align*}
-
-    The first row and column show $0*a=a*0=a$. For nonzero $a$, the residue $7-a$ lies in the set and
-    \begin{align*}
-        a*(7-a) & =a+7-a\equiv0\pmod7.
-    \end{align*}
-    \hfill\eqref{formula:C12-Q51-F02}
-
-    \par
-    Since $7$ is prime, every nonzero residue generates the cyclic group $\mathbb Z_7$. Therefore
-    \begin{align*}
-        0\text{ is the identity and }a^{-1} & =7-a\pmod7.
-    \end{align*}
-
 
     \item
     \label{question:C12-Q52}
@@ -659,8 +502,8 @@ is differentiable elsewhere.
     Factor the expression inside the absolute value:
     \begin{align*}
         x-x^2 & =x(1-x).
+	    \tag*{\eqref{formula:C12-Q52}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q52}
 
     \par
     On $[-1,1]$, this quantity is nonnegative for $0\le x\le1$ and nonpositive for $-1\le x\le0$. The piecewise nonlinear map is therefore
@@ -699,11 +542,11 @@ is differentiable elsewhere.
     \solution
 
 
-    After five steps, displacement $+1$ requires three forward and two backward steps, while displacement $-1$ requires two forward and three backward steps.
+    After five steps, displacement $+1$ requires three forward and two backward steps, while displacement $-1$ requires two forward and three backward steps. Let X denote the net displacement.
     \begin{align*}
         P(|X|=1) & =\binom53(0.4)^3(0.6)^2+\binom52(0.4)^2(0.6)^3.
+	    \tag*{\eqref{formula:C12-Q53}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q53}\par
 
     Numerically,
     \begin{align*}
@@ -712,15 +555,31 @@ is differentiable elsewhere.
 
     The two cases are disjoint and exhaust the requested one-step displacement events.
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $x$ & $-5$ & $-3$ & $-1$ & $1$ & $3$ & $5$ \\ \hline
+        $P(X=x)$ & $\frac{1}{32}$ & $\frac{5}{32}$ & $\frac{10}{32}$ & $\frac{10}{32}$ & $\frac{5}{32}$ & $\frac{1}{32}$ \\ \hline
+    \end{tabular}
+    \caption{Probability Mass Function of the Random Walk}
+    \label{tab:random-walk-pmf}
+\end{table}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.92\linewidth]{12/figs/Q53.png}
     \end{figure}
 
+    The following code generates 10,000 iterations.
+
+\begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q53/random\_walk.c}@*)
+    \end{lstlisting}
+
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q53.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q53/Q53.py}@*)
     \end{lstlisting}
 
 
@@ -741,8 +600,8 @@ is differentiable elsewhere.
     Under $H_1$, exactly one tail in three tosses has likelihood $3(1/2)^3=3/8$; under $H_2$, exactly one tail in one toss has likelihood $1/2$. Bayes' rule is
     \begin{align*}
         P(H_2\mid E) & =\frac{P(E\mid H_2)P(H_2)}{P(E)}.
+	    \tag*{\eqref{formula:C12-Q54}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q54}
 
     \par
     The evidence probability is
@@ -780,17 +639,14 @@ is differentiable elsewhere.
     \solution
 
     For three independent trials with success probability $p$,
-    \begin{align*}
-	     P(X=x)=\binom3xp^x(1-p)^{(3-x)}.
-    \end{align*}
-    \hfill\eqref{formula:C12-Q56}
-
-    \par
-    
-    \begin{align*}
-        P(X=2) & =\binom32p^2(1-p)=3p^2(1-p). \\
-        P(X=3) & =p^3.
-    \end{align*}
+\begin{align*}
+    P(X=x) &= \binom{3}{x}p^x(1-p)^{3-x}.
+    \tag*{\eqref{formula:C12-Q56}}\\
+    P(X=2) &= \binom{3}{2}p^2(1-p)^{3-2} \\
+           &= 3p^2(1-p). \\
+    P(X=3) &= \binom{3}{3}p^3(1-p)^0 \\
+           &= p^3.
+\end{align*}
 
     The given relation produces
     \begin{align*}
@@ -823,8 +679,8 @@ is differentiable elsewhere.
     Condition on the colour of the reinforced first draw. The initial state is $(R,B)=(3,5)$, so the branch probabilities are $3/8$ and $5/8$. After a red first draw the state is $(5,5)$; after a black first draw it is $(3,7)$. The law of total probability is
     \begin{align*}
         P(E) & =\sum_iP(E\mid S_i)P(S_i).
+	    \tag*{\eqref{formula:C12-Q57}}
     \end{align*}
-    \hfill\eqref{formula:C12-Q57}
 
     \par
     For the red branch,
@@ -866,235 +722,160 @@ is differentiable elsewhere.
     \solution
 
 
-    Wrinting all the equations in form $A\vec{x}=\vec{b}$
-\[
-\vec{x}=\myvec{
-x\\
-y
-},\qquad
-\vec{c}=\myvec{
-3\\
-5
-},\qquad
-\vec{b}=\myvec{
-10\\
-6\\
-8
-}
-\]
 
+Let
 \[
-A=\myvec{
-1&2\\
-1&1\\
-3&1
-}
+\vec{x}=\myvec{x\\y}
+\quad\text{and}\quad
+\vec{c}=\myvec{3\\5}.
 \]
-
-\[
-\text{Minimise } z=\vec{c}^{\,T}\vec{x}
-\]
-
+Write the constraints as
 \[
 A\vec{x}\geq\vec{b},
 \qquad
-\vec{x}\geq\vec{0}
+\vec{x}\geq\vec{0},
 \]
-
+where
 \[
-\myvec{
-1&2\\
-1&1\\
-3&1
-}
-\myvec{
-x\\
-y
-}
-\geq
-\myvec{
-10\\
-6\\
-8
-}
-\]
-
-\[
-\vec{x}=\myvec{
-x\\
-y
-}
-\]
-
-\[
-\myvec{
-1&2\\
-1&1
-}
-\myvec{
-x\\
-y
-}
-=
-\myvec{
-10\\
-6
-}
-\]
-
-\[
-\myvec{
-1&2\\
-1&1
-}^{-1}
-\myvec{
-10\\
-6
-}
-=
-\myvec{
-x\\
-y
-}
-\]
-
-\[
-\myvec{
--1&2\\
-1&-1
-}
-\myvec{
-10\\
-6
-}
-=
-\myvec{
-x\\
-y
-}
-\]
-
-\[
-\vec{x}=\myvec{
-2\\
-4
-}
-\]
-
-\[
-\myvec{
-3&1
-}
-\myvec{
-2\\
-4
-}
-=10\geq8
-\]
-
-\[
-\begin{aligned}
-z
-&=\vec{c}^{\,T}\vec{x}\\
-&=\myvec{3&5}
-\myvec{
-2\\
-4
-}\\
-&=3(2)+5(4)\\
-&=26
-\end{aligned}
-\]
-
-\[
-\vec{y}=\myvec{
-u\\
-v\\
-w
-}
-\]
-
-\[
-\text{Maximise } W=\vec{b}^{\,T}\vec{y}
-\]
-
-\[
-A^T\vec{y}\leq\vec{c},
+A=\myvec{1&2\\1&1\\3&1},
 \qquad
-\vec{y}\geq\vec{0}
+\vec{b}=\myvec{10\\6\\8}.
 \]
 
+The objective function is
 \[
-\myvec{
-1&1&3\\
-2&1&1
-}
-\myvec{
-u\\
-v\\
-w
-}
-\leq
-\myvec{
-3\\
-5
-}
+Z=\vec{c}^{\,T}\vec{x}.
 \]
 
-\[
-\vec{y}=\myvec{
-2\\
-1\\
-0
-}
-\]
+\par
+\medskip
+\noindent
+\par
+\smallskip
 
-\[
-A^T\vec{y}
-=
-\myvec{
-1&1&3\\
-2&1&1
-}
-\myvec{
-2\\
-1\\
-0
-}
-=
-\myvec{
-3\\
-5
-}
-\]
-
+The boundary lines are
 \[
 \begin{aligned}
-W
-&=\vec{b}^{\,T}\vec{y}\\
-&=\myvec{10&6&8}
-\myvec{
-2\\
-1\\
-0
-}\\
-&=20+6\\
-&=26
+x+2y&=10,\\
+x+y&=6,\\
+3x+y&=8.
 \end{aligned}
 \]
 
+The intersection of the first and second lines is
 \[
-z_{\min}=W_{\max}=26
+\begin{aligned}
+x+2y&=10,\\
+x+y&=6.
+\end{aligned}
+\]
+Subtracting the second equation from the first,
+\[
+y=4,\qquad x=2.
+\]
+Thus, one feasible vertex is
+\[
+\vec{x}_1=\myvec{2\\4}.
+\]
+
+The intersection of the second and third lines is
+\[
+\begin{aligned}
+x+y&=6,\\
+3x+y&=8.
+\end{aligned}
+\]
+Subtracting the first equation from the second,
+\[
+2x=2\implies x=1.
+\]
+Therefore,
+\[
+y=5.
+\]
+Thus, another feasible vertex is
+\[
+\vec{x}_2=\myvec{1\\5}.
+\]
+
+Putting $x=0$ in the constraints gives
+\[
+y\geq 5,\qquad y\geq 6,\qquad y\geq 8.
+\]
+Hence, the corresponding feasible vertex is
+\[
+\vec{x}_3=\myvec{0\\8}.
+\]
+
+Similarly, putting $y=0$ in the constraints gives
+\[
+x\geq 10,\qquad x\geq 6,\qquad 3x\geq 8.
+\]
+Hence, the corresponding feasible vertex is
+\[
+\vec{x}_4=\myvec{10\\0}.
+\]
+
+Therefore, the feasible vertices are the following $2\times 1$
+point matrices:
+\[
+\myvec{0\\8},
+\quad
+\myvec{1\\5},
+\quad
+\myvec{2\\4},
+\quad
+\myvec{10\\0}.
+\]
+
+\par
+\medskip
+\noindent
+\par
+\smallskip
+
+The linear programming vertex rule requires evaluating $Z$
+at each feasible vertex:
+\[
+Z=3x+5y.
 \]
 
 \[
-\vec{x}=\myvec{
-2\\
-4
-},\qquad z_{\min}=26
+\begin{array}{c|cccc}
+\vec{x}
+&
+\myvec{0\\8}
+&
+\myvec{1\\5}
+&
+\myvec{2\\4}
+&
+\myvec{10\\0}
+\\
+\hline
+Z
+&
+40
+&
+28
+&
+26
+&
+30
+\end{array}
 \]
 
+Thus,
+\[
+Z_{\min}=26
+\quad\text{at}\quad
+\vec{x}=\myvec{2\\4}.
+\]
 
+Hence,
+\[
+x=2,\qquad y=4,\qquad Z_{\min}=26.
+\]
 
 
     \begin{figure}[H]
@@ -1109,220 +890,126 @@ z_{\min}=W_{\max}=26
     \end{lstlisting}
 
 
-    \item
-    \label{question:C12-Q60}
-    \label{question-short:C12-Q60} A dealer has Rs. 57,600 and space for at most 20 sewing machines. An electronic machine costs Rs. 3600 and earns Rs. 220 profit; a manual machine costs Rs. 2400 and earns Rs. 180 profit. How should he invest to maximise profit?
 
-    \par
-    \smallskip
-    \solution
-
-    Purchasing \(e\) electronic machines costs Rs. \(3600e\), while purchasing \(m\) manual machines costs Rs. \(2400m\).The total expenditure must not exceed Rs. 57,600.
-
-Hence, $3e+2m\le48$, $e+m\le20$, $e\ge0$ and $m\ge0$
-    \[
-\vec{x}=\myvec{
-e\\
-m
-},\qquad
-\vec{c}=\myvec{
-220\\
-180
-},\qquad
-\vec{b}=\myvec{
-48\\
-20
-}
+\item
+\label{question:C12-Q58}
+\label{question-short:C12-Q58} Evaluate:
+\[
+I=\int_0^{\pi/2}\frac{\cos^2 x}{1+3\sin^2 x}\,dx
 \]
+
+\par
+\smallskip
+\solution
+
+Let
+\[
+f(x)=\frac{\cos^2 x}{1+3\sin^2 x}.
+\]
+
+Using the composite trapezoidal rule,
+
+\begin{align*}
+    T_n &= \frac{h}{2}\left[
+    f(x_0)+2\sum_{i=1}^{n-1}f(x_i)+f(x_n)
+    \right].
+    \tag*{\eqref{formula:C12-Q58}}
+\end{align*}
+
+Taking $n=4$,
 
 \[
-A=\myvec{
-3&2\\
-1&1
-}
+h=\frac{\pi/2-0}{4}=\frac{\pi}{8}.
 \]
+
+The function values are
 
 \[
-\text{Maximise } P=\vec{c}^{\,T}\vec{x}
+\begin{array}{c|c}
+x_i & f(x_i)\\ \hline
+0 & 1.000000\\
+\pi/8 & 0.593017\\
+\pi/4 & 0.200000\\
+3\pi/8 & 0.041129\\
+\pi/2 & 0.000000
+\end{array}
 \]
 
-\[
-A\vec{x}\leq\vec{b},
-\qquad
-\vec{x}\geq\vec{0}
-\]
+Therefore,
 
-\[
-\begin{aligned}
-P
-&=\vec{c}^{\,T}\vec{x}\\
-&=\myvec{220&180}
-\myvec{
-e\\
-m
-}
-\end{aligned}
-\]
-
-\[
-\myvec{
-3&2\\
-1&1
-}
-\myvec{
-e\\
-m
-}
-\leq
-\myvec{
-48\\
-20
-}
-\]
-
-\[
-\vec{y}=\myvec{
-u\\
-v
-}
-\]
-
-\[
-\text{Minimise } D=\vec{b}^{\,T}\vec{y}
-\]
-
-\[
-A^T\vec{y}\geq\vec{c},
-\qquad
-\vec{y}\geq\vec{0}
-\]
-
-\[
-\myvec{
-3&1\\
-2&1
-}
-\myvec{
-u\\
-v
-}
-\geq
-\myvec{
-220\\
-180
-}
-\]
-
-\[
-\myvec{
-3&1\\
-2&1
-}
-\myvec{
-u\\
-v
-}
-=
-\myvec{
-220\\
-180
-}
-\]
-
-\[
-\begin{aligned}
-3u+v&=220\\
-2u+v&=180
-\end{aligned}
-\]
-
-\[
-u=40,\qquad v=100
-\]
-
-\[
-\vec{y}=\myvec{
-40\\
-100
-}
-\]
-
-\[
-\begin{aligned}
-D
-&=\vec{b}^{\,T}\vec{y}\\
-&=\myvec{48&20}
-\myvec{
-40\\
-100
-}\\
-&=3920
-\end{aligned}
-\]
-
-\[
-A\vec{x}=\vec{b}
-\]
-
-\[
-\myvec{
-3&2\\
-1&1
-}
-\myvec{
-e\\
-m
-}
-=
-\myvec{
-48\\
-20
-}
-\]
-
-\[
-\vec{x}=\myvec{
-8\\
-12
-}
-\]
-
-\[
-\begin{aligned}
-P
-&=\vec{c}^{\,T}\vec{x}\\
-&=\myvec{220&180}
-\myvec{
-8\\
-12
-}\\
-&=3920
-\end{aligned}
-\]
-
-\[
-P=D=3920
-\]
-
-\[
-\vec{x}=\myvec{
-8\\
-12
-},
-\qquad
-P_{\max}=\text{Rs. }3920
-\]
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.92\linewidth]{12/figs/Q60.png}
-    \end{figure}
-
+\begin{align*}
+    T_4 &= \frac{\pi}{8}\left[
+    \frac12(1)+0.593017+0.200000
+    +0.041129+\frac12(0)\right]\\
+    &= 0.523918.
+\end{align*}
 
     The following code verifies the solution.
 
     \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
-(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q60.py}@*)
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q61.py}@*)
+    \end{lstlisting}
+
+
+\item
+\label{question:C12-Q59}
+\label{question-short:C12-Q59} Evaluate:
+\[
+I=\int_0^{\pi/4}
+\frac{\sin x+\cos x}{3+\sin 2x}\,dx
+\]
+
+\par
+\smallskip
+\solution
+
+Let
+\[
+g(x)=\frac{\sin x+\cos x}{3+\sin 2x}.
+\]
+
+Using the composite trapezoidal rule,
+
+\begin{align*}
+    T_n &= \frac{h}{2}\left[
+    g(x_0)+2\sum_{i=1}^{n-1}g(x_i)+g(x_n)
+    \right].
+    \tag*{\eqref{formula:C12-Q58}}
+\end{align*}
+
+Taking $n=4$,
+
+\[
+h=\frac{\pi/4-0}{4}=\frac{\pi}{16}.
+\]
+
+The function values are
+
+\[
+\begin{array}{c|c}
+x_i & g(x_i)\\ \hline
+0 & 0.333333\\
+\pi/16 & 0.347616\\
+\pi/8 & 0.352448\\
+3\pi/16 & 0.353487\\
+\pi/4 & 0.353553
+\end{array}
+\]
+
+Therefore,
+
+\begin{align*}
+    T_4 &= \frac{\pi}{16}\bigg[
+    \frac12(0.333333)+0.347616\\
+    &\qquad+0.352448+0.353487
+    +\frac12(0.353553)\bigg]\\
+    &= 0.274299.
+\end{align*}
+
+    The following code verifies the solution.
+
+    \begin{lstlisting}[frame=single, basicstyle=\rmfamily, escapeinside={(*@}{@*)}]
+(*@\makebox[\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax][c]{12/codes/Q62.py}@*)
     \end{lstlisting}
 
     \end{enumerate}
